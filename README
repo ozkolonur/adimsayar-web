@@ -22,3 +22,7 @@ copy adimsayar.com.conf /etc/apache2/sites-available     (I will add it soon)
 a2ensite adimsayar.com
 service apache2 reload
 
+
+
+![Alt text](https://github.com/ozkolonur/adimsayar-web/blob/master/screenshots/adimsayar-main.png?raw=true "Homepage")
+
