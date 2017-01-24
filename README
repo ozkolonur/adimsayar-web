@@ -15,9 +15,10 @@ $ cd /path/to/adimsayar
 $ virtualenv .
 (virtual) $ pip install -r requirements.txt
 
+
 Proxy configuration of Adimsayar
 
-copy adimsayar.com.conf /etc/apache2/sites-available
+copy adimsayar.com.conf /etc/apache2/sites-available     (I will add it soon)
 a2ensite adimsayar.com
 service apache2 reload
 
