@@ -25,4 +25,6 @@ service apache2 reload
 
 
 ![Alt text](https://github.com/ozkolonur/adimsayar-web/blob/master/screenshots/adimsayar-main.png?raw=true "Homepage")
+![Alt text](https://github.com/ozkolonur/adimsayar-web/blob/master/screenshots/adimsayar-weight.png?raw=true "Weight Management")
+![Alt text](https://github.com/ozkolonur/adimsayar-web/blob/master/screenshots/adimsayar-step.png?raw=true "Step Graphs")
 
