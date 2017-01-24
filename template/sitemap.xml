@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<url>
+  <loc>http://www.adimsayar.com/</loc>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>http://www.adimsayar.com/support/</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.adimsayar.com/devices/</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.adimsayar.com/howitworks/</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.adimsayar.com/privacy/</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.adimsayar.com/contact/</loc>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.adimsayar.com/mobile_install/</loc>
+  <priority>0.64</priority>
+</url>
+</urlset>

@@ -1,0 +1,1 @@
+/home/ubuntu/adimsayar/sync_dev.sh

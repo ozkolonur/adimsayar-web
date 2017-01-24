@@ -1,0 +1,306 @@
+
+.navbar-inner {
+	min-height: 40px;
+	padding-right: 20px;
+	padding-left: 20px;
+	background-color: #2c2c2c;
+	background-image: -moz-linear-gradient(top, #EF7045, #D74413);
+	background-image: -ms-linear-gradient(top, #EF7045, #D74413);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#EF7045), to(#D74413));
+	background-image: -webkit-linear-gradient(top, #EF7045, #D74413);
+	background-image: -o-linear-gradient(top, #EF7045, #D74413);
+	background-image: linear-gradient(top, #EF7045, #D74413);
+	background-repeat: repeat-x;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+    filter: progid:dximagetransform.microsoft.gradient(startColorstr='#EF7045', endColorstr='#D74413', GradientType=0);
+	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.mini-login-form {
+	padding: 10px;
+}
+
+.mini-login-submit{
+    float: right !important;
+    -webkit-border-radius: 4px !important;
+    -moz-border-radius: 4px !important;
+    border-radius: 4px !important;
+}
+
+.navbar .nav > li > a.login-button{
+	padding: 2px 10px 5px;
+	color:#fff;
+}
+.navbar .main-menu{
+    margin:8px 0 0 3.5%;
+}
+
+.navbar .nav > li > a.login-button:hover{
+	color:#fff;
+	text-shadow: 0 0 0.2em #FFF
+}
+.navbar .login-nav{
+    /*width: 26%;*/
+}
+
+.navbar .nav > li > a.nav-button{
+	margin: 0 15px 0 0;
+    padding: 8px 10px 8px 8px;
+	color:#f4f2f2;
+	font-size: 18px;
+}
+
+.navbar .nav > li > a.nav-button:hover{
+	text-shadow: 0 0 0.1em #FFF
+}
+
+.navbar .nav > li > a.nav-active{
+    background: #d34423;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.navbar .nav > li > a > i.icon-menu{
+    margin:3px 5px 0 0;
+}
+.navbar .nav .open  .user-combo,
+.navbar .nav .active  .user-combo,
+.navbar .nav .open.active  .user-combo {
+    background-color: #5ebc5e;
+
+}
+
+.navbar .nav .user-combo {
+    margin-top: 2px
+}
+.dropdown-menu {
+    font-size: 16px
+}
+.dropdown-menu li {
+    padding: 2px 0 2px 0;
+}
+.dropdown-menu li > a:hover,
+.dropdown-menu .active > a,
+.dropdown-menu .active > a:hover {
+	color: #ffffff;
+	text-decoration: none;
+	background-color:#EF7045;
+}
+.menu-box {
+	padding: 0 0 5px 0
+}
+.site-logo{
+	width:auto;
+	height:auto;
+    margin:5px 0 5px 0;
+}
+
+.logo-adam{
+    display: inline;
+    height: 40px;
+    width: auto;
+}
+
+.logo-yazi{
+    display: inline;
+    height: 40px;
+    width: auto;
+}
+
+
+.social-button{
+    margin:5px 5px 0 0;
+}
+.body-bg{
+	background: url("../img/body_bg.png");
+}
+.content-box{
+	background: #FFFFFF;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+	padding:10px 10px 20px 10px;
+}
+.grid-center{
+    text-align: center;
+}
+.grid-margin-top {
+    margin-top:10px;
+}
+.grid-margin-bottom {
+    margin-bottom:10px;
+}
+.grid-margin-right{
+    margin-right: 10%;
+}
+.grid-margin-left{
+    margin-left: 10%;
+}
+.widget{
+    font-family: Tahoma, Verdana, Arial, sans-serif !important;
+    margin-bottom: 10px;
+    border:1px  #ccc solid;
+    -moz-box-shadow: 2px 2px 15px #ccc;
+    -webkit-box-shadow: 2px 2px 15px #ccc;
+    box-shadow: 2px 2px 15px #ccc;
+    background:#FCFCFC;
+}
+.widget h3,{
+    margin: 5px 0 5px 0;
+}
+.widget h4 {
+    font-size: 16px;
+    background: #7c7c7c;
+    padding: 8px 0 ;
+    color: #f7f7f9;
+    text-align: center;
+}
+.question {
+    margin-top: 10px;
+    display:inline-block;
+    font-size: 16px;
+}
+.answer-text{
+    min-width:30%;
+    float:left;
+    margin:4% 5% 4% 10%;
+}
+
+.answer-text strong{
+    text-align: center;
+    margin:5% auto;
+}
+
+.banner{
+    margin-bottom: 10px;
+}
+.bottom-content{
+    font-size:15px;
+    color:#3C3C3C;
+    text-indent: 40px;
+    padding: 5px;
+    line-height: 25px;
+}
+.venus {
+    width: 50%;
+    float: left;
+    margin:0 0 0 0;
+    text-align: center;
+}
+.venus img{
+    width:50px;
+    height:50px;
+    margin:5px 5px 0 0;
+}
+.mars {
+    width: 50%;
+    float: left;
+    margin:0 0 0 0;
+    text-align: center;
+}
+.mars img{
+    width:50px;
+    height:50px;
+    margin:5px 5px 0 0;
+}
+
+.adim-count {
+    margin:30px 0 0 0;
+    display:inline-block;
+    color:#2E64FE;
+    font-size:20px;
+
+}
+.adim-birim{
+    font-size:12px;
+    display:inline;
+    margin:0;
+    color:red;
+    padding-left:2px;
+}
+
+
+
+.widget small {
+    display: block;
+    text-align: center;
+    margin:10px 0 5px 0;
+}
+
+.poll-thankyou {
+    display:none;
+    margin:20px;
+}
+
+.index-news{
+    width: auto;
+    min-height: 400px;
+    padding: 0 5px;
+}
+
+.index-news li {
+    margin:15px 0;
+}
+
+.partners{
+    width: 20%;
+    height: auto;
+    margin:5px
+}
+
+.bmi-iframe{
+    height: 450px;
+    margin-left:5%;
+}
+@media (max-width: 1200px) {
+    .navbar .nav > li > a.nav-button{
+    margin: 0 4px 0 0;
+    }
+}
+/*tablet screen resulotion*/
+@media (max-width: 979px) {
+
+    .navbar .nav .user-combo {
+        margin-top: 0;
+        margin-right:10px;
+    }
+
+    .navbar .btn-navbar {
+        padding: 15px 15px 15px 15px;
+    }
+
+    .navbar .nav-collapse {
+        width: 100%;
+        clear: both;
+    }
+
+    .navbar .dropdown-menu:not([data-no-collapse="true"]) li a{
+        color:#fff;
+        margin-bottom: 5px;
+    }
+    .navbar .nav > li > a.nav-button{
+        margin-bottom: 10px;
+    }
+    .navbar .nav > li > a.nav-button:hover,.navbar .dropdown-menu:not([data-no-collapse="true"]) li a:hover{
+        background: #d34423;
+    }
+    .bmi-iframe{
+        height: 550px
+    }
+}
+
+/*mobile-phone screen resulotion*/
+@media (max-width: 480px) {
+    .site-logo {
+        margin:5px 20px 5px 0;
+    }
+    .logo-yazi{
+        display: none
+    }
+}
+

@@ -1,0 +1,30 @@
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+ 
+<div style="width:auto;float:left;display:inline;margin-top:20px">
+<span style="font-size:24px;display:block;color:#473838;">{% trans "What is (BMI) Body-Mass Index?" %}</span>
+<div style="margin-top:10px;line-height:30px">
+<a href="http://tr.wikipedia.org/wiki/V%C3%BCcut_kitle_indeksi" target="_blank">{% trans "Body-Mass Index;" %}</a>{% trans " is a ratio for human body, that shows us whether people have the right weight for their height." %}
+{% trans "A health body has BMI value between 18 and 25. If your BMI is less than 18, that means you are underweight,or if it is more than 25 that means you are overweight. Visit our " %}<a href="http://www.adimsayar.com/statistics/my_bmi/" target="_blank"><b>{% trans "statistics page" %}</b></a>{% trans " and compare your BMI with others like you" %}
+
+<!--
+yetişkin bir insanın kilosunun boyuna göre normal olup olmadığını gösteren bir değerdir. 
+Sağlıklı bir insanın vücut kitle indeksi 18 ile 25 arasındadır. VKİ değeriniz 25'ten fazlaysa bu fazla kilolu olduğunuzu, 18'in altındaysa zayıf olduğunuzu gösterir.-->
+</div>
+</div>
+
+
+<div style="width:400px;text-align:center;margin">
+{% if cur_bmi %}
+<img src="{{ bmi_img_url }}" style="display:block"/>
+ <div style="display:inline;text-align:center;margin-top:15px;font-size:14px">Vücut-Kitle indeksiniz:
+ <span style="font-size:22px;color:#c42b2b">{{cur_bmi}}</span></div>
+{% else %}
+<a href="http://www.adimsayar.com/statistics/my_bmi/" target="_blank">{% trans "Click here to find your BMI, (your height and weight information needed)" %}
+<!-- Boy, Kilo bilgileri bulunamadı. Bu bilgileri girip grafiği görmek için buraya tıklayın!--></a>
+
+{% endif %}
+</div>
+
+

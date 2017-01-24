@@ -1,0 +1,248 @@
+{% extends 'meas/meas_base.html' %}
+{% load i18n %}
+
+{% block title %}Agirlik{%endblock%}
+{%block extracss%}
+<link rel="stylesheet" href="/site_media/css/jquery-ui-1.8.4.custom.css" type="text/css" />
+<link rel="stylesheet" href="/site_media/css/demo_table_jui.css" type="text/css" />
+{% endblock %}
+{%block javascript%}
+<script type="text/javascript" src="/site_media/js/jquery.dataTables.editable.js"></script>
+<script type="text/javascript" src="/site_media/js/jquery.jeditable.js"></script>
+<script type="text/javascript" src="/site_media/js/jquery-ui.js"></script>
+<script type="text/javascript" src="/site_media/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="/site_media/js/jsapi.js"></script>
+<script type="text/javascript" charset="utf-8">
+
+    var aDataSet = [
+            {% for bi in body_infos%}
+    {
+        "DT_RowId": "{{ bi.id }}",
+            "DT_RowClass": "gradeA",
+            "0": "{{ bi.date_time }}",
+            "1": "{{ bi.age }}",
+            "2": "{{ bi.height }}",
+            "3": "{{ bi.weight }}",
+            "4": "{{ bi.id }}",
+    },
+    {% endfor%}
+    ];
+
+    function table() {
+        $('#stable').html( '<table cellpadding="0" cellspacing="0" border="0" class="display" id="table"></table>' );
+        $('#table').dataTable({
+            "aaData": aDataSet,
+            "bJQueryUI": true,
+            "oLanguage": {"sUrl": "/site_media/datatables/tr_TR.txt"},
+            "aaSorting": [],
+            "bFilter": false,
+            "sPaginationType": "full_numbers",
+            "bProcessing": true,
+            aoColumns: [ { "sTitle": "Ölçüm Tarihi","sClass":"td-text-date" },
+                { "sTitle": "Yas","sClass":"td-text" },
+                { "sTitle": "Boy (cm)","sClass":"td-text" },
+                { "sTitle": "Kilo (kg)","sClass":"td-text" },
+                { "sTitle": "Ölçümü Sil" ,"sClass":"td-text-delete",
+                    "fnRender":function(oObj){ return "<a class='table-action-deletelink' id='link' href='/body_info/del_body_info/" +
+                            oObj.aData[4] + "'>Sil</a>";}}]});
+        $('#btnDeleteRow').css({
+            'display' : 'none'
+        });
+        $('#btnAddNewRow').css({
+            'display' : 'none'
+        });
+    }
+</script>
+
+
+<script language="Javascript">
+    $(document).ready(function() {
+        table();
+    });
+
+</script>
+
+
+{% endblock %}
+{%block meas-content%}
+
+
+<div class="row-fluid meas-row">
+
+
+
+    <div id="weight2_div" class="span9 meas-chart weight-chart" >
+        {% if body_infos %}
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script type="text/javascript">
+            google.load("visualization", "1", {packages:["corechart"]});
+            google.setOnLoadCallback(drawChart);
+            function drawChart() {
+                var data = google.visualization.arrayToDataTable([
+                    ['Tarih',
+                        'Kilonuz',
+                        'Ideal Kilonuz({% if body_infos %}{{body_infos.0.ideal_weight}}{% else%}?{% endif%})',
+                        'Obezite siniriniz({% if body_infos %}{{body_infos.0.obesity_weight}}{% else%}?{% endif%})',
+                        {% if body_infos.0.weight_goal %}
+            'Hedefiniz({{body_infos.0.weight_goal|floatformat:0}})'
+            {% endif %}
+            ],
+            {% if body_infos|length == 1 %}
+                ['{{body_infos.0.date_time|date:"j-M"}}',
+                    {{ body_infos.0.weight }},
+            {{body_infos.0.ideal_weight}},
+            {{body_infos.0.obesity_weight}},
+            {% if body_infos.0.weight_goal %}
+            {{body_infos.0.weight_goal|floatformat:0}}
+            {% endif %}
+            ],
+            ['{{body_infos.0.date_time|date:"j-M"}}',
+                {{ body_infos.0.weight }},
+            {{body_infos.0.ideal_weight}},
+            {{body_infos.0.obesity_weight}},
+            {% if body_infos.0.weight_goal %}
+            {{body_infos.0.weight_goal|floatformat:0}}
+            {% endif %}
+            ],
+            {% else %}
+            {% for bi in body_infos%}
+                ['{{bi.date_time|date:"j-M"}}',
+                    {{ bi.weight }},
+            {% if body_infos %}{{body_infos.0.ideal_weight}}{% else%}?{% endif%},
+            {% if body_infos %}{{body_infos.0.obesity_weight}}{% else%}?{% endif%},
+            {% if body_infos.0.weight_goal %}
+            {% if body_infos %}{{body_infos.0.weight_goal|floatformat:0}}{% else%}?{% endif%}
+            {% endif %}
+            ],
+            {% endfor%}
+            {% endif %}
+            ]);
+
+            var options = {
+                title: 'Kilo Degisiminiz',
+                vAxis: {minValue: 'auto', maxValue: 'auto', viewWindow:{min:'auto', max:'auto'}, gridlines:{count:10}},
+                chartArea:{left:'5%',top:'10%',width:"100%",height:"80%"},
+                legend:'bottom',
+                series: [{color: 'black', visibleInLegend: true, lineWidth:2, pointSize:4},
+                    {color: '#85ff7c', visibleInLegend: true, lineWidth:8},
+                    {color: '#ff0000', visibleInLegend: true, lineWidth:8},
+                    {color: '#cccccc', visibleInLegend: true, lineWidth:8},
+                ],
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('weight2_div'));
+            chart.draw(data, options);
+            }
+        </script>
+        {% else %}
+        {{ content.text|safe }}
+        {% endif %}
+    </div><!---chart_div End --->
+
+
+    <div class="span3">
+
+        <div class="step-sidebar" >
+
+                <div class="total-steps" style="margin-top:0">
+
+                <div class="meas-widget">
+                    <p>Suan ki Kilonuz  <span class="bmi-text" id="height-now">{% if body_infos %}{{body_infos.0.weight}}{% else%}?{% endif%}</span>
+                        <strong class="birim">kg</strong>
+                    </p>
+                    <p>Ideal Kilonuz  <span class="bmi-text">{% if body_infos %}{{body_infos.0.ideal_weight}}{% else%}?{% endif%}</span>
+                        <strong class="birim">kg</strong>
+                    </p>
+                </div>
+            </div><!---total-steps End --->
+
+            <div class="meas-widget">
+                <form name="input" action="" method="POST">
+                    <div class="bmi-advice">
+                        <p>Hedefiniz</p>
+
+                        <div class="widget-box">
+                            <div class="controls">
+                                <select name="weight_goal_duration" class="input-medium">
+                                    <option value="1" {% if body_infos.0.weight_goal_duration == 1%}selected{% endif %}>1 ay sonra</option>
+                                    <option value="2" {% if body_infos.0.weight_goal_duration == 2%}selected{% endif %}>2 ay sonra</option>
+                                    <option value="3" {% if body_infos.0.weight_goal_duration == 3%}selected{% endif %}>3 ay sonra</option>
+                                    <option value="6" {% if body_infos.0.weight_goal_duration == 4%}selected{% endif %}>6 ay sonra</option>
+                                    <option value="9" {% if body_infos.0.weight_goal_duration == 5%}selected{% endif %}>9 ay sonra</option>
+                                    <option value="12" {% if body_infos.0.weight_goal_duration == 6%}selected{% endif %}>12ay sonra</option>
+                                </select>
+                            </div>
+
+                            <div class="controls" style="width: auto;height:40px;display: block;margin-left: 40%;" >
+                                <input type="text" id="input_goal" name="weight_goal" class="input-mini pull-left" size="3" value="{% if body_infos %}{{body_infos.0.weight_goal|floatformat:0}}{% else%}?{% endif%}"/>
+                                <strong class="birim pull-left" style="display: inline">kg</strong>
+
+                            </div>
+                            <input type="submit" value="Hedefimi Kaydet" class="btn btn-info btn-large bmi-submit" />
+                        </div><!---widget-box End --->
+                </form>
+            </div><!---bmi-advice End --->
+
+        </div><!---meas-widget End --->
+
+        <div class="meas-widget">
+            <p>Degerlerinizi Güncelleyin</p>
+            <div class="bmi-form">
+
+                <form name="input" action="" method="POST" class="form-horizontal bmi-form">
+                        <table class="table bmi-form-table">
+                            <tr>
+                                <td>
+                                    <label class="control-label" for="input-boy"><p class="form-label-text">Boyunuz:</p></label>
+                                </td>
+                                <td>
+                                    <input type="text" id="input-boy" class="input-mini" name="height" value="{{body_infos.0.height}}" />
+                                    <strong class="birim">cm</strong>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <label class="control-label" for="input-kilo"><p class="form-label-text">Kilonuz:</p></label>
+                                </td>
+                                <td>
+                                    <input type="text" id="input-kilo" class="input-mini" name="weight" value="{{body_infos.0.weight}}" />
+                                    <strong class="birim" style="padding: 1px;">kg</strong>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <label class="control-label" for="input-yasiniz"><p class="form-label-text">Yasiniz:</p></label>
+                                </td>
+                                <td>
+                                    <input type="text" id="input-yasiniz" class="input-mini" name="age" value="{{body_infos.0.age}}"/  style="margin-right:23px;"/>
+                                    <strong class="birim">  </strong>
+                                </td>
+                            </tr>
+                        </table>
+
+
+                    <input type="submit" value="Güncelle" class="btn btn-info btn-large" />
+
+
+                </form>
+                <div><p style="color:red; font-size:12pt;">{% if msg %}{{msg}}{% endif %}</p></div>
+
+            </div>
+        </div><!---step-sidebar End --->
+    </div><!---span2 End --->
+</div><!---row-fluid End --->
+
+
+
+<div class="row-fluid meas-row weight-table">
+    <div id="stable" class="span12" ></div>
+
+</div><!---row-fluid End --->
+
+<!--<div id="values"></div>-->
+
+
+
+{% endblock %}

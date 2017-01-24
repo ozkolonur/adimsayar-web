@@ -1,0 +1,1 @@
+/home/ubuntu/adimsayar/wsgi_handler_adimsayar.py

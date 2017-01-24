@@ -1,0 +1,20 @@
+{% extends "base_1col.html" %}
+{% load i18n %}
+    {%block extracss%}
+		<link rel="stylesheet" href="/site_media/css/bpm.css" type="text/css" />
+    {% endblock %}
+{%block javascript%}
+{% endblock %}
+{%block title%}{% trans "Measurements" %}{%endblock%}
+{%block content %}
+
+<div class="content-box" style="width: 920px;margin: 0 auto">
+<iframe name="bmi-meter" width="900" height="500" id="iframe-1" scrolling="no" frameborder="0" src="/body_info/bmi_meter/?bmi={{bmi}}"></iframe>
+<iframe name="statistics-main" width="900" height="500" id="iframe-2" scrolling="no" frameborder="0" src="/statistics/age_vs_user/"></iframe>
+<iframe name="statistics-main" width="900" height="500" id="iframe-3" scrolling="no" frameborder="0" src="/statistics/bmi_vs_user/"></iframe>
+</div>
+{% endblock content %}
+
+{% block footer%}
+{% endblock %}
+

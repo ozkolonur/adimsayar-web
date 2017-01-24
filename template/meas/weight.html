@@ -1,0 +1,162 @@
+{% extends 'meas/meas_base.html' %}    
+{% load i18n %}
+
+{% block title %}Ağırlık{%endblock%}
+		{%block style%}
+		{% endblock %}
+		{%block javascript%}
+<script type="text/javascript">
+$(document).ready(function () {
+
+var height = {{profile.height}};
+var weight = {{profile.weight}};
+var age = {{profile.age}}
+var chart_wd = $(document).width()
+
+$("#input_hg").val(height);
+$("#input_wg").val(weight);
+$("#input_age").val(age);
+
+$('#input_hg').focus(function () {
+	if ($(this).val() == height) {
+		$(this).val("");
+	}
+}).blur(function () {
+	if ($(this).val() == "") {
+		$(this).val(height);
+	}
+});
+
+$('#input_wg').focus(function () {
+	if ($(this).val() == weight) {
+		$(this).val("");
+	}
+}).blur(function () {
+	if ($(this).val() == "") {
+		$(this).val(weight);
+	}
+});
+
+$('#input_age').focus(function () {
+	if ($(this).val() == age) {
+		$(this).val("");
+	}
+}).blur(function () {
+	if ($(this).val() == "") {
+		$(this).val(age);
+	}
+});
+
+	if ( weight && height && chart_wd )
+		{
+		d = new Date();
+		link = "/meas/bmi_image/?weight="+ weight +"&height=" + height + "&chart_wd=" + chart_wd+ "&"
+		$("#chart_img").attr("src",link+d );
+		}
+
+});
+
+function chart_update() {
+
+var height = $("#input_hg").val();
+var weight = $("#input_wg").val();
+var chart_wd = $(document).width()
+var age = $("#input_age").val();
+
+	if ( weight && height && chart_wd && age)
+		{
+		$("#up-text p").slideUp(200);
+		$.getJSON("/meas/bmi/", {height: height, weight: weight, age:age });
+		$("#height-now").text(weight);
+		d = new Date();
+		link = "/meas/bmi_image/?weight="+ weight +"&height=" + height + "&chart_wd=" + chart_wd+ "&"
+		$("#chart_img").attr("src",link+d );
+		$("#chart_img").load(function () {
+			$("#up-text p").text("Grafik Güncellendi")
+			$("#up-text p").slideDown(500);
+		});
+		
+		}
+	else
+		{
+
+			$("#up-text p").text("Lütfen boş alan bırakmayınız")
+			$("#up-text p").slideDown(300);
+		}
+		
+
+}
+
+
+</script>
+
+		{% endblock %}
+{%block meas-content%}
+
+<div class="bpm-title">{% trans "Ağırlık" %}</div>
+
+<div class="step-main" >
+{% if bmi == 1%}
+<script type="text/javascript">
+function data_update() {
+
+	var height2 = $("#input_hg").val();
+	var weight2 = $("#input_wg").val();
+	var age2 = $("#input_age").val();
+
+		$.get("/meas/bmi/", {height: height2, weight: weight2, age:age2 });
+		
+	setTimeout(function () {window.location.href=window.location.href},10)
+}		
+
+</script>
+<div id="chartbox" style="width:80%;margin-top:10px;padding:10px;">
+{{content.text|safe}}
+</div><!---chart_div End --->
+		<div class="step-sidebar" >		
+<div class="total-steps">
+		<p>Değerlerinizi Güncelleyin</p>
+		<div class="bmi-form">
+		<div><p style="color:#000;">Boyunuz:</p><input type="text" id="input_hg" /><span class="birim-2">cm</span></div>
+		<div><p style="color:#000;">Kilonuz:</p><input type="text" id="input_wg"/><span class="birim-2">kg</span></div>
+		<div><p style="color:#000;">Yaşınız:</p><input type="text" id="input_age" /></div>
+		<button onclick="data_update();" class="button">Güncelle</button>
+		</div>
+		<div id="up-text"><p></p></div>
+		</div><!---total-steps End --->
+		</div><!---step-sidebar End --->
+{% else %}
+
+<div id="chartbox">
+<img src="/meas/bmi_image/?height=190&weight=80&" id="chart_img" />
+</div><!---chart_div End ---> 
+		<div class="step-sidebar" >		
+
+		<div class="total-steps" style="margin-top:0">
+		
+		<div class="bmi-advice">
+		<p>Şuan ki Kilonuz  <span class="bmi-text" id="height-now">{{profile.weight}}</span><span class="birim">kg</span></p>
+		<p>İdeal Kilonuz  <span class="bmi-text">{{weight_advice}}</span><span class="birim">kg</span></p>
+		</div>		
+		</div><!---total-steps End --->
+
+		<div class="total-steps">
+		<p>Değerlerinizi Güncelleyin</p>
+		<div class="bmi-form">
+		<div><p style="color:#000;">Boyunuz:</p><input type="text" id="input_hg" /><span class="birim-2">cm</span></div>
+		<div><p style="color:#000;">Kilonuz:</p><input type="text" id="input_wg"/><span class="birim-2">kg</span></div>
+		<div><p style="color:#000;">Yaşınız:</p><input type="text" id="input_age" /></div>
+		<button onclick="chart_update();" class="button">Güncelle</button>
+		</div>
+		<div id="up-text"><p></p></div>
+		</div><!---total-steps End --->
+		</div><!---step-sidebar End --->
+{%endif%}
+		<div style="clear:both;"></div>
+</div><!---steps End --->
+
+<div id="values"></div>
+
+
+
+{% endblock %}

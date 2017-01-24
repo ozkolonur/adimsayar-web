@@ -1,0 +1,116 @@
+{% extends 'meas/meas_base.html' %}    
+{% load i18n %}
+{% block title %}Aylık Adımlar{%endblock%}
+{%block javascript%}
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+      <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Date');
+        data.addColumn('number', 'Points');
+				data.addRows({{point_date_list|length}});
+				{% for i in point_date_list %}
+				data.setValue({{ forloop.counter0 }}, 0, '{{i.0|date:"D"}}')
+				data.setValue({{ forloop.counter0 }}, 1, {{i.1}})
+				{% endfor %}
+        var chart = new google.visualization.ColumnChart(document.getElementById('points_div'));
+        chart.draw(data, {width: $('#points_div').width(), height: 385, legend:'top',chartArea: {left:'5.1%',top:30,width:'94%',height:'80%'},vAxis: {minValue: 'auto'},hAxis:{color:'red'},
+
+                         });
+      }
+    </script>
+
+<script language="Javascript">
+    $(document).ready( function() {
+			$('a[rel*=tb]').click(function() {
+				var link = $(this).attr('src');
+				window.location	= link;			
+				return false;
+    	}); 
+    }); 
+</script>
+{% endblock  %}
+
+
+{%block meas-content%}
+
+<div class="row-fluid meas-row" >
+<div id="points_div" class="span9 meas-chart"></div><!---bpm-graphic End --->
+    <div class="span3">
+        <div class="step-sidebar">
+
+        <table class="point-right-widget">
+            <tbody>
+            <tr>
+                <td class="point-right-text">{% trans "This week's score" %}</td>
+                <td class="point-right-point" >{{current_points}}</td>
+            </tr>
+            <tr style="background:#cff3f9">
+                <td class="point-right-text">{% trans "Last week's score" %}</td>
+                <td class="point-right-point" >{{last_week_points}}</td>
+            </tr>
+            <tr>
+                <td class="point-right-text">{% trans "High score" %}</td>
+                <td class="point-right-point" >{{top_points}}</td>
+            </tr>
+            <tr style="background:#cff3f9">
+                <td class="point-right-text">{% trans "Experience score" %}</td>
+                <td class="point-right-point" >{{xpoints}}</td>
+            </tr>
+            </tbody>
+        </table>
+
+
+        <div class="point-right-widget point-log">
+            <p class="point-right-info">
+                {% for p in points %}
+                {% if p.action_name == "W" %}
+                <span>Yürüyüşlerden, {{ p.points_earned }} puan kazandiniz. </span><small>{{p.action_date|date:"P"}}</small><br>
+                {% else %}
+                <span>Aktivitelerden {{ p.points_earned }} puan kazandiniz. </span><small>{{p.action_date|date:"P"}}</small><br>
+                {% endif %}
+                {% endfor %}
+                    </p>
+                </div>
+
+
+        </div><!---sidebar End--->
+
+    </div><!---span3 End--->
+    <div class="point-info span11">
+        {{help_content.text|safe}}
+    </div><!---total-steps End --->
+</div><!---row-fluid End --->
+
+
+
+
+
+<div class="row-fluid meas-row" >
+
+<div class="meas-big-widget span6" >
+    <h4>{% trans "Last week's ranking" %}</h4>
+<strong style="width:35%;margin:20px auto;display: block;font-size: 20px">{%  trans "Not published yet" %}</strong>
+</div>
+    <div class="meas-big-widget span6 this-week-table" >
+        <h4>{% trans "This week's ranking" %}</h4>
+        <table class="table">
+            <tbody>
+            {%for profile in top_25%}
+                <tr class="row {% if forloop.counter0 == rank_pos %}row-active{% endif %}" >
+                    <td class="user-order">{{profile.score_rank}}</td>
+                    <td class="user-avatar"><img src="/site_media/images/default_thumbnail.jpg" class="avatar-thumbnail"></td>
+                    <td class="user-name">{{profile.user.username}}</td>
+                    <td class="puan" >{{profile.score}}</td>
+                    <td class="puan-unit" >{% trans "points" %}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div><!---row-fluid End --->
+
+{% endblock %}

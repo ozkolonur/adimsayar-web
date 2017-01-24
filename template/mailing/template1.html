@@ -1,0 +1,35 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+</head>
+
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="center" valign="top" bgcolor="#f6f3e4" style="background-color:#f6f3e4;"><br>
+    <br>
+    <table width="600" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="center" valign="top" style="padding-left:13px; padding-right:13px; background-color:#ffffff;">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          {% for ct in content%}
+          <tr><td>
+          {{ ct.text|safe }}
+          </td></tr>
+          <tr>
+            <td align="center" valign="middle" style="padding-bottom:15px; padding-top:15px;">
+            <img src="http://www.adimsayar.com/site_media/images/divider.gif" width="573" height="28" style="display:block;"></td>
+          </tr>
+          {% endfor %}
+          </table>
+        </td>
+      </tr>
+    </table>
+  <tr>
+    <td align="center" valign="top">&nbsp;</td>
+  </tr>
+</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,158 @@
+.container{
+    width: 100%;
+    height: 100%;
+    background: url(../images/daytime/gunduz.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: absolute;
+}
+
+.content-top{
+    width: 100%;
+    height: 15%;
+}
+
+
+.steps-main{
+    width: 95%;
+    height: 70px;
+    position: relative;
+    float: left;
+    margin: 3% 0 0 0;
+
+}
+
+.step-text{
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: bold;
+    display: inline-block;
+    margin: 18px;
+    z-index: 6;
+    position: absolute;
+}
+
+.steps-main-bg {
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:100%;
+    height:100%;
+    background-color:#02243D;
+    z-index:1;
+    filter: alpha(opacity=20);
+    opacity:0.2;
+    -webkit-border-top-right-radius: 25px;
+    -webkit-border-bottom-right-radius: 25px;
+    -moz-border-radius-topright: 25px;
+    -moz-border-radius-bottomright: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.reset{
+    position: absolute;
+    z-index: 7;
+    left: 78%;
+    top:3px;
+}
+
+
+.middle-left {
+    width: 45%;
+    float:left;
+}
+
+
+
+.middle-right {
+    float:right;
+    width: 55%;
+    height: auto;
+    position: relative;
+}
+
+.rank-image{
+    width: 35px;
+    height: auto;
+    margin: 0 auto;
+}
+
+
+
+
+.main-table {
+    width: 100%;
+    height: 67.5px;
+    background: url("../images/daytime/main_text_bg.png") no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.main-table-col{
+    width:100%;
+    height: 67.5px;
+    position: relative;
+}
+
+.main-puan{
+    background: url("../images/daytime/puan_icon.png") no-repeat 10% 6px;
+}
+
+.main-bugun{
+    background: url("../images/daytime/bugun_icon.png") no-repeat 10% 6px;
+}
+
+.main-siralama{
+    background: url("../images/daytime/siralama.png") no-repeat 10% 6px;
+}
+
+.main-haftalik{
+    background: url("../images/daytime/haftalik.png") no-repeat 10% 6px;
+}
+
+.main-table-text-container{
+    width: 90%;
+    height: auto;
+    font : 15px Helvetica;
+    text-align: left;
+    color: #ffffff;
+    margin:22px 0 0 33%;
+    position: relative;
+    letter-spacing: 1px;
+}
+
+.main-table-text-container b{
+    font : 18px Helvetica;
+    margin-top: 5px;
+}
+
+.main-table-text{
+    font: Helvetica 16px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.suggestion{
+    width: 90%;
+    height: auto;
+    margin: 5% 0 0 5%;
+    position: relative;
+}
+
+.suggestion-text{
+    color: #333;
+    font : 14px Helvetica;
+    margin: 10px;
+    line-height: 18px;
+}
+
+@media (min-width: 480px) and (min-height: 640px) {
+    .suggestion {
+        margin: 3% 0 0 5%;
+    }
+}

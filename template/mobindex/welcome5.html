@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
+  <head>
+  <title>My Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script src="{{subdomain}}/site_media/jqmobile/jquery-1.7.1.min.js"></script>
+	<script src="{{subdomain}}/site_media/mobindex/js/jquery.localize.js" type="text/javascript"></script>
+	<script src="{{subdomain}}/site_media/mobindex/js/main.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="{{subdomain}}/site_media/jqmobile/jquery.mobile-1.1.1.min.css" />
+	<script src="{{subdomain}}/site_media/jqmobile/jquery.mobile-1.1.1.min.js"></script>
+	<link href="{{subdomain}}/site_media/mobindex/css/style.css" rel="stylesheet" />
+	<script src="{{subdomain}}/site_media/mobindex/js/sim.js" type="text/javascript"></script>
+</head>
+<body>
+<div data-role="page" id="welcome5-page">
+    <div data-role="content">
+<h2>Adımsayar çalışma modu</h2>
+<br/>
+<h4>Herzaman Açık:</h4>
+<p>Adımsayar bu modda iken, arkaplanda sürekli olarak çalışır. Daha doğru sonuçlar verir fakat telefonunuzun pil tüketiminiz %20 kadar artırabilir</p>
+<br/>
+<h4>Akıllı Batarya Yönetimi(Önerilen):</h4>
+<p>Bu modda hareketlerinizi algılayarak çalışır. Eğer hareket etmiyorsanız uygulama kapanır, yürüyüşe başladığınızda tekrar çalışır. Yeterli doğrulukta adımlarınızı sayarken, pil tüketiminizde ciddi artış olmaz.</p>
+<br/>
+<h4>Manuel kullanım:</h4>
+<p>Adımsayar bu modda iken arkaplanda çalışmaz, adım sayma işlemini yapabilmesi için uygulamanın açık ve ekranda olması gerekir. Pil tüketimini etkilemez</p>
+<br/>
+<br/>
+
+<form action="#" method="GET" id="settings">
+			<ul data-role="listview" class="ui-listview">
+			<li data-role="fieldcontain">
+				<label for="mode" class="ui-input-text">Adımsayar Çalışma Modu:</label>
+				<select name="mode" id="input-mode" data-native-menu="false" config="mode" onchange="inputChanged(this);">
+					<option value="on">Herzaman açık</option>
+					<option value="auto" selected>Akıllı batarya yönetimi (önerilen)</option>
+					<option value="off">Manuel kullanım</option>
+				</select>
+			</li>
+
+
+	  </li>
+
+		</ul>
+	</form>
+
+    </div><!-- /content -->
+    <div data-role="footer" data-id="footer-0" data-position="fixed">
+        <div data-role="navbar">
+        <ul>
+				<li><a href="welcome4.html" data-icon="arrow-l" data-iconpos="left"><span style="font-size:18px;">Geri</span></a></li>
+				<li><a href="welcome6.html" data-icon="arrow-r" data-iconpos="right"><span style="font-size:18px;">İleri</span></a></li>
+        </ul>
+    </div><!-- /navbar -->
+    </div><!-- /footer -->
+</div><!-- /page -->
+</body>
+</html>

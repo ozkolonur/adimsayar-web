@@ -1,0 +1,421 @@
+{% extends "base_1col.html" %}
+{% load i18n %}
+{%block extracss%}
+<style>
+    .widget-daily-main{
+        padding:10px 0 10px 0;
+    }
+
+    .daily-calorie-form{
+        width:460px;
+        float:left;
+        margin-bottom: 20px;
+    }
+
+    .daily-calorie-chart{
+        width:350px;
+        height:300px;
+        float:right;
+        margin-left:50px;
+    }
+    .form-line {
+        display:inline;
+
+    }
+
+    .form-line{
+        display:block;
+    }
+
+    .form-line p {
+        width:140px;
+        padding:4px;
+        font-size:16px;
+        font-weight:bold;
+        margin:0;
+        color:#000;
+    }
+
+    .form-line span{
+
+        display:inline
+
+    }
+
+    .form-line input[type='radio']{
+        width:20px;
+        display:inline;
+    }
+
+    .total-steps{
+        width:100%;
+        height:auto;
+        background:#F7F7F7;
+        margin-left:2px;
+        margin-top:9px;
+        border:2px solid #D8D8D8;
+        -moz-border-radius:5px;
+        -khtml-border-radius:5px;
+        -webkit-border-radius:5px;
+        border-radius:5px 5px 5px 5px;
+        -moz-box-shadow: 5px 5px 5px #ccc;
+        -webkit-box-shadow: 5px 5px 5px #ccc;
+        box-shadow: 5px 5px 5px #ccc;
+    }
+        /*.total-steps p {font:arial;*/
+        /*font-size:20px;*/
+        /*color:#2E64FE;*/
+        /*text-align:center;*/
+        /*margin:5px;*/
+        /*}*/
+
+    .bmi-form{
+        width:100%;
+        margin:0 auto;
+        margin-top:10px;
+        text-align:center;
+    }
+    .bmi-form div{
+        width:100%;
+        height:40px;
+    }
+    .bmi-form p{
+        width:50%;
+        float:left;
+    }
+    .bmi-form input{
+        width:22%;
+        float:left;
+        font-size:16px;
+        margin-top:5px;
+    }
+    .bmi-form button{
+        width:120px;
+        height:40px;
+        margin:10px 0 10px 0;
+    }
+    .bmi-advice .bmi-text{color:#36963b;}
+    .birim {
+        color:#D23200;
+        font-size:12px;
+        padding:3px;}
+    .birim-2 {
+        color:#D23200;
+        font-size:12px;
+        padding:3px;
+        float:left;
+        margin-top:14px
+    }
+    .button {
+        border-top: 1px solid #96d1f8;
+        background: #65a9d7;
+        background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#65a9d7));
+        background: -webkit-linear-gradient(top, #3e779d, #65a9d7);
+        background: -moz-linear-gradient(top, #3e779d, #65a9d7);
+        background: -ms-linear-gradient(top, #3e779d, #65a9d7);
+        background: -o-linear-gradient(top, #3e779d, #65a9d7);
+        padding: 8px 16px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+        -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+        -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+        box-shadow: rgba(0,0,0,1) 0 1px 0;
+        text-shadow: rgba(0,0,0,.4) 0 1px 0;
+        color: white;
+        font-size: 19px;
+        font-family: Helvetica, Arial, Sans-Serif;
+        text-decoration: none;
+        vertical-align: middle;
+    }
+    .button:hover {
+        border-top-color: #689fc4;
+        background: #689fc4;
+        color: #fcfcfc;
+    }
+    .button:active {
+        border-top-color: #3c6682;
+        background: #3c6682;
+    }
+
+    @media (max-width: 979px) {
+        .bmi-meter-iframe{height:550px;}
+    }
+
+    @media (max-width: 600px) {
+        .bmi-meter-iframe{height:600px;}
+        .total-steps{display: none}
+    }
+    @media (max-width: 480px) {
+        .bmi-meter-iframe{height:740px;}
+    }
+    @media (max-width: 350px) {
+        .bmi-meter-iframe{height:1050px;}
+    }
+
+</style>
+{% endblock %}
+{%block javascript%}
+<script type='text/javascript' src='https://www.google.com/jsapi'></script>
+<script type='text/javascript'>
+    $(document).ready(function() {
+		drawChart();
+    });
+</script>
+
+    <script type='text/javascript'>
+	var cals=0;
+      google.load('visualization', '1', {packages:['gauge']});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Label', 'Value'],
+  		  ['Kalori', cals],
+        ]);
+
+        var options = {
+          max: 5000, min: 1000,
+          majorTicks:10,
+          minorTicks: 5, 
+      animation:{
+        duration: 500,
+        easing: 'inAndOut',
+      },
+        };
+
+        var chart = new google.visualization.Gauge(document.getElementById('chart_div_daily_calorie'));
+        chart.draw(data, options);
+      }
+
+      $(window).resize(function (){
+         drawChart();
+      });
+    </script>
+
+
+{% endblock %}
+{%block title%}{% trans "Bmi Değeri" %}{%endblock%}
+{%block content%}
+
+<script>
+var cals=0;
+
+
+function checkNum(thisChar) {
+
+  if((thisChar != '0') &&
+	(thisChar != '1') &&
+	(thisChar != '2') &&
+	(thisChar != '3') &&
+	(thisChar != '4') &&
+	(thisChar != '5') &&
+	(thisChar != '6') &&
+	(thisChar != '7') &&
+	(thisChar != '8') &&
+	(thisChar != '9')) {
+
+	return false;
+
+  } else {
+
+	return true;
+
+  }
+}
+
+
+function checkValue(thisString) {
+
+  var isNum = true;
+  var stringLen = thisString.length;
+
+  if(stringLen == 0) {
+
+	isNum = false;
+
+  } else {
+
+	for(count = 0; count < stringLen; count++) {
+
+	  if(!(checkNum(thisString.charAt(count)))) {
+
+		isNum = false;
+		break;
+
+	  }
+	}
+  }
+
+  return isNum;
+
+}
+
+
+
+function Figurecalneeds() {
+
+form = document.calneeds;
+Centis = form.boy.value;
+Kilos = form.kilo.value;
+years = form.Age.value;
+activityIndex = form.activity.selectedIndex;
+activity = form.activity.options[activityIndex].value;
+
+if (!$("input[@name='Gender']:checked").val()) {
+       alert('Lütfen cinsiyetinizi Seçin');
+        return false;
+}
+
+
+if((!(checkValue(Kilos))) || (!(checkValue(Centis))) ||
+  (!(checkValue(years)))) {
+
+  alert('Lütfen ağırlığınızı, boyunuzu ve yaşınızı giriniz!');
+
+} else {
+
+Age = years;
+
+  if(form.Gender[0].checked) {
+
+  <!--Male calculations-->
+  Weight      = 66 + (13.7 * Kilos)
+  Height      = 5 * Centis
+  Ages        = 6.8 * Age
+
+  } else {
+
+  <!--Female calculations-->
+  Weight      = 655 + (9.6 * Kilos)
+  Height      = 1.7 * Centis
+  Ages        = 4.7 * Age
+
+  }
+
+<!-- form.Calories.value = Math.ceil((Weight + Height - Ages) * activity) -->
+ //alert(Math.ceil((Weight + Height - Ages) * activity));
+  cals = Math.ceil((Weight + Height - Ages) * activity);
+  drawChart();
+}
+
+}
+
+
+function Save() {
+
+form = document.calneeds;
+Centis = form.boy.value;
+Kilos = form.kilo.value;
+years = form.Age.value;
+activityIndex = form.activity.selectedIndex;
+activity = form.activity.options[activityIndex].value;
+
+if (!$("input[@name='Gender']:checked").val()) {
+       alert('Lütfen cinsiyetinizi Seçin');
+        return false;
+}
+
+
+if((!(checkValue(Kilos))) || (!(checkValue(Centis))) ||
+  (!(checkValue(years)))) {
+
+  alert('Lütfen ağırlığınızı, boyunuzu ve yaşınızı giriniz!');
+
+} else {
+
+Age = years;
+
+  if(form.Gender[0].checked) {
+
+  <!--Male calculations-->
+  Weight      = 66 + (13.7 * Kilos)
+  Height      = 5 * Centis
+  Ages        = 6.8 * Age
+  gender      = 'M'
+
+  } else {
+
+  <!--Female calculations-->
+  Weight      = 655 + (9.6 * Kilos)
+  Height      = 1.7 * Centis
+  Ages        = 4.7 * Age
+  gender      = 'F'
+
+  }
+
+<!-- form.Calories.value = Math.ceil((Weight + Height - Ages) * activity) -->
+ //alert(Math.ceil((Weight + Height - Ages) * activity));
+  //cals = Math.ceil((Weight + Height - Ages) * activity);
+//  drawChart();
+
+$.post("/body_info/update/", {gender:gender, height:Centis, weight:Kilos, age:years, lifestyle:activityIndex}, function(data) {
+        alert(data); });
+
+
+}
+
+}
+
+
+</script>
+
+<div class="meas-main" style="width:98%;margin-left:1%">
+<iframe name="daily-calories-main" width="100%" height="500" id="iframe-1" scrolling="no" class="bmi-meter-iframe" frameborder="0" src="/get/?name=daily_calories_intro"></iframe>
+    <div class="widget-daily-main total-steps" style="margin:0 auto;height:auto">
+        <div class="daily-calorie-form">
+			<div class="bmi-form span5" style="height:240px">
+				<form name="calneeds" onsubmit="return false" action="/body_info/daily_calorie/" method="POST">
+					<div class="form-line">
+					<p>
+					Cinsiyetiniz:
+					<span style="margin-top:5px;">
+					</p><label style="float:left;margin:4px 0 0 0">Erkek</label>
+					<input  name="Gender" type="radio" {{is_male}}>
+					<label style="float:left;margin:4px 0 0 20px">Kadın</label>
+					<input  name="Gender" type="radio" {{is_female}}>
+					</span>
+					</div>
+					<div class="form-line">
+					<p style="color:#000;">Boyunuz:</p><input type="text" id="input_hg" value="{{height}}" name="boy" /><span class="birim-2">cm</span>
+
+					</div>
+					<div class="form-line" style="float:left">
+					<p style="color:#000;">Kilonuz:</p><input type="text" id="input_wg" value="{{weight}}" name="kilo"/><span class="birim-2">kg</span>
+					</div>
+					
+					
+					<div class="form-line">
+					<p style="color:#000;">Yaşınız:</p><input type="text" id="input_age" value="{{age}}" name="Age"/>
+					</div>
+					<div class="form-line" style="float: left">
+					<p style="color:#000;">Fiziksel Aktivite:</p><select style="margin-left:-90px;margin-top:5px"name="activity">
+						<option selected="" value="1.25">Hareketsiz: Tüm gün ofiste</option>
+						<option value="1.3">Az Hareketli: Öğretmen, ögrenci vb.</option>
+						<option value="1.5">Orta hareketli: Tezgahtar, Berber vb.</option>
+						<option value="1.7">Çok aktif: Ağır işçilik vb.</option>
+						<option value="2.0">Aşırı aktif:Sporcu vb.</option></select>
+					</div>
+					
+					
+					
+					
+					<div class="guncelle-button">				
+					<input  class="button" onclick="Figurecalneeds();" style="width:120px;height:40px;font-size:22px;margin-left:140px;margin-top:10px;" type="submit" value="Hesapla" />
+					<input  class="button" onclick="Save();" style="width:120px;height:40px;font-size:22px;margin-left:10px;margin-top:10px;" type="submit" value="Kaydet" /></div>
+				</form>
+				{% if error%}
+				<div style="width:300px;;color:red;font-size:16px;display:block;margin:15px 0 0 60px ">{{error}}</div>
+				{%  endif  %}
+			</div><!---bmi-form End --->
+		</div>	<!---widget-form End --->
+		<div class="daily-calorie-chart" id="chart_div_daily_calorie">
+		</div><!---daily-calorie-chart End --->
+		<div style="clear:both"></div>
+        <div id="up-text"><p></p></div>
+    </div><!---total-steps End --->
+<iframe name="daily-calories-main"  width="100%" height="1750" id="iframe-2" scrolling="no" frameborder="0" src="/get/?name=daily_calories_main"></iframe>
+</div>
+{% endblock content%}
+
+{% block footer%}
+{% endblock %}

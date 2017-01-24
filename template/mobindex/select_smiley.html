@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Adimsayar</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script src="{{subdomain}}/site_media/mobindex/js/jquery.localize.js" type="text/javascript"></script>
+	<script src="{{subdomain}}/site_media/mobindex/js/main.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+	<script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+	<link href="{{subdomain}}/site_media/mobindex/css/style.css" rel="stylesheet" />
+</head>
+<body>
+	<div data-role="page" id="index-page">
+	<div data-role="header">
+		<h1>Hoşgeldiniz!</h1>
+	</div><!-- /header -->
+	<div data-role="content">
+		<div class="content-primary">
+
+		
+			
+
+		<br>
+		<h2>Giriş Yapın</h2>
+		<br>
+		<p>Aşağıdaki seçeneklerden herhangi birini kullanarak giriş yapın</p>
+
+			<ul data-role="listview" data-inset="true">
+				<li>
+				<img src="{{subdomain}}/site_media/mobindex/images/facebook_logo.jpg" style="margin-top:5px; margin-left:5px;"/>
+				<h3>Facebook kullanarak giriş yap</h3>
+				<p>Yeni kullanıcıyım, facebook ile giriş yapmak istiyorum</p>
+				<fieldset class="ui-grid-a">
+						<div class="ui-block-b"><button type="submit" data-theme="a">Giriş</button></div>
+			    </fieldset>
+				</li></ul>
+			<ul data-role="listview" data-inset="true">
+
+			<li>
+				<img src="{{subdomain}}/site_media/mobindex/images/generic_email_logo.png" style="margin-top:5px;"/>
+				<h3>E-posta adresi ile giriş yap</h3>
+				<p>Yeni kullanıcıyım, e-posta adresime gönderilecek şifre ile giriş yapmak istiyorum</p>
+                <br>
+	        	<label for="email">e-posta:</label>
+	        	<input type="text" name="email" id="input-email" value=""  />
+				<fieldset class="ui-grid-a">
+						<div class="ui-block-b"><button type="submit" data-theme="a">Giriş</button></div>
+			    </fieldset>
+
+			</li>
+            </ul>
+
+			<ul data-role="listview" data-inset="true">
+			<li>
+				<img src="{{subdomain}}/site_media/mobindex/images/password.png" style="margin-top:5px;"/>
+				<h3>Zaten Kayıtlıyım</h3>
+				<p>Kullanıcı adı ve şifrenizi kullanarak giriş yapın</p>
+                <br>
+	        	<label for="email">e-posta:</label>
+	        	<input type="text" name="email" id="input-email" value=""  />
+	        	<label for="password">parola:</label>
+	        	<input type="text" name="password" id="input-password" value=""  />
+				<fieldset class="ui-grid-a">
+						<div class="ui-block-a"><button type="submit" data-theme="d">Şifremi Unuttum</button></div>
+						<div class="ui-block-b"><button type="submit" data-theme="a">Giriş</button></div>
+			    </fieldset>
+				</li>
+			</ul>
+
+
+		
+		</div><!--/content-primary -->		
+
+
+	</div><!-- /content -->
+	<div data-role="footer" data-position="fixed">
+		<h1>adimsayar.com</h1>
+	</div>
+	</div><!-- /page -->
+</div>
+</body>
+</html>

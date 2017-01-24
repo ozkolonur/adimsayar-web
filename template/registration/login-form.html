@@ -1,0 +1,13 @@
+<div class="login-block"> 
+ <form action="" method="post" >
+    {% csrf_token %}
+				<li>Login Forms</li>
+                <p><label for="id_username">User Name</label><input type="text" name="username" id="id_username" maxlength="30"/></p>
+                <p><label for="id_password">Password</label><input type="password" name="password" id="id_password" /></p>
+                <p class="submit-wrap"><input type="submit" id="ftp-submit" class="login-block-button" value="Log in" /></p>
+				<input type="hidden" name="next" value="{{ request.get_full_path }}" />
+				<p class="login-block-register" ><a href="#">+ Register</a></p>
+				<p class="login-block-register" ><a href="#">+ Lost Password?</a></p>
+				<div style="clear:both"></div>
+ </div>
+<div style="clear:both"></div>

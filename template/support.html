@@ -1,0 +1,13 @@
+{% extends "base_1col.html" %}
+{% load i18n %}
+{% block title %}Adımsayar - Destek{%endblock%}
+{% block content %}
+<div id="text-ct">
+{% for ct in content%}
+{{ ct.text|safe}}
+{% endfor %}
+</div>
+
+
+{% endblock %}
+

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Adimsayar</title>
+	<meta name="viewport" content="width=device-width, target-densitydpi=high-dpi, user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="{{subdomain}}/site_media/jqmobile/jquery.mobile.custom.min.css" />
+	<!-- <link rel="stylesheet" href="{{subdomain}}/site_media/jqmobile/jquery.mobile.1.0.1.transitions.css" /> -->
+	<script src="{{subdomain}}/site_media/jqmobile/jquery-1.7.1.min.js"></script>
+	<!--  <script src="{{subdomain}}/site_media/mobindex/js/utilities.js" type="text/javascript"></script> -->
+	<script src="{{subdomain}}/site_media/jqmobile/jquery.mobile.custom.min.js"></script>
+	<link href="{{subdomain}}/site_media/mobindex/css/style.css" rel="stylesheet" />
+	<script src="{{subdomain}}/site_media/mobindex/js/main.js" type="text/javascript"></script>
+	<script src="{{subdomain}}/site_media/mobindex/js/sim.js" type="text/javascript"></script>
+</head>
+<body>
+	<div data-role="page" id="login-page">
+	<div data-role="header">
+		<h1>Hoşgeldiniz!</h1>
+	</div><!-- /header -->
+	<div data-role="content">
+		<div class="content-primary">
+		<h2>Giriş Yapın</h2>
+		<p>Aşağıdaki seçeneklerden herhangi birini kullanarak giriş yapın</p>
+
+			<ul data-role="listview" data-inset="true">
+				<li>
+				<img src="{{subdomain}}/site_media/mobindex/images/facebook_logo.jpg" style="margin-top:5px; margin-left:5px;"/>
+				<h3>Facebook kullanarak giriş yap</h3>
+				<p>Yeni kullanıcıyım, facebook ile giriş yapmak istiyorum</p>
+				<fieldset class="ui-grid-a">
+						<div class="ui-block-b"><button type="submit" data-theme="a" onclick="btnSignUpFbOnClick();">Giriş</button></div>
+			    </fieldset>
+				</li></ul>
+			<ul data-role="listview" data-inset="true" id="email-signup-box">
+			<li>
+				<img src="{{subdomain}}/site_media/mobindex/images/generic_email_logo.png" style="margin-top:5px;"/>
+				<h3>E-posta adresi ile giriş yap</h3>
+				<p>Yeni kullanıcıyım, e-posta adresime gönderilecek şifre ile giriş yapmak istiyorum</p>
+                <br>
+	        	<label for="email">e-posta:</label>
+	        	<input type="text" type="email" name="email" id="signup-input-email" value=""  />
+				<fieldset class="ui-grid-a">
+						<div class="ui-block-b"><button type="submit" data-theme="a" onclick="btnSignUpEmailOnClick();">Giriş</button></div>
+			    </fieldset>
+
+			</li>
+            </ul>
+
+			<ul data-role="listview" data-inset="true" id="email-signup-combobox">
+			<li>
+				<img src="{{subdomain}}/site_media/mobindex/images/generic_email_logo.png" style="margin-top:5px;"/>
+				<h3>E-posta adresi ile giriş yap</h3>
+				<p>Yeni kullanıcıyım, e-posta adresimle ile giriş yapmak istiyorum</p>
+                <br>
+	        	<label for="email">e-posta:</label>
+					<select name="select-choice-0" id="signup-select-email">
+                        <option id="select-default-email" selected></option>
+					</select>
+				<fieldset class="ui-grid-a">
+						<div class="ui-block-b"><button type="submit" data-theme="a" onclick="btnSignUpEmailDirectOnClick();">Giriş</button></div>
+			    </fieldset>
+
+			</li>
+            </ul>
+
+			<ul data-role="listview" data-inset="true" id="login-box">
+			<li>
+				<img src="{{subdomain}}/site_media/mobindex/images/password.png" style="margin-top:5px;"/>
+				<h3>Zaten Kayıtlıyım</h3>
+				<p>Kullanıcı adı ve şifrenizi kullanarak giriş yapın</p>
+                <br>
+	        	<label for="email">e-posta:</label>
+	        	<input type="text" name="email" type="email" id="login-input-email" onfocus="window.scrollTo(0,500);" value=""  />
+	        	<label for="password">parola:</label>
+	        	<input type="password" name="password" id="login-input-password" value="" onfocus="window.scrollTo(0,500);" />
+				<fieldset class="ui-grid-a">
+						<div class="ui-block-a"><button type="submit" data-theme="d" id="login-button-forgotpass" onclick="">Şifremi Unuttum</button></div>
+						<div class="ui-block-b"><button type="submit" data-theme="a" onclick="btnLoginOnClick();">Giriş</button></div>
+			    </fieldset>
+				</li>
+			</ul>
+
+
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		</div><!--/content-primary -->		
+
+
+	</div><!-- /content -->
+<!--
+	<div data-role="footer" data-position="fixed">
+		<h1>adimsayar.com</h1>
+	</div>-->
+		<div data-role="popup" id="popup" data-theme="e" data-overlay-theme="a" class="ui-content" style="max-width:280px">
+			<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+			<p id="popupmsg">none</p>
+		</div>
+	</div><!-- /page -->
+</div>
+</body>
+</html>

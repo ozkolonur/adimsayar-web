@@ -1,0 +1,33 @@
+{% extends "base_1col.html" %}
+{% load i18n %}
+{% block title %}Adımsayar{%endblock%}
+{% block content %}
+{% if show_ads %}
+<div id="adwords" style="width:728px; margin-left:auto; margin-right:auto; margin-bottom:10px; border:1px solid;">
+<table>
+  <tbody>
+<tr><br/></tr>
+	<tr>
+	  <td>
+		<p style="font-family: Georgia,'Times New Roman',Times,serif; color: rgb(0, 0, 0); font-size: 24px; padding-bottom: 5px; text-align: center;" valign="middle">
+		  <em>Adımsayar Uygulaması Kullanıcı Araştırması</em></p>
+		<p style="font-family: Georgia,'Times New Roman',Times,serif; color: rgb(0, 0, 0); font-size: 15px;">
+		  Adımsayar Uygulaması Galatasaray &Uuml;niversitesi tarafından akademik bir araştırmanın konusu olmuştur. &nbsp;</p>
+		<p style="font-family: Georgia,'Times New Roman',Times,serif; color: rgb(0, 0, 0); font-size: 15px;">
+		  Araştırmaya katılmak i&ccedil;in&nbsp;<span style="font-size: 15px;">&nbsp;</span><a href="http://svy.mk/10dRCxY" style="font-size: 15px;" target="_blank">buraya tıklayınız</a></p>
+	  </td>
+	</tr>
+  </tbody>
+</table>
+<br/>
+</div> <!-- adwords -->
+{% endif %}
+<div id="text-ct">
+{% for ct in content%}
+{{ ct.text|safe }}
+{% endfor %}
+</div>
+<div style="clear:both"></div>
+
+{% endblock %}
+

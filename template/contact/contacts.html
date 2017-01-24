@@ -1,0 +1,54 @@
+{% extends "base_1col.html" %}
+{% load i18n %}
+{%block extracss%}
+<link rel="stylesheet" href="/site_media/css/blueprint/screen.css" type="text/css" media="screen, projection" />
+{% endblock %}
+
+{% block extrajs %}
+{% endblock %}
+{%block title%}Contact Form{%endblock%}
+{% block content %}
+<div id="contact_wrap" style="width:900px;display:inline" >
+    {% if hata %}
+    <div class="alert alert-error">
+        <a type="button" class="close" data-dismiss="alert">×</a>
+        <strong>Hata!</strong> E-posta gönderilirken bir hata oluştu.Lütfen tekrar deneyiniz.
+    </div>
+    {% endif %}
+    <div style="margin-left:20px;font-size:16px">
+        Kullanıcılarımızı daha aktif bir yaşam için motive etmeye çalışıyoruz.<br>
+        Daha iyi bir uygulama için istek ve şikayetlerinizi bizimle paylaşabilirsiniz.<br>
+        Adımsayar uygulamasının geliştirilmesi sizden gelen geribildirimler doğrultusunda yapılıyor.<br>
+        Size ulaşabilmemiz için adınızı ve e-posta adresinizi yazabilirsiniz. Yada bu bilgileri yazmayıp "tamamen anonim" olarak yorumlarınızı paylaşabilirsiniz.
+    </div>
+    <div id="contact" class="clearfix" style="margin-left: 20px">
+        <div id="c_form">
+            <br /><br />
+            <form name="theform" action="." method="post" id="theform">
+                <div id="name_email" >
+
+                    <label id="id_name" >{% trans "Your name:" %}</label><br>
+                    <input type="text" name="name" class="input-large" id="name" value="" /><br><br>
+
+                    <label id="id_email">{% trans "e-mail address:" %}</label><br>
+                    <input type="text" name="email" class="input-large" id="Email" value="" /><br><br><br>
+                </div>
+                <label id="id_message">{% trans "Your message" %}</label>
+                <div id="message">
+                    <textarea name="message" class="input-xlarge" rows="8" cols="78"></textarea>
+
+                </div>
+                <div id="submit">
+                    <input type="submit" class="btn btn-primary btn-large"  value="{% trans "Send" %}" onclick="YY_checkform('theform','name','#q','0','Field \'name\' is empty.','Email','#S','2','Field \'Email\' appears not to be valid.','message','2','1','Field \'message\' is empty.');return document.MM_returnValue"/>
+                </div>
+                <input class="hidden" type="hidden" name="topic" value="Home : Contact Form Submission" id="subject" />
+            </form>
+
+        </div>
+    </div>
+
+    <div style=clear:both;></div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'meas/meas_base.html' %}{% load i18n %}
+{% block title %}Adımsayar - Cihazlar{%endblock%}
+{% block content %}
+<div id="text-ct" style="padding:10px;width:95%;height:auto;min-height:600px;">
+{% for ct in content%}
+{{ ct.text|safe}}
+{% endfor %}
+</div>
+
+{% endblock %}
+

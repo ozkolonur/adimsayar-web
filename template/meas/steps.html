@@ -1,0 +1,168 @@
+{% extends 'meas/meas_base.html' %}
+{% load i18n %}
+{% debug %}    
+{% block title %}Günlük Adımlar{%endblock%}
+		{%block javascript%}
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Hour');
+        data.addColumn('number', 'Adımlarınız (Bugün)');
+{% if hourly_step_avg_int %}
+        data.addColumn('number', 'Geçmiş günlerdeki ortalamanız');
+{% endif %}
+        data.addRows({{steps|length}});
+
+				{% for i in steps %}
+				data.setValue({{ forloop.counter0 }}, 0, '{{i.1}}')
+				data.setValue({{ forloop.counter0 }}, 1, {{i.0}})
+					{% endfor %}
+
+				{% for i in hourly_step_avg_int %}
+				data.setValue({{ forloop.counter0 }}, 2, {{i}})
+				{% endfor %}
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+        var options = {width: $('#chart_div').width(), 
+                       height: 395,
+                       legend:'top',
+                       chartArea: {left:'5.5%', top:30,width:'94%',height:'80%'},
+                       vAxis: {minValue: 2000},
+                       series: {
+{% if hourly_step_avg_int %}
+                           1:{color: '#C2E0FF', visibleInLegend: true}, 
+{% endif %}
+                           0:{color: 'blue', visibleInLegend: true, lineWidth:10}
+                       }
+}
+        chart.draw(data, options);
+      }
+
+    </script>
+    <script type="text/javascript">
+
+ 	</script>
+
+		{% endblock %}
+
+{%block meas-content%}
+
+
+<div class="row-fluid meas-row">
+    <div id="chart_div" class="span10 meas-chart"></div>
+	<div class="span2">
+            <div class="step-sidebar">
+                <div class="meas-widget">
+
+                    {% if info.0 >= 10000 %}
+                    <img src="/site_media/images/smile1.png" />
+                    {% else %}
+                    {% if info.0 >= 7000 %}
+                    <img src="/site_media/images/smile2.png" />
+                    {% else %}
+                    {% if info.0 >= 4000 %}
+                    <img src="/site_media/images/smile3.png" />
+                    {% else %}
+                    {% if info.0 >= 1000 %}
+                    <img src="/site_media/images/smile4.png" />
+                    {% else %}
+                    <img src="/site_media/images/smile5.png" />
+                    {% endif %}
+                    {% endif %}
+                    {% endif %}
+                    {% endif %}
+
+                </div>
+                <div class="meas-widget">
+                    <p>{% trans "Daily Steps" %}</p>
+                    {%if total.0.total %}
+                    <p>{{total.0.total}}<span class="birim" >adım</span></p>
+                    {% else %}
+                    <p>0<span class="birim" >adım</span></p>
+                    {% endif %}
+
+                </div>
+                <div class="meas-widget">
+                    <p>{% trans "Your Goal" %}</p>
+                    <p>10000<span class="birim" >adım</span></p>
+
+                </div>
+                <div class="meas-widget">
+                    <p>{% trans "Your Average" %}</p>
+                    {%if info.3 %}
+                    <p>{{info.3}}<span class="birim" >adım</span></p>
+                    {% else %}
+                    <p>0<span class="birim" >adım</span></p>
+                    {% endif %}
+                </div>
+        </div><!---sidebar End --->
+    </div><!---span2 End --->
+</div><!---row-fluid End --->
+
+<div class="row-fluid meas-row">
+
+
+<div class="meas-big-widget span4" >
+<h4>{% trans "Today" %}</h4>
+    <div class="widget-box">
+        <table class="info-table">
+            <tr>
+                <td style="text-align:right;"><span class="values" >{{info.0}} <p>{% trans "steps" %}</p></span></td>
+                <td><span class="values-text" >{% trans "taken today" %}</span></td>
+            </tr>
+            <tr>
+                <td style="text-align:right;"><span class="values">{{info.1}} <p>{% trans "km" %}</p></span></td>
+                <td><span class="values-text" >{% trans "traveled today" %}</span></td>
+            </tr>
+            <tr>
+                <td style="text-align:right;"><span class="values">{{info.2}} <p>{% trans "cal" %}</p></span></td>
+                <td><span class="values-text" >{% trans "burned today" %}</span></td>
+            </tr>
+        </table>
+    </div><!---widget-box End --->
+</div><!---meas-big-widget  End --->
+
+
+
+<div class="meas-big-widget span4" >
+    <h4>{% trans "Your Badges" %}</h4>
+    <div class="widget-box">
+        {% if show_ads %}
+        <div id="adwords" style="width:300px; margin-left:auto; margin-right:auto;">
+            <script type="text/javascript"><!--
+            google_ad_client = "ca-pub-3160155742064565";
+            /* adimsayar-mediumrecangle-meas */
+            google_ad_slot = "4359500794";
+            google_ad_width = 300;
+            google_ad_height = 250;
+            //-->
+            </script>
+            <script type="text/javascript"
+                    src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+            </script>
+        </div>
+        {% else %}
+        {% for b in badge_to_user %}
+        <div style="float:left;">
+            <img src="/site_media/{{b.badge.icon}}" alt="{{b.badge.title}}" height="100" width="100" />
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div><!---widget-box End --->
+</div><!---meas-big-widget  End --->
+
+
+<div class="meas-big-widget span4" >
+    <h4>Öneri</h4>
+    <div class="widget-box">
+            <div class="info-text">
+     Neyi düzenli takip ederseniz, o iyiye gider.
+</div>
+    </div><!---widget-box End --->
+</div><!---meas-big-widget  End --->
+
+</div><!---row-fluid End --->
+
+{% endblock %}
+

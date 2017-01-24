@@ -1,0 +1,71 @@
+{% extends "base_1col.html" %}
+{% load i18n %}
+{% block title %}Adımsayar{%endblock%}
+{% block content %}
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+{% for answer in answers%}
+          ['{{answer}}',     {{answer.count}}],
+{% endfor%}
+
+        ]);
+
+        var options = {
+          title: '{{ question }}',
+          titleTextStyle: {color: 'black',fontSize: '18'},
+          chartArea: {left:"5%",top:"20%",width:"100%",height:"75%"},
+          legend: {position: 'right', textStyle: {color: 'black', fontSize: 12}},
+          tooltip: {text: 'percentage'},
+          is3D: true,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('poll_chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+
+<div id="adwords" style="width:728px; margin-left:auto; margin-right:auto;">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-3160155742064565";
+/* adimsayar-leaderboard-homepage */
+google_ad_slot = "8770604046";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div>
+    <div id="poll_chart_div" style="float:left; margin-left:20px; width: 50%; height: 350px;"></div>
+<div id="question_explain_content" style="margin-left:10px;float:left; width: 40%;">
+{{ content.text|safe }}
+</div>
+</div>
+<div style="clear:both"></div>
+<div>
+Bu grafik, anketimizi cevap vermeyi tercih edenlerin verdikleri cevaplara göre hesaplanmıştır.
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+{% endblock %}
+

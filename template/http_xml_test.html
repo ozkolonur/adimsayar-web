@@ -1,0 +1,62 @@
+<html>
+<head>
+<title>Mining Platform Documentation</title>
+ 
+<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-1.2.6.min.js"></script>
+<script type="text/javascript">
+function xml_http_get(){
+$.get("/adimsayar/mining_platform/http_xml/", function(data) {
+        alert(data); });
+}
+
+function xml_http_post()
+{
+ $.post("/adimsayar/mining_platform/http_xml/", {email:"ozkolonur@gmail.com",
+ password:"123123", date_time:"", sys:"123", dia:"83", hb:"82", note:"hello", bpm_mac:"00:1C:A8:12:12:13"}, function(data) {
+        alert(data); });
+}
+
+</script>
+</head>
+   
+<body>
+    
+<h2>This document explains howto submit a measurement to server</h2><br>
+
+********************************************************<br>
+To submit a measurement by HTTP GET use following:<br>
+<a href="http://www.doktorfil.com/wellio/mining_platform/http_get/?email=ozkolonur@gmail.com&password=123123&systolic=125&diastolic=80&heartbeat=80&note=hello&bpm_mac=00:1C:A8:12:12:13">http://www.doktorfil.com/wellio/mining_platform/http_get/?email=ozkolonur@gmail.com&password=123123&systolic=125&diastolic=80&heartbeat=80&note=hello&bpm_mac=00:1C:A8:12:12:13</a>         
+<br>
+On success, You will see<br>
+<p>
+user = ozkolonur@gmail.com<br>
+sys = 125<br>
+dia = 80<br>
+hb = 80<br>
+date_time = July 6, 2011, 1:14 p.m.<br>
+note = hello<br>
+bpm_mac = 00:1C:A8:12:12:13<br>
+OK<br>
+</p>
+
+
+<div id="msg_jquery">
+</div>
+
+<div id="msg_ajax">
+</div>
+
+<br>
+********************************************************<br>
+<form>
+To submit a measurment using AJAX-POST (xml_http_post) click button below.<br>
+This will call .post with json object<br>
+<p>
+{email:"ozkolonur@gmail.com", password:"123123", date_time:"", sys:"123", dia:"83", hb:"82", note:"hello", bpm_mac:"00:1C:A8:12:12:13"}<br>
+</p>
+On success, you will get an alert box with "OK" text.<br>
+<input type="button" value="XMLHttp-post" onclick="xml_http_post()" />
+</form>
+
+</body>
+</html>

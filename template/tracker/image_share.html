@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta property="og:title" content="title" />
+<meta property="og:description" content="description" />
+<meta property="og:image" content="http://fbserver.acibadem.com.tr/site_media/image/post_icon.png" />
+<link rel="image_src" href="http://fbserver.acibadem.com.tr/site_media/image/post_icon.png" />
+<title>Tracker</title>
+<style>
+.kutu{
+	width:450px;
+	height:500px;
+	margin:0 auto;
+	}
+.form {
+	width:270px;
+	float:left;
+	margin-top:20px;
+
+}
+.input{
+	width:280px;
+	margin:15px;
+	font-weight:bold;
+}
+#fb_share{
+	width:140px;
+	height:40px;
+	margin-top:10px;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript">
+var link;
+
+function create(){
+
+var inital=$('#inital').val();
+var current=$('#current').val();
+var goal=$('#goal').val();
+ 
+	if ( !inital || !current || !goal ){
+		alert('Lütfen boş alan bırakmayınız.');
+	}else{
+		d = new Date();
+		link = "/tracker_image/?initial="+ inital +"&goal=" + goal + "&current=" + current+ "&"
+		$("#myimg").attr("src",link+d );
+		$("#fb_share").attr("share_url",link);
+		alert($("#fb_share").attr("share_url"));
+	}
+
+}
+</script>
+
+
+</head>
+<body>
+<div class="kutu">
+<img src="http://www.bodyport.org/tracker_image/?initial=90&current=85&goal=70" style="margin-left:15px" id="myimg"/>
+<div class="form">
+<div class="input" >Önceki Kilonuz: <input type="text" id="inital" style="margin-left:10px;" /></div>
+<div class="input" >Simdiki Kilonuz: <input type="text" id="current" style="margin-left:5px;"/></div>
+<div class="input" >Hedefiniz: <input type="text" id="goal" style="margin-left:50px;"/></div>
+</div>
+<div style="float:right;margin:10px;margin-top:30px;">
+<button style="width:140px;height:50px;display:block" onclick="create();">Oluştur</button>
+<a name="fb_share" >paylaş</a> 
+<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" 
+        type="text/javascript">
+</script>
+
+</div>
+</div>
+</body>
+</html>

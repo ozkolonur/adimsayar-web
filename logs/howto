@@ -1,0 +1,7 @@
+
+mv access.log access26Jun.log
+sudo service apache2 restart
+lzma access26Jun.log
+ctrl+z
+bg
+disown %1

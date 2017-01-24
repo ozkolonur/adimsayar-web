@@ -1,0 +1,126 @@
+{% extends "base_1col.html" %}
+{% load i18n %}
+{%block extracss%}
+<style type="text/css">
+    @media (max-width: 600px) {
+        .fck-content{
+            display: none;
+        }
+    }
+</style>
+{% endblock %}
+{%block javascript%}
+{% endblock %}
+{%block title%}{% trans "Measurements" %}{%endblock%}
+{%block content%}
+
+<div style="width: 100%;margin: 0 auto">
+<!-- <iframe name="bmi-meter" width="990" style="margin-left:70px" height="300" id="iframe-bmi" scrolling="no" frameborder="0" src="/body_info/bmi_meter/?bmi={{bmi}}"></iframe> -->
+<iframe name="statistics-main" width="100%" height="500" id="iframe-bmi-vs-user" scrolling="no" frameborder="0" src="/statistics/bmi_vs_user/"></iframe>
+<iframe name="statistics-main" width="100%" height="500" id="iframe-age-vs-user" scrolling="no" frameborder="0" src="/statistics/age_vs_user/"></iframe>
+<!--<iframe name="statistics-main" width="100%" height="600" id="iframe-weekly-steps" scrolling="no" frameborder="0"  class="weekly-steps-iframe" src="/get/?name=weekly_steps"></iframe>-->
+<div id="fck-import" class="fck-content">
+    <div id="text-ct">
+
+        <p>
+            <font class="Apple-style-span" color="#473838" size="5">Haftalık toplam adımlar</font></p>
+        <p>
+            İstatistiklere baktığımızda günde ortalama 3150 adım atıyoruz. Erkekler günde ortalama 3700 adım yürürken, kadınlar 2100 adım yürüyor. En fazla Pazartesi günü yürürken en az Cumartesi ve Pazar günleri yürüyoruz.</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            <br>
+            <img alt="" src="https://chart.googleapis.com/chart?cht=bvs&amp;chco=444444&amp;chxt=x,y&amp;chxr=1,0,10000&amp;chs=240x200&amp;chd=t:35,33,32,33,33,31,25,0&amp;chl=Pzt|Sal|Crs|Prs|Cum|Cts|Paz" style="float: left; width: 240px; height: 200px; " title="">&nbsp;<img alt="" src="https://chart.googleapis.com/chart?cht=bvs&amp;chco=FF89F9&amp;chxt=x,y&amp;chxr=1,0,10000&amp;chs=240x200&amp;chd=t:23,22,21,22,22,22,15,0&amp;chl=Pzt|Sal|Crs|Prs|Cum|Cts|Paz"><img alt="" src="https://chart.googleapis.com/chart?cht=bvs&amp;chco=0089F9&amp;chxt=x,y&amp;chxr=1,0,10000&amp;chs=240x200&amp;chd=t:41,39,39,39,39,37,30,0&amp;chl=Pzt|Sal|Crs|Prs|Cum|Cts|Paz"></p>
+        <h3>
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Tüm Kullanıcılar &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Sadece Kadın &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Sadece Erkek</h3>
+        <p>
+            &nbsp;</p>
+        <table align="center" border="1" cellpadding="1" cellspacing="1" class="table">
+            <thead>
+            <tr>
+                <th scope="col">
+                    Ort. Adımlar</th>
+                <th scope="col">
+                    Pazartesi</th>
+                <th scope="col">
+                    Salı</th>
+                <th scope="col">
+                    Çarşamba</th>
+                <th scope="col">
+                    Perşembe</th>
+                <th scope="col">
+                    Cuma</th>
+                <th scope="col">
+                    Cumartesi</th>
+                <th scope="col">
+                    Pazar</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    Kadın+Erkek</td>
+                <td>
+                    3418</td>
+                <td>
+                    3322</td>
+                <td>
+                    3185</td>
+                <td>
+                    3294</td>
+                <td>
+                    3270</td>
+                <td>
+                    3163</td>
+                <td>
+                    2489</td>
+            </tr>
+            <tr>
+                <td>
+                    Kadın</td>
+                <td>
+                    2301</td>
+                <td>
+                    2214</td>
+                <td>
+                    2071</td>
+                <td>
+                    2171</td>
+                <td>
+                    2212</td>
+                <td>
+                    2228</td>
+                <td>
+                    1504</td>
+            </tr>
+            <tr>
+                <td>
+                    Erkek</td>
+                <td>
+                    4099</td>
+                <td>
+                    3891</td>
+                <td>
+                    3870</td>
+                <td>
+                    3816</td>
+                <td>
+                    3893</td>
+                <td>
+                    3723</td>
+                <td>
+                    2960</td>
+            </tr>
+            </tbody>
+        </table>
+        <p>
+            <br>
+            &nbsp;</p>
+
+
+    </div>
+</div>
+</div>
+{% endblock content%}
+
+

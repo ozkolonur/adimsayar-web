@@ -1,0 +1,61 @@
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="robots" content="{% block robots %}index,follow{% endblock %}" />
+<meta name="description" content="Web tabanli adimsayar, diyet gunlugu, online pedometer service, fitness logger" />
+<meta name="keywords" content="adimsayar, pedometer, diet, fitness, health, mobile, android, iphone, application, steps, weight, calories" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="P3P" content='CP="IDC DSP COR CURa ADMa OUR IND PHY ONL COM STA"'>
+<style>
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+    <script type='text/javascript'>
+     google.load('visualization', '1', {'packages': ['geochart']});
+     google.setOnLoadCallback(drawMarkersMap);
+
+      function drawMarkersMap() {
+      var data = google.visualization.arrayToDataTable([
+        ['City',  'Population', 'Area'],
+        ['Ankara',     2761477,    1285.31],
+        ['Adana',    1324110,    181.76],
+        ['Gaziantep',    1324110,    181.76],
+      ]);
+
+      var options = {
+        region: 'TR',
+        displayMode: 'regions',
+        resolution:'provinces',
+        colorAxis: {colors: ['green', 'blue']}
+      };
+
+      var chart = new google.visualization.GeoChart(document.getElementById('age_vs_provinces_chart_div'));
+      chart.draw(data, options);
+    };
+    </script>
+</head>
+
+<body>
+<span style="font-size:24px;display:inline-block;color:#473838;margin-top:30px">{% trans "BMI vs Number of Users" %}</span><br>
+{% trans "This graph shows BMI distibution by number of users. So you can see how many people has same BMI with you. Bar colors also show BMI levels(like Underweight,Normal, Overweight, Obesity I...). If your color is green, that means your BMI is optimal" %}[{{ bmi_vs_user.0.stat_time }}]<br><br>
+<!--
+Bu grafik kişi sayısı derinliğine sahip bir vücut kitle indeksi grafiğidir. Sizin hangi VKİ diliminde bulunduğunuzu göstermenin yanısıra sizinle aynı dilimde bulunan kişilerin sayısını görebilirsiniz.
+
+Bulunduğunuz dilimdeki çubuğun rengi yeşil ise bu sağlıklı bir kilo aralığında olduğunuzun göstergesidir. -->
+<!--
+{% for m in age_vs_user %}
+{{m.age}}
+
+{% endfor%}-->
+
+    <div id="age_vs_provinces_chart_div"></div>
+
+</body>
+
+</html>
+

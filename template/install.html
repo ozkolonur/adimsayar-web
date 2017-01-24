@@ -1,0 +1,40 @@
+<html>
+<head>
+<title>Adimsayar</title>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30059372-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<script type="text/javascript">
+function redirect_to_market(){
+    if((navigator.userAgent.toLowerCase().search("iphone") > -1 ||
+    navigator.userAgent.toLowerCase().search("ipod") > -1 ||
+    navigator.userAgent.toLowerCase().search("ipad") > -1 ))
+    {
+        window.location = "itms://itunes.apple.com/tr/app/adimsayar/id498193917?mt=8&uo=4";
+    }
+    else if(navigator.userAgent.indexOf("Android") != -1)
+    {
+        window.location.href = "market://details?id=com.ferlin.adimsayar";
+    }
+    else 
+    {
+        window.location = "http://www.adimsayar.com";
+        //document.write("<p>Unknown browser</p>");
+    }
+}
+</script>
+</head>
+<body onLoad="setTimeout(redirect_to_market,4000);">
+<h2 id="redirect-message">Telefonunuzdan <h1>www.adimsayar.com/yukle</h1> adresine giderek uygulamayi yükleyebilirsiniz.<br/><br/>Yönlendiriliyorsunuz, Lütfen Bekleyiniz...</h2><br>
+<a href="https://market.android.com/details?id=com.ferlin.adimsayar">Android</a><br/>
+<a id="ios"  href="http://itunes.apple.com/tr/app/adimsayar/id498193917?mt=8&uo=4">iOS</a>
+</body>
+</html>

@@ -1,0 +1,69 @@
+{% extends "base2.html" %}
+{% load i18n %}
+{% block script %}
+<script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Date');
+        data.addColumn('number', 'Systolic');
+        data.addColumn('number', 'Diastolic');
+	data.addRows({{meas.count}});
+	{% for m in meas %}
+	data.setValue({{ forloop.counter0 }}, 0, '{{m.time_date|date:"d M Y H:i " }}')
+	data.setValue({{ forloop.counter0 }}, 1, {{m.sys}})
+	data.setValue({{ forloop.counter0 }}, 2, {{m.dia}})
+	{% endfor %}
+	var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        chart.draw(data, {width: 960, height: 360, title: 'Blood Pressure'});
+      }
+	
+    
+    </script>
+{% endblock %}
+{% block chart %}
+<div id="chart_div" >
+</div><!---bpm-graphic End --->
+<div id="bpm-table" >
+<div id="dt_example" class="ex_highlight_row" style="min-height:350px; height:auto; " >
+	<div id="container">
+		<div id="demo">
+
+<table cellpadding="0" cellspacing="0" border="0" class="display" id="example" > 
+	<thead>
+	  
+	  <tr>
+	      <th scope="col">Date</th>
+	      <th scope="col">Systolic</th>
+	      <th scope="col">Diastolic</th>
+	      <th scope="col">Heartbeat</th>
+	      <th scope="col">Note</th>
+	      <th scope="col">Delete</th>
+	  </tr>
+	</thead>
+	<tbody>
+	    {% block bpm %}
+	    {% for m in meas %}
+		<tr class="gradeA" id="tr-{{ m.id }}">
+			<td class="td-text-date">{{ m.time_date }}</td>
+			<td class="td-text" style="width:80px;">{{ m.sys }}</td>
+			<td class="td-text" style="width:80px;">{{ m.dia }}</td>
+			<td class="td-text" style="width:80px;">{{ m.hb }}</td>
+			<td class="td-text-note" id="{{ m.id }}">{{ m.note }}</td>
+			<td class="td-text" style="width:20px;"><div class="del"><a href='/bpm/delmeas/{{ m.id }}/'  style="text-decoration:none">X</a></div></td>
+		</tr>
+	  	  {% endfor %}
+		  {% endblock %}
+	  </tbody>
+
+</table>
+
+
+</div><!---dt_example End --->
+
+</div><!---container End --->
+
+</div><!---demo End --->
+</div><!---bpm-table End --->
+{% endblock %}

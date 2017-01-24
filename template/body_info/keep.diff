@@ -1,0 +1,53 @@
+Index: daily_cal.html
+===================================================================
+--- daily_cal.html	(revision 318)
++++ daily_cal.html	(working copy)
+@@ -194,9 +194,10 @@
+ </script>
+ 
+ <div class="meas-main" style="width:970px">
++<iframe name="daily-calories-main" width="970" height="490" id="iframe-1" scrolling="no" frameborder="0" src="/get/?name=daily_calories_intro"></iframe>
+     <div class="widget-daily-main total-steps" style="margin:0 auto;">
+ 		<div class="daily-calorie-form">
+-			<p style="">Değerlerinizi Güncelleyin</p>
++			<p style=""></p>
+ 			<div class="bmi-form" style="height:240px">
+ 				<form name="calneeds" onsubmit="return false" action="/body_info/daily_calorie/" method="POST">
+ 					<div class="form-line">
+@@ -219,19 +220,23 @@
+ 					
+ 					
+ 					<div class="form-line">
+-					<p style="color:#000;">Yasiniz:</p><input type="text" id="input_age"  name="Age"/>
++					<p style="color:#000;">Yaşınız:</p><input type="text" id="input_age"  name="Age"/>
+ 					</div>
+ 					<div class="form-line">
+-					<p style="color:#000;">Fiziksel Aktivite:</p><select style="margin-left:-170px;margin-top:5px"name="activity"> 
+-				  <option selected="" value="1.25">Oturarak çalisiyorum</option> <option value="1.3">Hafif aktif</option> <option value="1.5">Kismen aktif</option> <option value="1.7">Çok
+-				  aktif</option> <option value="2.0">Asiri aktif</option></select>
++					<p style="color:#000;">Fiziksel Aktivite:</p><select style="margin-left:-170px;margin-top:5px"name="activity">
++						<option selected="" value="1.25">Hareketsiz: Tüm gün ofiste</option>
++						<option value="1.3">Az Hareketli: Öğretmen, ögrenci vb.</option>
++						<option value="1.5">Orta hareketli: Tezgahtar, Berber vb.</option>
++						<option value="1.7">Çok aktif: Ağır işçilik vb.</option>
++						<option value="2.0">Aşırı aktif:Sporcu vb.</option></select>
+ 					</div>
+ 					
+ 					
+ 					
+ 					
+ 					<div class="guncelle-button">				
+-					<input  class="button" onclick="Figurecalneeds();" style="width:120px;height:40px;font-size:22px;margin-left:140px;margin-top:10px;" type="submit" value="Güncelle" /></div>
++					<input  class="button" onclick="Figurecalneeds();" style="width:120px;height:40px;font-size:22px;margin-left:140px;margin-top:10px;" type="submit" value="Hesapla" /></div>
++					<input  class="button" onclick="Figurecalneeds();" style="width:120px;height:40px;font-size:22px;margin-left:140px;margin-top:10px;" type="submit" value="Kaydet" /></div>
+ 				</form>
+ 				{% if error%}
+ 				<div style="width:300px;;color:red;font-size:16px;display:block;margin:15px 0 0 60px ">{{error}}</div>
+@@ -243,6 +248,7 @@
+ 		<div style="clear:both"></div>
+         <div id="up-text"><p></p></div>
+     </div><!---total-steps End --->
++<iframe name="daily-calories-main" width="970" height="1700" id="iframe-1" scrolling="no" frameborder="0" src="/get/?name=daily_calories_main"></iframe>
+ </div>
+ {% endblock %}
+ 

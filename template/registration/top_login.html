@@ -1,0 +1,14 @@
+<form action="{% url login %}" method="post" style="float:left">
+    {% csrf_token %}
+<label for="id_username"><span style="font-family:Ubuntu; color:#fff">ID</span> </label><input type="text" name="username" id="id_username" maxlength="30"/>
+<label for="id_password"><span style="font-family:Ubuntu; color:#fff">Password </span> </label><input type="password" name="password" id="id_password" />
+<input type="submit" id="ftp-submit"  value="Log in" />
+<a href="{% url signup %}" >Register</a>
+<input type="hidden" name="next" value="{{ request.get_full_path }}" />
+<select class="mydds" style="display:none;  width:70px; float:right; text-align:center; font-weight:bold;">
+     <option value="Fr"  title="{{ MEDIA_URL}}images/fr_f.jpg">Fr</option>
+      <option value="tr"  title="{{ MEDIA_URL}}images/tr_f.jpg">Tr</option>
+      <option value="grm" title="{{ MEDIA_URL}}images/grm_f.jpg">Gr</option>
+      <option value="abd" selected="selected" title="{{ MEDIA_URL}}images/abd_f.jpg">En</option>
+</select> 
+</form>

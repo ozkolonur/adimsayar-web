@@ -1,0 +1,22 @@
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+
+<div style="width:750px;float:left;display:inline;margin-top:10px;">
+
+{% block content %}
+<div id="text-ct">
+{% for ct in content%}
+{{ ct.text|safe}}
+{% endfor %}
+</div>
+<div style="clear:both"></div>
+{% endblock %}
+
+
+</div>
+
+
+
+
+

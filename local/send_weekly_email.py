@@ -1,0 +1,1 @@
+/home/ubuntu/adimsayar/send_weekly_email.py

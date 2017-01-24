@@ -1,0 +1,53 @@
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="robots" content="{% block robots %}index,follow{% endblock %}" />
+<meta name="description" content="Web tabanli adimsayar, diyet gunlugu, online pedometer service, fitness logger" />
+<meta name="keywords" content="adimsayar, pedometer, diet, fitness, health, mobile, android, iphone, application, steps, weight, calories" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="P3P" content='CP="IDC DSP COR CURa ADMa OUR IND PHY ONL COM STA"'>
+<style>
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', '{% trans "Age" %}');
+        data.addColumn('number', '{% trans "Number of People" %}');
+        data.addRows([
+		
+		{% for m in age_vs_user %}
+		['{{m.age}}',{{m.num_of_users}}],
+		{% endfor%}
+
+        ]);
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('age_chart_div'));
+        chart.draw(data, {width: $('#age_chart_div').width(), height: 340, legend:'top',chartArea: {left:'5.5%', top:30,width:'94%',height:'80%'},vAxis: {}
+
+                         });
+      }
+
+      $(window).resize(function (){
+          drawChart();
+      });
+    </script>
+
+</head>
+
+<body>
+<span style="font-size:24px;display:inline-block;color:#473838;margin-top:20px">{% trans "Numbers of Users vs Age Graph" %}</span><br>
+{% trans "This graph shows number of users and their ages. Soon we will be adding their daily average steps according to their ages." %}[{{age_vs_user.0.stat_time}}]<br>
+    <div id="age_chart_div"></div>
+</body>
+
+</html>
+

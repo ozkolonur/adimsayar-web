@@ -1,0 +1,340 @@
+{% extends 'meas/meas_base.html' %}    
+{% load i18n %}
+{% block style %}
+<style>
+h1 {
+	font: 4em normal Georgia, 'Times New Roman', Times, serif;
+	text-align:center;
+	padding: 20px 0;
+	color: #aaa;
+}
+h1 span { color: #666; }
+h1 small{
+	font: 0.3em normal Verdana, Arial, Helvetica, sans-serif;
+	text-transform:uppercase;
+	letter-spacing: 0.5em;
+	display: block;
+	color: #666;
+}
+
+div.diet-title {
+	padding: 0;	margin: 0 0 5px 0;
+	background: url(/site_media/images/diet_drop_box.png) no-repeat;
+	height: 40px;	line-height: 40px;
+	width: 610px;
+	font-size: 2em;
+	font-weight: normal;
+	float: left;
+}
+div.diet-title a {
+	width:400px;
+	height:38px;
+	float:left;
+	color: #fff;
+	text-decoration: none;
+	display: block;
+	padding: 0 0 0 50px;
+}
+div.diet-title a:hover {
+	color: #ccc;
+}
+div.active {background-position: left bottom;}
+.acc_container{
+	margin: 0 0 5px 5px; padding: 0;
+	overflow: hidden;
+	font-size: 1.2em;
+	width: 600px;
+	clear: both;
+	background: #f0f0f0;
+	border: 1px solid #d6d6d6;
+	-webkit-border-bottom-right-radius: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	-moz-border-radius-bottomright: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px; 
+}
+
+
+.acc_container .block {
+	padding: 20px;
+}
+.acc_container .block p {
+	padding: 5px 0;
+	margin: 5px 0;
+}
+.acc_container h3 {
+	font: 2.5em normal Georgia, "Times New Roman", Times, serif;
+	margin: 0 0 10px;
+	padding: 0 0 5px 0;
+	border-bottom: 1px dashed #ccc;
+}
+.acc_container img {
+	float: left;
+	margin: 10px 15px 15px 0;
+	padding: 5px;
+	background: #ddd;
+	border: 1px solid #ccc;
+}
+
+.diet_secim{
+
+	overflow: hidden;
+	font-size: 1.2em;
+	background: #f0f0f0;
+	border: 1px solid #d6d6d6;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	height: 400px;	
+	display:block;
+	width: 958px;
+	font-size: 2em;
+	font-weight: normal;
+	float: left;	
+	padding:10px;
+}
+.diet_box{
+width:620px;float:left;	
+}
+
+.diet_box first-child {
+margin-top:10px;
+}
+.diet_button{
+width:100px;
+padding:8px;
+display:block;
+margin:5px;
+float:right;
+text-align:center;
+background:#0099CC;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+font-size:24px;
+color:#fff;
+text-decoration:none;
+}
+.diet_button:hover{
+text-shadow: 0 0 0.2em #fff;
+}
+
+#slider_how{
+float:right;
+width:360px;
+height:420px;
+background: #efefef url(/site_media/images/slider_bg.png) repeat top center;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+}
+
+.slides_container{
+width:360px;
+height:400px;
+display:none;
+}
+
+
+.slides_container div {
+	width:360px;
+	height:400px;
+	display:block;
+}
+
+.slides_container div p {
+margin:10px;
+}
+/*
+	Optional:
+	Reset list default style
+*/
+.pagination {
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+
+/*
+	Optional:
+	Show the current slide in the pagination
+*/
+.pagination .current a {
+	color:red;
+}
+.pagination {
+	margin:0 auto;
+	width:100px;
+	position:relative;
+	left:20px;
+
+}
+
+.pagination li {
+	float:left;
+	margin:0 1px;
+	list-style:none;
+}
+
+.pagination li a {
+	display:block;
+	width:12px;
+	height:0;
+	padding-top:12px;
+	background-image: url(/site_media/images/pagination.png);
+	background-position:0 0;
+	float:left;
+	overflow:hidden;
+}
+
+.pagination li.current a {
+	background-position:0 -12px;
+}
+
+.rank{
+width:120px;
+height:50px;	
+position:absolute;
+z-index:11;
+float:right;
+margin:8px 10px 0 0;
+background:#efefef;
+
+}
+</style>
+
+{% endblock %}
+
+		{%block javascript%}
+<script language="Javascript">
+    $(document).ready( function() {
+			$('a[rel*=tb]').click(function() {
+				var link = $(this).attr('src');
+				window.location	= link;			
+				return false;
+    	}); 
+    }); 
+    
+    
+    $(document).ready( function() {
+		$(".diet-row").click(function () {
+			$(this).next().slideToggle("normal");	
+		});
+    }); 
+    
+    
+    
+ $(document).ready(function(){
+	 
+	$('.acc_container').hide(); 
+
+	$('.diet-link').click(function(){
+		if( $(this).parent().next().is(':hidden') ) {
+			$(".diet-title").removeClass('active').next().slideUp(); 
+			$(this).parent().toggleClass('active').next().slideDown(); 
+			console.log($(this))
+		}else{
+			$(this).parent().next().slideToggle()
+			$(this).parent().toggleClass('active')	
+		}
+		return false; 
+	});
+
+});
+
+
+</script>
+<script src="/site_media/js/slides.min.jquery.js" type="text/javascript"></script>	
+	<script>
+		$(function(){
+			$('#slider_how').slides({
+				preload: true,
+				play:5000,
+				preloadImage: '/site_media/images/slider_loading.gif',
+			});
+		});
+	</script>
+
+	<link rel="stylesheet" href="/site_media/css/jRating.jquery.css" type="text/css" />
+	<script type="text/javascript" src="/site_media/js/jRating.jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('.rank').jRating({
+				length:5,
+				rateMax:5,
+				rateInfosY:10,
+				showRateInfo:false,
+				phpPath:"/diet/rating/",
+				step:true,
+				bigStarsPath:"/site_media/images/icons/star.png",
+				onSuccess : function(){
+					return false;
+				},
+				onError : function(){
+					alert('Error : Bir hata oluştu lütfen sonra tekrar deneyiniz.');
+				}
+			});
+		});
+	</script>
+{% endblock %}
+{%block meas-content%}
+
+<div class="bpm-title">{% trans "Diet Programi" %}</div>
+
+<div class="step-main" >
+	<div style="width:980px;float:left;">
+{% if diets %}
+<div  class="diet_box">
+{% for m in diets %}	
+	<div class="diet-title">
+	<a href="#" class="diet-link" id="diet-action">{{m.name}}</a>
+	<div class="rank" id="{{m.rating|floatformat}}_{{m.id}}" ></div>
+	</div>
+	<div class="acc_container">
+		<div class="block">
+			<h3>{{m.get_diet_group_display}}</h3>
+			<p>{{m.desc|safe}}</p>
+		</div>
+		<a href="/diet/diet_select/{{m.id}}" class="diet_button">Basla</a>
+	</div>
+	
+{% endfor %}
+</div>
+<div id="slider_how">
+	<div class="slides_container">
+			<div>
+				<h1>Slide 1</h1>
+				<p>{{sliders.text|safe}}</p>
+			</div>
+			<div>
+				<h1>Slide 2</h1>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			</div>
+			<div>
+				<h1>Slide 3</h1>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			</div>
+			<div>
+				<h1>Slide 4</h1>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			</div>
+	</div>
+</div>
+
+{% else %}
+<div class="diet_secim">
+	<h3>{{diet.diet_definition.name}} isimli dieti seçtiniz.</h3>
+	
+	<p>{{diet.diet_definition.desc|safe}}</p>
+		
+</div>
+{%endif%}
+</div>
+<div style="clear:left"></div>
+
+</div><!---steps End --->
+
+
+
+{% endblock %}

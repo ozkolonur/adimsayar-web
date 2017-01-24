@@ -1,0 +1,31 @@
+{% extends "base_1col.html" %}
+{% load i18n %}
+{%block extracss%}
+<link rel="stylesheet" href="/site_media/css/bpm.css" type="text/css" />
+{% endblock %}
+{%block javascript%}
+{% endblock %}
+{%block title%}{% trans "Bmi Değeri" %}{%endblock%}
+{%block content%}
+
+<div class="meas-main" style="margin:0 auto">
+    <div class="total-steps" style="width:400px;margin:0 auto;">
+        <p>Değerlerinizi Güncelleyin</p>
+        <div class="bmi-form" style="height:195px">
+            <form action="/statistics/my_bmi/" method="POST">
+            <div><p style="color:#000;">Boyunuz:</p><input type="text" id="input_hg"  name="bmi_height" /><span class="birim-2">cm</span></div>
+            <div><p style="color:#000;">Kilonuz:</p><input type="text" id="input_wg" name="bmi_weight"/><span class="birim-2">kg</span></div>
+            <div><p style="color:#000;">Yaşınız:</p><input type="text" id="input_age"  name="bmi_age"/></div>
+                <div ><input  class="button" style="width:120px;height:40px;font-size:22px;margin-left:140px;margin-top:10px;" type="submit" value="Güncelle" /></div>
+            </form>
+            {% if error%}
+            <div style="width:300px;;color:red;font-size:16px;display:block;margin:15px 0 0 60px ">{{error}}</div>
+            {%  endif  %}
+        </div>
+        <div id="up-text"><p></p></div>
+    </div><!---total-steps End --->
+</div>
+{% endblock %}
+
+{% block footer%}
+{% endblock %}

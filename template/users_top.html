@@ -1,0 +1,130 @@
+{% load i18n %}
+{%block extracss%}
+<link rel="stylesheet" href="/site_media/css/lionbars.css" type="text/css" />
+<style>
+.users-top-widget{
+    width: 400px;
+    height: 455px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0 0 15px 0;
+}
+.widget-box{
+	font-family: Tahoma, Verdana, Arial, sans-serif !important;
+	padding:0 10px 0 0;
+	border:1px  #ccc solid;
+	-moz-box-shadow: 2px 2px 15px #ccc;
+	-webkit-box-shadow: 2px 2px 15px #ccc; 
+	box-shadow: 2px 2px 15px #ccc;
+	background:#FCFCFC;
+	}
+
+
+.user-box{
+    width:95%;
+    height:40px;
+    margin:5px auto 0 5px;
+    background: #358ee8;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    display: block;
+}
+
+.user-box:last-child{margin-bottom: 5px}
+
+.user-main-box{
+    width:99%;
+    height:40px;
+    background: #9ec0e2;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    top:-15px;
+    margin:-9px 0 0 24px;
+}
+
+.avatar-thumbnail{
+    width:auto;
+    height:40px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    float:left;
+}
+
+.user-order{
+    font-size:18px;
+    color:#FFF;
+    top:16px;
+    margin: 0 0 0 2px;
+    position: relative;
+    display: inline;
+    line-height: 6px;
+}
+
+.user-name{
+    width: auto;
+    font-size:14px;
+    font-weight: bold;
+    color:#282828;
+    display: inline-block;
+    margin: 10px 0 0 5px;
+
+}
+.puan-box{
+    margin:10px 3px 0 0;
+    float: right;
+
+
+}
+
+.user-steps{
+    display: inline-block;
+    margin:0 0 0 4px;
+    font-size:18px;
+    color: #d13300;
+    position: relative;
+    top:1px;
+
+}
+.user-step-unit{
+    font-size: 10px;
+    color:#282828;
+    position: relative;
+    top:1px;
+}
+</style>
+{% endblock %}
+{% block extrajs %}
+<script src="/site_media/js/jquery.lionbars.0.3.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#users-top').lionbars({
+            autohide: false
+        });
+
+    });//ready end
+</script>
+{% endblock %}
+{% block nav-main %}
+<div id="step-info" >
+    <div class="widget-box" id="users-top">
+
+     {%for profile in top_25%}
+     <div class="user-box">
+        <div class="user-order">{{forloop.counter}}</div>
+        <div class="user-main-box">
+        <img src="/site_media/images/default_thumbnail.jpg" class="avatar-thumbnail"/>
+        <span class="user-name">{{profile.user.username}}</span>
+        <div class="puan-box">
+        <span class="user-steps">{{profile.point}}</span>
+        <span class="user-step-unit">puan</span>
+        </div>
+        </div><!--user-main-box end -->
+    </div><!--user-box end -->
+    {% endfor %}
+    </div>
+</div>
+{% endblock %}

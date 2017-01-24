@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link href="/site_media/mobile/css/style.css" rel="stylesheet" />
+
+<style>
+.main-button{
+}
+.main-button-div{
+}
+
+</style>
+<script src="/site_media/mobile/js/jquery_1.7.2.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+function smile_set(new_img){
+		$("#smile").attr("src",new_img);
+} 
+
+function send_suggestion(suggestion) {
+		$("#new-sug").text(suggestion);
+		var span_height= $("#new-sug").height();
+		var li_height = $("#new-sug").parent().height();
+		var top_position = parseInt((li_height - span_height)/2)
+		
+		
+			$("#new-sug").css("margin-top",top_position);
+	
+}
+
+function step_update(new_steps){
+$("#new-steps").text(new_steps);
+}
+
+$(document).ready(function () {
+send_suggestion();
+});
+    
+function test_callback(result){
+    document.getElementById('advice').innerHTML=result
+}
+
+function app_request(callback, operation, param1, param2){
+    document.location = "app:" + operation + ":" + callback + ":" + param1 + ":" + param2;
+}
+
+</script>
+
+</head>
+<body>
+<div class="container">
+
+<div class="smile">
+<img src="images/smile_2.png" class="smile-image" id="smile"/>
+</div><!-- smile bitis -->
+
+<div class="step-counter">
+<span id="new-steps" class="counter-text">56482</span>
+<span class="counter-unit">adım</span>
+</div><!-- step-counter bitis -->
+
+<div>Advice:<div id="advice"></div></div>
+<div class="suggestion">
+<span id="new-sug" class="sug-text">bir şey yemeyin ipneler</span>
+</div><!-- suggestion bitis -->
+   
+<div class="main-button-div">
+<button class="main-button" onclick='document.location = "/mobindex/checkin"' >suggestion</button>
+<button class="main-button" onclick='send_suggestion("bol ye sonra bir daha ye ondan sonra gece uyan bir daha ye")' >suggestion</button>
+<button class="main-button" onclick='step_update("57826")' >New steps</button>
+<button class="main-button" onclick='smile_set("/site_media/mobile/images/smile_3.png")' >Smile Set</button>
+<button class="main-button" onclick="app_request('step_update','get','total_step','3')" >Test</button>
+</div> <!-- main-button-div bitis -->
+</div><!-- container bitis -->
+
+
+</body>
+</html>

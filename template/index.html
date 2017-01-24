@@ -1,0 +1,180 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block extra_meta %}
+<meta property="og:title" content="Adimsayar" />
+<meta property="og:type" content="company" />
+<meta property="og:image" content="" />
+<meta property="og:site_name" content="Adimsayar" />
+{% endblock %}
+{% block javascript %}
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".answer span").each(function(){
+            var span_height = $(this).height();
+            var answer_height = $(this).parents(".answer").height();
+            var margin_top = (parseInt(answer_height)-parseInt(span_height))/2;
+            $("input", $(this).parent()).css("margin-top",margin_top);
+        });
+
+
+    });
+
+    $(document).ready(function(){
+        $(".answers input").click(function(){
+
+            var data = {};
+            data['answer'] = $(this).attr("value")
+
+            $.ajax({
+                url: "/poll/answer/",
+                type: "POST",
+                data: data,
+                success: function(data){
+                    question_animate();
+                },
+                error: function(){
+                    alert("İşlem yaparken bir hata oluştu, lütfen daha sonra tekrar deneyiniz.")
+                }
+            });
+        });
+        $('#myCarousel').carousel({
+            interval: 5000
+        });
+    });
+
+    function question_animate(){
+        $(".poll-box").slideUp(200);
+        $(".poll-thankyou").slideDown(500);
+    }
+
+
+</script>
+{% endblock %}
+{%block base-content%}
+<div class="row">
+    <div class="span12">
+        {% block banner %}
+        <div id="myCarousel" class="carousel slide hidden-phone">
+            <div class="carousel-inner">
+                <div class="active item">
+                    <a href="/yukle"><img src="/site_media/images/adimsayar_banner_2.jpg"  style="width:100%;height:auto;margin:10px auto;" alt=""></a>
+                </div><!--item end-->
+                <div class="item">
+                    <a href="#"><img src="/site_media/images/banner_adimsayar.png"  style="width:100%;height:auto;margin:10px auto;" alt=""></a>
+                </div><!--item end-->
+            </div>
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+        </div><!--carousel slide end-->
+        {% endblock banner %}
+    </div>
+<div id="adwords" class="hidden-phone hidden-tablet" style="width:728px; margin-left:auto; margin-right:auto; margin-bottom:10px;">
+<!--
+<table style="border:1px solid;">
+  <tbody>
+	<tr>
+	  <td>
+		<p style="font-family: Georgia,'Times New Roman',Times,serif; color: rgb(0, 0, 0); font-size: 24px; padding-bottom: 5px; text-align: center; margin-top:5px;" valign="middle">
+		  <em>Adımsayar Uygulaması Kullanıcı Araştırması</em></p>
+		<p style="font-family: Georgia,'Times New Roman',Times,serif; color: rgb(0, 0, 0); font-size: 15px;">
+		  Adımsayar Uygulaması Galatasaray &Uuml;niversitesi tarafından akademik bir araştırmanın konusu olmuştur. &nbsp;</p>
+		<p style="font-family: Georgia,'Times New Roman',Times,serif; color: rgb(0, 0, 0); font-size: 15px;">
+		  Araştırmaya katılmak i&ccedil;in&nbsp;<span style="font-size: 15px;">&nbsp;</span><a href="http://svy.mk/10dRCxY" style="font-size: 15px;" target="_blank">buraya tıklayınız</a></p>
+	  </td>
+	</tr>
+  </tbody>
+</table>
+-->
+</div>
+        <div class="span4 column-left">
+            {%block column-left%}
+            <div class="widget">
+                <h4>Cinsiyete Göre Günlük Ortalama Adımlar</h4>
+                <div class="venus">
+                    <img src="/site_media/images/venus.png" />
+                    <span class="adim-count">2,691 <p class="adim-birim">adım</p></span>
+
+                </div>
+                <div class="mars">
+                    <img src="/site_media/images/mars.png" />
+                    <span class="adim-count" >3,216  <p class="adim-birim">adım</p></span>
+
+                </div>
+                <div style="clear: both"></div>
+
+                <small>Son Güncelleme:09/01/2013 00:00</small>
+            </div><!--widget end-->
+
+            <div class="widget" style="height: auto;text-align: center;padding-bottom:5px">
+                <!-- Place this tag where you want the +1 button to render -->
+                <div class="fb-like fb_edge_widget_with_comment fb_iframe_widget" style="display: inline;margin-top:5px;float: left;width:145px; margin-left: 5px;" data-send="true" data-layout="button_count" data-width="10" data-href="http://www.facebook.com/adimsayar" data-show-faces="false"><span style="height: 20px; width: 150px; "><iframe id="f365247894" name="f3907aaabc" scrolling="no" style="border-width: initial; border-color: initial; overflow-x: hidden; overflow-y: hidden; border-width: initial; border-color: initial; height: 20px; width: 150px; border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; border-width: initial; border-color: initial; border-image: initial; " title="Like this content on Facebook." class="fb_ltr " src="http://www.facebook.com/plugins/like.php?api_key=210050799065722&amp;channel_url=http%3A%2F%2Fstatic.ak.facebook.com%2Fconnect%2Fxd_arbiter.php%3Fversion%3D7%23cb%3Df8faa4dc8%26origin%3Dhttp%253A%252F%252Fwww.adimsayar.com%252Ff9cd07dc8%26domain%3Dwww.adimsayar.com%26relation%3Dparent.parent&amp;extended_social_context=false&amp;href=http%3A%2F%2Fwww.facebook.com%2Fadimsayar&amp;layout=button_count&amp;locale=en_US&amp;node_type=link&amp;sdk=joey&amp;send=true&amp;show_faces=false&amp;width=150"></iframe></span></div>
+                <div id="___plusone_0" style="height: 20px; width: 75px; display: inline-block; text-indent: 0px; margin-top:5px; margin-right: 0px; margin-bottom: 0px; margin-left: 5px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: transparent; border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; float: left; line-height: normal; font-size: 1px; vertical-align: baseline; background-position: initial initial; background-repeat: initial initial; "><iframe allowtransparency="true" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="width: 90px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; height: 20px; position: static; left: 0px; top: 0px; visibility: visible; " tabindex="0" vspace="0" width="100%" id="I0_1339511053282" name="I0_1339511053282" src="https://plusone.google.com/_/+1/fastbutton?bsv=pr&amp;url=http%3A%2F%2Fwww.adimsayar.com%2F&amp;size=medium&amp;count=true&amp;origin=http%3A%2F%2Fwww.adimsayar.com&amp;hl=tr&amp;jsh=m%3B%2F_%2Fapps-static%2F_%2Fjs%2Fgapi%2F__features__%2Frt%3Dj%2Fver%3DM02EFLTWZxk.en.%2Fsv%3D1%2Fam%3D!PemfnfjrL2yI81ARQg%2Fd%3D1%2Frs%3DAItRSTOli3PHGR5gMKdaR0zPAtN8e0Emew#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart&amp;id=I0_1339511053282&amp;parent=http%3A%2F%2Fwww.adimsayar.com" title="+1"></iframe></div>
+                <!-- twitter-follow button -->
+                <iframe allowtransparency="true" frameborder="0" scrolling="no" src="http://platform.twitter.com/widgets/follow_button.1338995330.html#_=1339511048575&amp;id=twitter-widget-0&amp;lang=en&amp;screen_name=adimsayar&amp;show_count=false&amp;show_screen_name=true&amp;size=m" class="twitter-follow-button" style="width: 130px; height: 20px; float: left;margin-top:5px;margin-left: 5px" title="Twitter Follow Button"></iframe>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                <div style="clear:left;"></div>
+            </div>
+
+            <div class="widget">
+                <div class="grid-center">
+                    <h4>Anket</h4>
+                </div>
+                <h2 class="poll-thankyou grid-center">Geri bildiriminiz için teşekkürler.</h2>
+                <div class="poll-box">
+
+                    <div class="grid-center"><span class="question">{{question}}</span></div>
+
+                        <div class="controls answers">
+                            <form>
+                                    {% for answer in answers%}
+                                    <label class="radio answer-text">
+                                        <input type="radio"  name="answer-radio" value="{{answer.id}}">
+                                        <strong>{{answer}}</strong>
+                                    </label>
+                                    {%endfor%}
+                            </form>
+                        </div>
+                        <div style="clear:left"></div>
+                </div><!--poll-box bitis -->
+            </div><!--widget end-->
+        {% endblock %}
+        </div><!--column-left end-->
+        <div class="span4 column-middle">
+            <div class="widget">
+                <h4>Haberler</h4>
+                <ul class="index-news">
+                    {%for m in news %}
+                        <li>
+                            {{m.text|safe}}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="span4 column-right">
+            {%block column-right %}
+<a class="twitter-timeline" href="https://twitter.com/adimsayar" data-widget-id="351438223152660480">@adimsayar kullanıcısından Tweetler</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+            {% endblock %}
+        </div><!--column-right end-->
+        <div class="span12 grid-margin-top">
+            <div class="page-header"></div>
+            <p class="bottom-content">
+            2246 kişinin katılımıyla yapılan ve yüzde 85’inin kadın olduğu bir çalışmaya göre başlangıca göre pedometre kullanıcıları fiziksel aktivitelerini yüzde 26.9 oranında artırmışlardır.
+            Önemli olan ve hedeflenen fiziksel aktivitedeki artışı günlük 10 bin adım seviyesine ulaştırmak olmalıdır. Ayrıca bu katılımcıların sistolik kan basınçlarında da 1.7- 5.9 mmHg seviyesinde
+            azalma olduğu gözlenmiştir.Bu çalışmanın sonucunda pedometrenin fiziksel aktiviteyi önemli derecede arttırdığı, beden kitle indeksini ve kan basıncını düşürmede yardımcı olduğu ortaya çıkmıştır.<br>
+            (Milliyet, 12/03/2009, Dilara Koçak)
+            </p>
+        </div>
+    <div class="span12 grid-margin-top hidden-phone">
+        <div class="widget">
+            <a href="http://www.etohum.com" target="_blank">
+                <img src="/site_media/images/etohum-logo.gif" class="partners"/>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+

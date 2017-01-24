@@ -1,0 +1,256 @@
+{% extends "base.html" %}
+{% load i18n %}
+{%block extracss%}
+<link rel="stylesheet" href="/site_media/css/bpm.css" type="text/css" />
+{% endblock %}
+{%block script%}
+<script type='text/javascript' src='https://www.google.com/jsapi'></script>
+<script type='text/javascript'>
+    $(document).ready(function() {
+		drawChart();
+    });
+</script>
+
+    <script type='text/javascript'>
+	var cals=0;
+      google.load('visualization', '1', {packages:['gauge']});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Label', 'Value'],
+  		  ['Kalori', cals],
+        ]);
+
+        var options = {
+          max: 5000, min: 1000,
+          majorTicks:10,
+          minorTicks: 5, 
+      animation:{
+        duration: 500,
+        easing: 'inAndOut',
+      },
+        };
+
+        var chart = new google.visualization.Gauge(document.getElementById('chart_div_daily_calorie'));
+        chart.draw(data, options);
+      }
+    </script>
+
+
+{% endblock %}
+{%block title%}{% trans "Bmi Değeri" %}{%endblock%}
+{%block cotentbpm%}
+
+<style>
+.widget-daily-main{
+padding:10px 5px 10px 5px;
+}
+
+.daily-calorie-form{
+margin-left:100px;
+width:460px;
+float:left;
+}
+
+.daily-calorie-chart{
+width:350px;
+height:300px;
+float:right;
+margin-left:50px; 
+}
+.form-line {
+display:inline;
+
+}
+
+.form-line{
+display:block;
+}
+
+.form-line p {
+width:140px;
+padding:4px;
+font-size:16px;
+font-weight:bold;
+margin:0;
+color:#000;
+}
+
+.form-line span{
+
+display:inline
+
+}
+
+.form-line input[type='radio']{
+width:20px;
+display:inline;
+}
+
+</style>
+
+<script>
+var cals=0;
+
+
+function checkNum(thisChar) {
+ 
+  if((thisChar != '0') &&
+	(thisChar != '1') &&
+	(thisChar != '2') &&
+	(thisChar != '3') &&
+	(thisChar != '4') &&
+	(thisChar != '5') &&
+	(thisChar != '6') &&
+	(thisChar != '7') &&
+	(thisChar != '8') &&
+	(thisChar != '9')) {
+	
+	return false;
+	
+  } else {
+  
+	return true;
+	
+  }
+}
+	
+ 
+function checkValue(thisString) {
+ 
+  var isNum = true;
+  var stringLen = thisString.length;
+  
+  if(stringLen == 0) {
+  
+	isNum = false;
+	
+  } else {
+  
+	for(count = 0; count < stringLen; count++) {
+  
+	  if(!(checkNum(thisString.charAt(count)))) {
+	
+		isNum = false;
+		break;
+	
+	  }	
+	}
+  }
+  
+  return isNum;
+  
+}
+ 
+ 
+ 
+function Figurecalneeds() {
+ 
+form = document.calneeds;
+Centis = form.boy.value;
+Kilos = form.kilo.value;
+years = form.Age.value;
+activityIndex = form.activity.selectedIndex;
+activity = form.activity.options[activityIndex].value;
+ 
+if (!$("input[@name='Gender']:checked").val()) {
+       alert('Lütfen cinsiyetinizi Seçin');
+        return false;
+}
+
+
+if((!(checkValue(Kilos))) || (!(checkValue(Centis))) ||
+  (!(checkValue(years)))) {
+  
+  alert('Lütfen ağırlığınızı, boyunuzu ve yaşınızı giriniz!');
+  
+} else {
+ 
+Age = years;
+ 
+  if(form.Gender[0].checked) {
+ 
+  <!--Male calculations-->
+  Weight      = 66 + (13.7 * Kilos)
+  Height      = 5 * Centis
+  Ages        = 6.8 * Age
+ 
+  } else {
+ 
+  <!--Female calculations-->
+  Weight      = 655 + (9.6 * Kilos)
+  Height      = 1.7 * Centis
+  Ages        = 4.7 * Age
+ 
+  }
+ 
+<!-- form.Calories.value = Math.ceil((Weight + Height - Ages) * activity) -->
+ //alert(Math.ceil((Weight + Height - Ages) * activity));
+  cals = Math.ceil((Weight + Height - Ages) * activity);
+  drawChart();
+}
+ 
+}
+</script>
+
+<div class="meas-main" style="width:970px">
+<iframe name="daily-calories-main" width="970" height="490" id="iframe-1" scrolling="no" frameborder="0" src="/get/?name=daily_calories_intro"></iframe>
+    <div class="widget-daily-main total-steps" style="margin:0 auto;">
+		<div class="daily-calorie-form">
+			<p style=""></p>
+			<div class="bmi-form" style="height:240px">
+				<form name="calneeds" onsubmit="return false" action="/body_info/daily_calorie/" method="POST">
+					<div class="form-line">
+					<p>
+					Cinsiyetiniz:
+					<span style="margin-top:5px;">
+					</p><label style="float:left;margin:4px 0 0 0">Erkek</label>
+					<input  name="Gender" type="radio">
+					<label style="float:left;margin:4px 0 0 20px">Kadın</label>
+					<input  name="Gender" type="radio">
+					</span>
+					</div>
+					<div class="form-line">
+					<p style="color:#000;">Boyunuz:</p><input type="text" id="input_hg"  name="boy" /><span class="birim-2">cm</span>
+
+					</div>
+					<div class="form-line">
+					<p style="color:#000;">Kilonuz:</p><input type="text" id="input_wg" name="kilo"/><span class="birim-2">kg</span>
+					</div>
+					
+					
+					<div class="form-line">
+					<p style="color:#000;">Yaşınız:</p><input type="text" id="input_age"  name="Age"/>
+					</div>
+					<div class="form-line">
+					<p style="color:#000;">Fiziksel Aktivite:</p><select style="margin-left:-170px;margin-top:5px"name="activity">
+						<option selected="" value="1.25">Hareketsiz: Tüm gün ofiste</option>
+						<option value="1.3">Az Hareketli: Öğretmen, ögrenci vb.</option>
+						<option value="1.5">Orta hareketli: Tezgahtar, Berber vb.</option>
+						<option value="1.7">Çok aktif: Ağır işçilik vb.</option>
+						<option value="2.0">Aşırı aktif:Sporcu vb.</option></select>
+					</div>
+					
+					
+					
+					
+					<div class="guncelle-button">				
+					<input  class="button" onclick="Figurecalneeds();" style="width:120px;height:40px;font-size:22px;margin-left:140px;margin-top:10px;" type="submit" value="Hesapla" /></div>
+					<input  class="button" onclick="Figurecalneeds();" style="width:120px;height:40px;font-size:22px;margin-left:140px;margin-top:10px;" type="submit" value="Kaydet" /></div>
+				</form>
+				{% if error%}
+				<div style="width:300px;;color:red;font-size:16px;display:block;margin:15px 0 0 60px ">{{error}}</div>
+				{%  endif  %}
+			</div><!---bmi-form End --->
+		</div>	<!---widget-form End --->
+		<div class="daily-calorie-chart" id="chart_div_daily_calorie">
+		</div><!---daily-calorie-chart End --->
+		<div style="clear:both"></div>
+        <div id="up-text"><p></p></div>
+    </div><!---total-steps End --->
+<iframe name="daily-calories-main" width="970" height="1700" id="iframe-1" scrolling="no" frameborder="0" src="/get/?name=daily_calories_main"></iframe>
+</div>
+{% endblock %}
+
+{% block footer%}
+{% endblock %}

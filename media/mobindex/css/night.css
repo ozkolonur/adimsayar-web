@@ -1,0 +1,218 @@
+.container{
+    width: 100%;
+    height: 100% !important;;
+    background: url("../images/night/gece.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: absolute;
+}
+
+.content-top{
+    width: 100%;
+    height: 15%;
+}
+
+
+.steps-main{
+    width: 55%;
+    height: 70px;
+    min-width: 303px;
+    position: relative;
+    float: left;
+    margin: 3% 0 0 0;
+
+}
+
+.step-text{
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: bold;
+    display: inline-block;
+    margin: 18px;
+}
+
+.steps-main-bg {
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:100%;
+    height:100%;
+    background-color:#ffffff;
+    z-index:1;
+    filter: alpha(opacity=20);
+    opacity:0.2;
+    -webkit-border-top-right-radius: 25px;
+    -webkit-border-bottom-right-radius: 25px;
+    -moz-border-radius-topright: 25px;
+    -moz-border-radius-bottomright: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.play-pause{
+    width: 25%;
+    height: 10%;
+    position: relative;
+    float: right;
+    margin: 2% 0 0 0;
+}
+
+.active-button{
+    margin-left: 30%;
+}
+
+.content-middle {
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+
+.middle-left {
+    width: 45%;
+    float:left;
+}
+
+.smile{
+    width: 90%;
+    height: auto;
+    position: relative;
+    margin: 8% 6% 0 8%;
+}
+
+.middle-right {
+    float:right;
+    width: 55%;
+    height: auto;
+    position: relative;
+}
+
+.rank{
+    width: 35px;
+    height: 181px;
+    position: relative;
+    background: url(../images/daytime/rank.png) no-repeat;
+    margin: 15% 0 0 5%;
+    float:left;
+}
+
+.progress-box{
+    width: auto;
+    height: auto;
+    position: relative;
+}
+.progress-bar{
+    width: 16px;
+    height: 200px;
+    margin: 10px 5% 0 74%;
+    border: 5px solid #141414;
+    position: relative;
+    display: block;
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
+    border-radius: 40px;
+    background-color:#3B91EA;
+    background-image: -o-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: -ms-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
+    background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    -webkit-background-size: 40px 40px;
+    -moz-background-size: 40px 40px;
+    -o-background-size: 40px 40px;
+    background-size: 40px 40px;
+}
+.progress{
+    width: 100%;
+    background-position: bottom;
+    position: absolute;
+    background-color: #141414;
+
+}
+
+.progress-text-box{
+    width: 66px;
+    height: 45px;
+    background: url("../images/daytime/progress_text_bg.png") no-repeat;
+    position: absolute;
+    top: -6%;
+    left: 48%;
+}
+
+.progress-text{
+    width: 60px !important;
+    height: 45px !important;
+    color: #ffffff;
+    font : 19px Helvetica;
+    text-align: center;
+    display: inline-block;
+    margin: 10px 0 0 0;
+}
+
+
+.content-bottom {
+    width: 100%;
+    height: auto;
+    background: url("../images/daytime/main_text_bg.png") no-repeat -15px 0;
+    margin: 3% 0 0 0;
+
+}
+
+table.DataTable {
+    background : transparent;
+    /*border : 1px solid #ffffff;*/
+    font : 17px Helvetica;
+    padding : 0;
+    color : #FFFFFF;
+    border-collapse : collapse;
+    margin : 15px 10px 17px 10px;
+    vertical-align : middle;
+    text-align : center;
+    -webkit-border-radius : 8px;
+    width : 90%;
+    position: relative;
+    top: 0;
+    left: 3%;
+}
+table.DataTable td:first-child {
+    border-right:  2px solid #7fbdd9;
+}
+table.DataTable td {
+    padding : 28px 10px 20px 15px;
+    /*border:  2px solid #ffffff;*/
+    background: url("../images/daytime/icon_bg.png") no-repeat 5px 7px ;
+}
+
+table.DataTable td.first-row {
+    width: 50%;
+}
+
+.main-text{
+    text-align: right;
+    margin: -3px 0 0 0;
+    display: inline-block;
+    float: right;
+    font-size: 18px !important;
+}
+
+.main-title{
+    float: left;
+    margin: -4px 0 0 50px;
+}
+
+.suggestion{
+    width: 90%;
+    height: auto;
+    margin: 3% 0 0 5%;
+    position: relative;
+}
+
+.suggestion-text{
+    color: #333;
+    font : 14px Helvetica;
+    margin: 10px;
+    line-height: 18px;
+}
+

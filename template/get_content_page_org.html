@@ -1,0 +1,28 @@
+{% extends "base_1col.html" %}
+{% load i18n %}
+{% block title %}Adımsayar{%endblock%}
+{% block content %}
+{% if show_ads %}
+<div id="adwords" style="width:728px; margin-left:auto; margin-right:auto; margin-bottom:10px;">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-3160155742064565";
+/* adimsayar-leaderboard-homepage */
+google_ad_slot = "8770604046";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div> <!-- adwords -->
+{% endif %}
+<div id="text-ct">
+{% for ct in content%}
+{{ ct.text|safe }}
+{% endfor %}
+</div>
+<div style="clear:both"></div>
+
+{% endblock %}
+

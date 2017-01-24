@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load i18n %}
+    {%block mediaurl%}
+    <link rel="stylesheet" href="../../site-media/css/style.css" type="text/css" />
+    <script type='text/javascript' src='../../site-media/js/jquery.min.1.4.js'></script>
+    <script type='text/javascript' src='../../site-media/js/script.js'></script>
+{%endblock%}
+{%block title%}Adımsayar{%endblock%}
+{% block logo %}
+<img src="../../site-media/images/logo.png" class="logo">
+{%endblock%}
+{% block content %}
+{% if user.is_authenticated %}
+{% trans "Logged in" %}: {{ user.username }} 
+<a href="{% url auth_logout %}">{% trans "Log out" %}</a>
+<a href="/bpm">{% trans "BPM" %}</a>
+{% else %}
+	
+{% include "registration/login-form.html" %}
+
+
+{% endif %}
+{% endblock %}

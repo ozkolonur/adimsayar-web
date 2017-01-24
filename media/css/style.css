@@ -1,0 +1,376 @@
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, form, label,  table, caption, tbody, tfoot, thead, tr, th, td {margin:0;padding:0;border:0;font-weight:inherit;font-style:inherit;font-size:100%;font-family:inherit;vertical-align:baseline;}
+
+table {border-collapse:separate;border-spacing:0;}
+
+table, td, th {vertical-align:middle;}
+
+blockquote:before, blockquote:after, q:before, q:after {content:"";}
+
+blockquote, q {quotes:"" "";}
+
+/* typography.css */
+
+html{height:101%}
+
+body {font-size:75%;color:#222;background:#fff;font-family:"Helvetica Neue", Helvetica, Arial, sans-serif; height:100% margin:0;padding:0;}
+
+h1, h2, h3, h4, h5, h6 {font-weight:normal;color:#111;}
+
+h1 {font-size:3em;line-height:1;margin-bottom:0.5em;}
+
+h2 {font-size:2em;margin-bottom:0.75em;}
+
+h3 {font-size:1.5em;line-height:1;margin-bottom:1em;}
+
+h4 {font-size:1.2em;line-height:1.25;margin-bottom:1.25em;height:1.25em;}
+
+h5 {font-size:1em;font-weight:bold;margin-bottom:1.5em;}
+
+h6 {font-size:1em;font-weight:bold;}
+
+h1 img, h2 img, h3 img, h4 img, h5 img, h6 img {margin:0;}
+
+p {margin:0 0 1.5em;}
+
+p img {float:left;margin:1.5em 1.5em 1.5em 0;padding:0;}
+
+p img.right {float:right;margin:1.5em 0 1.5em 1.5em;}
+
+blockquote {margin:1.5em;color:#666;font-style:italic;}
+
+strong {font-weight:bold;}
+
+a {color:#009}
+
+em, dfn {font-style:italic;}
+
+dfn {font-weight:bold;}
+
+sup, sub {line-height:0;}
+
+abbr, acronym {border-bottom:1px dotted #666;}
+
+address {margin:0 0 1.5em;font-style:italic;}
+
+del {color:#666;}
+
+pre, code {margin:1.5em 0;white-space:pre;}
+
+pre, code, tt {font:1em 'andale mono', 'lucida console', monospace;line-height:1.5;}
+
+li ul, li ol {margin:0 1.5em;}
+
+ul, ol {margin:0 1.5em 1.5em 1.5em;}
+
+ul {list-style-type:disc;}
+
+ol {list-style-type:decimal;}
+
+dl {margin:0 0 1.5em 0;}
+
+dl dt {font-weight:bold;}
+
+dd {margin-left:1.5em;}
+
+caption {background:#eee;}
+
+.small {font-size:.8em;margin-bottom:1.875em;line-height:1.875em;}
+
+.large {font-size:1.2em;line-height:2.5em;margin-bottom:1.25em;}
+
+.hide {display:none;}
+
+.quiet {color:#666;}
+
+.loud {color:#000;}
+
+.highlight {background:#ff0;}
+
+.added {background:#060;color:#fff;}
+
+.removed {background:#900;color:#fff;}
+
+.first {margin-left:0;padding-left:0;}
+
+.last {margin-right:0;padding-right:0;}
+
+.top {margin-top:0;padding-top:0;}
+
+.bottom {margin-bottom:0;padding-bottom:0;}
+
+:focus {
+
+outline: 0;
+
+}
+* {margin: 0;}
+html, body {
+height: 100%;
+}
+/*for FireFox*/
+input[type="submit"]::-moz-focus-inner, input[type="button"]::-moz-focus-inner
+{border : 0px;} 
+/*for IE8 */
+input[type="submit"]:focus, input[type="button"]:focus
+{outline : none;}
+/* remember to highlight inserts somehow! */
+ins {text-decoration: none;}
+del {text-decoration: line-through;}
+/* tables still need 'cellspacing="0¨' in the markup */
+table {border-collapse: collapse;border-spacing: 0;}
+@font-face {  font-family: 'Ubuntu'; font-style: normal;  font-weight: normal;  src: local('Ubuntu'), local('Ubuntu-Regular'), url('http://themes.googleusercontent.com/font?kit=2Q-AW1e_taO6pHwMXcXW5w') format('truetype');
+}
+/*////////////////////////////////////////////////Header/////////////////////////////////////////////////////*/
+.header{height:96px; width: 100%; min-width:1024px; background:url(../images/header_bg.png) repeat-x;}
+.top{width:1024px; position:relative;  margin: 0 auto; }
+.logo{width:201px; height:57px; margin-top:20px; margin-left:5px; float:left;}
+.topright{width:810px; height:90; float:right;  position:relative;  }
+.tlog{height:25px; float:right; margin-left:200px; margin-top:8px; }
+.tlog input[type="text"], .tlog  input[type="password"] {width:77px; height:18px; border:0; background:url(../images/input_t.png) no-repeat center; }
+.tlog input[type="submit"]{width:57px; height:24px; border:0; background:url(../images/buton_t.png) no-repeat; }
+.tlog a{font-family:Ubuntu; font-size:13px; font-weight:bold; color:#fff; text-decoration:none; margin-right:2px; margin-left:2px;}
+.tlog a:hover{text-decoration:underline;}
+.user{float:left; color:#fff; margin-right:4px}
+.user span {color:#fff; font-family:Ubuntu}
+.menu{width:100% ; float:right; margin-top:10px;}
+/*/////////////////////////////////////////////////Main/////////////////////////////////////////////////////////*/
+/*///////////lavalamp/////////////////////////*/
+        .mbutton {
+            width:100%;  float:right;  position:relative;
+          
+        }
+                .mbutton li {
+                    float: right;
+                    list-style: none;
+					margin-right:10px;
+                }
+                    .mbutton li.back {
+                        background: url(../images/buton_bg_h.png) no-repeat right -48px;
+                        width: 8px; height: 48px;
+                        z-index: 8;
+                        position: absolute;
+                    }
+                        .mbutton li.back .left {
+                            background: url(../images/buton_bg_h.png)  top left;
+                            height: 48px;
+                            margin-right: 8px; /* 7px is the width of the rounded shape */
+                        }
+                    .mbutton li a {
+font-family:arial; font-size:20px; color:#EDEDED; text-decoration:none; text-align:center; height:48px; display:block; top:7px; margin-left:20px; margin-right:20px; z-index: 10; position: relative;
+}
+                        .mbutton li a:hover, .lavaLampWithImage li a:active, .lavaLampWithImage li a:visited {
+                            border: none;
+                        }
+
+
+/*///labalamp end */
+.content-main{width: 100%; min-width:1024px; height:90%; background:url(../images/main_bg.jpg) repeat-x ;   padding-top:20px;  }
+.content{width:1024px; height:auto; padding-bottom:91px;background:url(../images/main_bg.png) no-repeat #FFF; margin:0 auto;  position:relative; padding-top:20px; }
+#text-ct-title{padding-left:20px;font-size:20px;font-family:verdana;margin:0}
+#text-ct{padding-left:20px;padding-top:5px;}
+#banner{width:1000px; height:300px; margin-left:20px; position:relative;margin-top:5px;}
+
+.c-left{width:670px; float:left; position:relative; margin-left:30px; margin-top:30px; display:block; }
+.c-right{width:280px; float:right; position:relative; margin-right:30px; margin-top:70px;}
+.text{font:Ubuntu; font-size:16px; color:#333; line-height: 1.2;}
+.title{font:Tahoma; font-size:28px; color:#E43A32; line-height: 2; margin:10px; display:block;}
+.image{padding:5px; margin:10px; border:1px solid #ccc; float:left;} 
+.button{background:#ccc; font-weight:bold;  border:#666 1px solid; width:80px; height:28px; color:#666; font-size:18px;}
+/*//////////////////////////////////////////////////Footer//////////////////////////////////////////////////////////*/
+.push{position:absolute;bottom:0;	width:100%;height:91px;}
+.footer{width:100%;  min-width:1024px; background:url(../images/footer_bg.jpg) repeat-x; }
+.company{width:1024px;  height:91px; background:url(../images/footer_bg.png) no-repeat; margin:0 auto;  }
+/*//////////////////////////////////////////////////Info//////////////////////////////////////////////////////////*/
+#step-info{width:95%;height:auto;clear:both;padding-bottom:20px; margin-left:30px;margin-top:5px; }
+.widget-left{font-family: Tahoma, Verdana, Arial, sans-serif !important;width:49%;height:150px;border:1px  #ccc solid;margin-top:1%;float:left; -moz-box-shadow: 2px 2px 15px #ccc;-webkit-box-shadow: 2px 2px 15px #ccc; box-shadow: 2px 2px 15px #ccc;background:#FCFCFC;}
+.widget-right{width:49%;height:389px;border:3px #ccc solid; margin-right:3px;margin-top:1%;float:right;-moz-box-shadow:2px 5px 10px 5px #ccc;-webkit-box-shadow: 2px 5px 10px #ccc; box-shadow: 2px 5px 10px #ccc;}
+.widget-right li {list-style-type:none}
+.widget-box{width:440px;height:auto;text-align:center;}
+.widget-box div {margin:20px;}
+.widget-box div span {font-family: Tahoma, Verdana, Arial, sans-serif !important;font-size:36px; color:#3C3C3C; text-align:center; }
+.widget-box p {font-family: Tahoma, Verdana, Arial, sans-serif !important;font-size:36px; color:#2E64FE; text-align:center; margin:10px;}
+.logo-bar{width:100%;height:90px; margin:20px 10px 10px 0; border:1px #ccc solid; -moz-box-shadow:2px 5px 10px 5px #ccc;-webkit-box-shadow: 2px 5px 10px #ccc; box-shadow: 2px 5px 10px #ccc;}
+.logo-bar div{width:92%;margin:0 auto;}
+.logo-bar img{height:64px;float:left;margin:5px 10px 10px 5px;padding:5px; }
+.values {float:left;font-size:36px;color:red;padding:10px 5px 0 0;text-align:right;}
+.values span {margin-left:5px;margin-top:15px;display:block;}
+.values-text{float:left;font-size:28px;margin-top:10px;}
+.values-text span {display:block;margin-top:23.5px;}
+.widget-title{width:100%; height:30px; background:url(../images/bpm_title.png);  font:Arial; font-size:24px; color:#FFF; text-align:center; padding-top:2px;padding-bottom:2px; position:relative; z-index:1;}
+#diet-suggestion {text-align:center;margin-top:10px;}
+#diet-suggestion ul li div{height:50px;font-family: Tahoma, Verdana, Arial, sans-serif !important; line-height:20px;font-size:18px; margin:2.5px; list-style-type:none }
+
+
+.miniwidget-left{
+    width:46%;
+    margin:2% 1% 1% 2%;
+    height:100px;
+    float:left;
+    text-align:center;
+}
+
+.miniwidget-right{
+    width:46%;
+    margin:2% 2% 1% 1%;
+    height:100px;
+    float:right;
+    text-align:center;
+}
+
+
+.miniwidget p {
+    font-size:20px;
+    margin:5px 0 5px 0;
+}
+
+.miniwidget-image{margin:0}
+
+.miniwidget-header{
+    width:96%;
+    margin:2%;
+    height:20px;
+    padding:2px 0;
+    text-align:center;
+    font-size:22px
+}
+
+.miniwidget-footer {
+    width:96%;
+    margin:2%;
+    height:10px;
+    padding:2px 0;
+    text-align:center;
+
+}
+.widget-footer span{
+    font-size:12px;
+}
+.venus{
+float:left;
+width:90px;
+height:90px
+}
+
+.mars {
+float:left;
+width:80px;
+height:80px;
+margin-top:5px;
+}
+
+.adim-birim{
+font-size:12px;
+display:inline;
+margin:0;
+color:red;
+padding-left:2px;
+}
+
+.adim-count {
+    margin-top:40px;
+    display:inline-block;
+    color:#2E64FE;
+    font-size:24px;
+
+}
+
+
+
+.widget-main{
+    width:98%;
+    margin:2%;
+    height:auto;
+    text-align:center;
+}
+
+.widget p {
+    font-size:20px;
+    margin:5px 0 5px 0;
+}
+
+.widget span {
+    color:#4E4B54
+}
+
+
+
+.answers-box{
+    width:100%;
+    height:200px;
+    border:1px solid black;
+    margin:0 auto;
+    margin-top:10px;
+}
+
+.answer{
+    width:46%;
+    height:40px;
+    float:left;
+    margin:10px 0px 0 10px;
+}
+
+.answer span{height:auto;font-size:16px;margin-left:5px;}
+.answer label{ cursor:pointer}
+
+.widget-thankyou{
+    width:480px;
+    height:100px;
+    font-size:28px;
+    color:#4E4B54;
+    text-align:center;
+    display:none;
+}
+
+.widget-thankyou span {
+    display:inline-block;
+    margin-top:30px;
+}
+
+.login-bar{
+    width:400px;
+    height:25px;
+    float:right;
+    display: inline;
+}
+
+.social-icon{
+	width:150px;
+	height:25px;
+    display: inline;
+    margin:0 5px 0 5px;
+
+}
+.login-bt{
+   display: inline;
+   position: absolute;
+   top:10px;
+   margin-left:70px;
+}
+.register-bt{
+    display: inline;
+    position: absolute;
+    top:10px;
+}
+
+.login-bt a,.register-bt a{
+font-size: 14px;
+padding:5px;
+}
+
+.login-bt a:hover, .register-bt a:hover{
+    text-decoration: none;
+    text-shadow: 0 0 0.2em #fff;
+}
+.social-login{
+width:500px;
+height:50px;
+margin:0 0 15px 0;
+}
+.social-icon-large{
+width:240px;
+height:42px;
+display:inline;
+}
+.sign-gmail-large{
+margin-left:10px;
+}

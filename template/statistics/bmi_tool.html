@@ -1,0 +1,15 @@
+{% extends "base_1col.html" %}
+{% load i18n %}
+    {%block extracss%}
+    {% endblock %}
+{%block javascript%}
+{% endblock %}
+{%block title%}{% trans "Measurements" %}{%endblock%}
+{%block content %}
+
+<div class="content-box" >
+<iframe name="bmi-meter" width="82%" class="bmi-iframe" id="iframe-bmi" scrolling="no" frameborder="0" src="/body_info/bmi_meter/?bmi={{bmi}}"></iframe>
+</div>
+{% endblock content%}
+
+

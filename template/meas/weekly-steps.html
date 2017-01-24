@@ -1,0 +1,24 @@
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+
+<div style="width:750px;float:left;display:inline;margin-top:10px;">
+
+<div style="width:250px;float:left;text-align:center; ">
+<img src="https://chart.googleapis.com/chart?cht=bvs&chco=4D89F9&chxt=x,y&chxr=1,0,10000&chs=250x250&chd=t:{% for step in step_list%}{{step}},{% endfor %}0&chl=Pzt|Sal|Crs|Prs|Cum|Cts|Paz" alt="resim goruntulenmedi" style="display:block"/>
+</div>
+<div style="width:480px; float:right;margin:30px 0 0 0;">
+<span style="font-size:24px;display:block;color:#473838;">Haftalık Yürüyüş Miktarınız</span>
+<div style="margin-top:10px;line-height:30px">
+Geçen haftaki yürüyüş miktarınız aşağıdaki grafikte gösterilmiştir.
+</div>
+
+<p>Geçtiğimiz hafta günlük ortalama <span style="color:blue;">{{daily_average_steps}}</span> adım yürüdünüz.<br>
+Bu yürüyüşler için harcadığınız enerji ortalama günlük <span style="color:blue;">{{daily_average_calories|floatformat}}</span> kaloridir. Bir haftada 7000 kcal harcamak 1 kg vermenizi sağlar.</p>
+</div>
+</div>
+
+
+
+
+

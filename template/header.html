@@ -1,0 +1,141 @@
+{% load i18n %}
+{% load header_tags %}
+<div class="navbar navbar-fixed-top" style="position: relative;margin-bottom: 10px">
+    <div class="navbar-inner">
+	<div class="container">
+		<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</a>
+		<a href="{% url index %}">
+            <div class="pull-left site-logo">
+                <img src="/site_media/images/logo_adam.png" class="logo-adam"/>
+                <img src="/site_media/images/logo_yazi.png" class="logo-yazi"/>
+            </div>
+
+        </a>
+
+                <div class="nav login-nav pull-right" id="user-button">
+
+                    {% if user.is_authenticated %}
+                    <div class="btn-group">
+                        <a class="btn btn-success btn-large dropdown-toggle user-combo" data-toggle="dropdown">
+
+
+                            <!--<img alt="" class="user-profile-picture" src="">-->
+
+
+                            <i class="icon-user icon-white"></i>
+                            <span style="margin-left: 10px">{{ user.username }}</span>
+
+                            <i class="caret"></i>
+                        </a>
+                        <ul class="dropdown-menu pull-right" data-no-collapse="true">
+
+                            <li>
+                                <a href="{%url profile_overview%}">
+                                    <i class="icon-home"></i>  {% trans "Profile" %}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{%url logout%}">
+                                    <i class="icon-off"></i>
+                                    {% trans "Log out" %}
+                                </a>
+                            </li>
+                        </ul>
+                    </div><!-- btn-group end -->
+                    {% else %}
+
+                    <div id="login-popover-container">
+                        <div class="social-auth pull-left">
+                            <a href="{% url socialauth_begin social_auth.backends.oauth2.1 %}">
+                                <img src="/site_media/images/fb_login_icon.png" class="pull-left social-button"/>
+                            </a>
+                            <a href="{% url socialauth_begin social_auth.backends.oauth2.0 %}">
+                                <img src="/site_media/images/google_login_icon.png" class="pull-left social-button"/>
+                            </a>
+                        </div>
+                        <div class="btn-group pull-right">
+                            <li class="dropdown" style="display: inline">
+                                <a class="btn btn-success btn-large" href="#" data-toggle="dropdown">
+                                    {% trans "Login" %} <i class="icon-chevron-down icon-white" ></i>
+                                </a>
+                                <div class="dropdown-menu mini-login-form" style="max-width: 225px;margin-top: 40px" data-no-collapse="true">
+                                    <form action="/accounts/login/?next={{ next|default:"/" }}" method="post" accept-charset="utf-8">
+                                    <input type="text" name="username" placeholder="{% trans "Username" %}">
+                                    <input type="password" name="password" placeholder="{% trans "Password" %}">
+                                    <input class="btn mini-login-submit" type="submit" name="submit" value="{% trans 'Login' %}">
+                                    </form>
+                                    <div style="text-align: center;"><a style="color: #bbb;" href="{% url password_reset %}">{% trans "Lost your password?" %}</a></div>
+
+                                </div>
+                            </li>
+                            <a class="btn btn-success btn-large" href="{% url signup %}">
+                                Kayıt ol
+                            </a>
+
+                        </div><!-- btn-group end -->
+                    </div><!-- login-popover-container end -->
+                    {% endif %}
+
+                </div>  <!-- user-button end -->
+
+        <div class="nav-collapse">
+
+				<ul class="nav main-menu">
+                    {% block main-menu %}
+					<li><a href="{% url index %}" class="nav-button {% ifequal request.path '/' %}nav-active{% endifequal %}">
+                        <i class="icon-home icon-white icon-menu"></i>{% trans "Home" %}</a>
+                    </li>
+
+					{% if user.is_authenticated %}
+					<li class="dropdown"><a href="#"  class="dropdown-toggle nav-button {% active_menu request 'meas' %}" data-toggle="dropdown">
+                        <i class="icon-time icon-white icon-menu"></i>{% trans "Measurements" %}<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="/meas/?target=points" >Puan</a></li>
+							<li><a href="/meas/?target=steps" >Adım(Günlük)</a></li>
+							<li><a href="/meas/?target=total" >Adım(Aylık)</a></li>
+							<li><a href="/meas/?target=calories" >Kalori</a></li>
+							<li><a href="/meas/?target=bmi" >Ağırlık</a></li>
+						</ul>
+					</li>
+					{% else %}
+					<li class="dropdown">
+					<a href="#"  class="dropdown-toggle nav-button {% active_menu request 'howitworks' %}" data-toggle="dropdown">
+                        <i class="icon-off icon-white icon-menu"></i>{% trans "How It Works" %}<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="{% url howitworks %}">{% trans "How It Works" %}</a></li>
+							<li><a href="/get_content_page/?name=faq_walking_{{ OVERLOAD_SITE }}">Yürüyüşle Zayıflamak</a></li>
+						</ul>
+					</li>
+					{% endif %}
+
+
+					<li class="dropdown">
+					<a href="#" class="dropdown-toggle nav-button {% active_menu request 'statistics' %}" data-toggle="dropdown">
+                        <i class="icon-cog icon-white icon-menu"></i>{% trans "Tools" %}<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="{% url bmi_tool %}">Vücut-Kitle İndeksi</a></li>
+							<li><a href="{% url daily_calories %}">Metabolizma Hızı</a></li>
+							<li><a href="{% url bmi_statistics %}">İstatistikler</a></li>
+						</ul>
+					</li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle nav-button {% active_menu request 'support' %}" data-toggle="dropdown">
+                        <i class="icon-user icon-white icon-menu"></i>{% trans "Support" %}<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="{% url devices %}">Uyumlu Telefonlar</a></li>
+							<li><a href="{% url support %}">Sıkça Sorulan Sorular</a></li>
+							<li><a href="{% url contact %}">İletişim Formu</a></li>
+							<li><a href="/get_content_frame/?frame=https://docs.google.com/spreadsheet/embeddedform?formkey=dHo1cDRDZEp4TFZ0ckgxSUMtV3NueXc6MQ" >Anket</a></li>
+							<li><a href="http://{{ DOMAIN_NAME }}/get_content_page/?name=press_release" >Basında Biz</a></li>
+						</ul>
+					</li>
+                    {% endblock %}
+				</ul><!--nav pull-left end-->
+             </div><!--nav-collapse end-->
+        </div> <!--container end-->
+    </div><!--navbar-inner end-->
+</div><!--navbar navbar-fixed-top end-->
+

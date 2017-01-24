@@ -1,0 +1,100 @@
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="robots" content="{% block robots %}index,follow{% endblock %}" />
+<meta name="description" content="Web tabanli adimsayar, diyet gunlugu, online pedometer service, fitness logger" />
+<meta name="keywords" content="adimsayar, pedometer, diet, fitness, health, mobile, android, iphone, application, steps, weight, calories" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="P3P" content='CP="IDC DSP COR CURa ADMa OUR IND PHY ONL COM STA"'>
+<style>
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', '{% trans "Number of people" %}');
+        data.addColumn('number', '{% trans "Severely Underweight" %}');
+        data.addColumn('number', '{% trans "Underweight" %}');
+        data.addColumn('number', '{% trans "Normal" %}');
+        data.addColumn('number', '{% trans "Overweight" %}');
+        data.addColumn('number', '{% trans "Obesity I" %}');
+        data.addColumn('number', '{% trans "Obesity II" %}');
+        data.addColumn('number', '{% trans "Obesity III" %}');
+        data.addRows([
+		{% for m in bmi_vs_user %}
+
+		{% if forloop.counter0 >= 64 and forloop.counter0 < 160 %}
+		{% if forloop.counter0 > 0 and forloop.counter0 < 64 %}
+		['{{ m.bmi }}',{{ m.num_of_users }},0,0,0,0,0,0],
+		{% endif %}
+
+		{% if forloop.counter0 >= 64  and forloop.counter0 < 74 %}
+		['{{ m.bmi }}',0,{{ m.num_of_users }},0,0,0,0,0],
+		{% endif %}
+
+		{% if forloop.counter0 >= 74  and forloop.counter0 < 100 %}
+		['{{ m.bmi }}',0,0,{{ m.num_of_users }},0,0,0,0],
+		{% endif %}
+
+		{% if forloop.counter0 >= 100  and forloop.counter0 < 120 %}
+		['{{ m.bmi }}',0,0,0,{{ m.num_of_users }},0,0,0],
+		{% endif %}
+
+		{% if forloop.counter0 >= 120  and forloop.counter0 < 140 %}
+		['{{ m.bmi }}',0,0,0,0,{{ m.num_of_users }},0,0],
+		{% endif %}
+
+		{% if forloop.counter0 >= 140  and forloop.counter0 < 160 %}
+		['{{ m.bmi }}',0,0,0,0,0,{{ m.num_of_users }},0],
+		{% endif %}
+
+		{% if forloop.counter0 >= 160  and forloop.counter0 < 200 %}
+		['{{ m.bmi }}',0,0,0,0,0,0,{{ m.num_of_users }}],
+		{% endif %}
+		{% endif %}
+
+		{% endfor %}
+
+        ]);
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('bmi_chart_div'));
+        chart.draw(data, { colors:['#FF0000','#FF0000','#00FF00','#FFCC00','#FF8800','#FF0000'], width: $('#bmi_chart_div').width(), height: 340, isStacked:true, legend:'top',chartArea: {left:'5.5%', top:30,width:'94%',height:'80%'},vAxis: {}
+
+                         });
+      }
+
+      $(window).resize(function (){
+          drawChart();
+      });
+    </script>
+
+
+</head>
+
+<body>
+<span style="font-size:24px;display:inline-block;color:#473838;">{% trans "BMI vs Number of Users" %}</span><br>
+{% trans "This graph shows BMI distibution by number of users. So you can see how many people has same BMI with you. Bar colors also show BMI levels(like Underweight,Normal, Overweight, Obesity I...). If your color is green, that means your BMI is optimal" %}[{{ bmi_vs_user.0.stat_time }}]<br><br>
+<!--
+Bu grafik kişi sayısı derinliğine sahip bir vücut kitle indeksi grafiğidir. Sizin hangi VKİ diliminde bulunduğunuzu göstermenin yanısıra sizinle aynı dilimde bulunan kişilerin sayısını görebilirsiniz.
+
+Bulunduğunuz dilimdeki çubuğun rengi yeşil ise bu sağlıklı bir kilo aralığında olduğunuzun göstergesidir. -->
+<!--
+{% for m in age_vs_user %}
+{{m.age}}
+
+{% endfor%}-->
+
+    <div id="bmi_chart_div"></div>
+
+</body>
+
+</html>
+

@@ -1,0 +1,47 @@
+{% extends "base_2col.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Edit your personal information" %}{% endblock %}
+{% block robots %}noindex,nofollow{% endblock %}
+
+{% block extracss %}
+	<link rel="stylesheet" href="/site_media/css/ui.datepicker.css" type="text/css" />
+		<link rel="stylesheet" href="/site_media/css/ui.datepicker.css" type="text/css" />
+		<link rel="stylesheet" href="/site_media/css/blueprint/screen.css" type="text/css" media="screen, projection" />
+		<link rel="stylesheet" href="/site_media/css/blueprint/print.css" type="text/css" media="print" />
+		<link rel="stylesheet" href="/site_media/css/blueprint/plugins/fancy-type/screen.css" type="text/css" media="screen, projection" />
+  	<!--[if IE]><link rel="stylesheet" href="/site_media/css/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+		<link rel="stylesheet" href="/site_media/css/django-profile.css" type="text/css" media="screen, projection" />
+        <style type="text/css">
+            fieldset,legend{
+
+            }
+        </style>
+{% endblock %}
+
+{% block extrajs %}
+<script type="text/javascript" src="/site_media/js/ui.datepicker.js"></script>
+<script type="text/javascript" src="/site_media/js/jquery.personal.js"></script>
+{% endblock %}
+
+{% block nav-main %}
+{% include "userprofile/menu.html" %}
+{% endblock %}
+
+{% block content %}
+	<form class="personal" action="{{ request.path_info }}" method="post" enctype="multipart/form-data">
+	<fieldset>
+        <div class="page-header"><h4>{% trans "Edit your personal information" %}</h4></div>
+		{{ form.as_p }}
+	</fieldset>
+	<input type="submit" value="{% trans 'Save' %}" />
+	</form>
+{% endblock %}
+
+{% block content-related %}
+  <div class="box">
+    <h3>{% trans "Personal information" %}</h3>
+    <p>{% trans "Insert some information about you" %}.</p>
+  </div>
+{% endblock %}
+

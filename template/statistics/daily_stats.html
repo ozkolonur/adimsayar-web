@@ -1,0 +1,291 @@
+<html>
+<head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+      <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Date');
+        data.addColumn('number', 'Users');
+        data.addRows({{stats|length}});
+            {% for i in stats %}
+                data.setValue({{ forloop.counter0 }}, 0, '{{i.date_time|date:"d-M"}}')
+                data.setValue({{ forloop.counter0 }}, 1, {{i.num_User}})
+            {% endfor %}
+        var chart = new google.visualization.ColumnChart(document.getElementById('num_User_chart_div'));
+        chart.draw(data, {width: 'auto', height: 'auto', legend:'top',
+            chartArea: {left:'5.1%',top:30,width:'94%',height:'80%'},vAxis: {minValue: 'auto'}
+                         });
+      }
+      </script>
+
+      <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Date');
+        data.addColumn('number', 'UserDisabled');
+        data.addRows({{stats|length}});
+            {% for i in stats %}
+                data.setValue({{ forloop.counter0 }}, 0, '{{i.date_time|date:"d-M"}}')
+                data.setValue({{ forloop.counter0 }}, 1, {{i.num_UserDisabled}})
+            {% endfor %}
+        var chart = new google.visualization.ColumnChart(document.getElementById('num_UserDisabled_chart_div'));
+        chart.draw(data, {width: 'auto', height: 'auto', legend:'top',
+            chartArea: {left:'5.1%',top:30,width:'94%',height:'80%'},vAxis: {minValue: 'auto'}
+                         });
+      }
+      </script>
+
+      <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Date');
+        data.addColumn('number', 'UserNoEmail');
+        data.addRows({{stats|length}});
+            {% for i in stats %}
+                data.setValue({{ forloop.counter0 }}, 0, '{{i.date_time|date:"d-M"}}')
+                data.setValue({{ forloop.counter0 }}, 1, {{i.num_UserNoEmail}})
+            {% endfor %}
+        var chart = new google.visualization.ColumnChart(document.getElementById('num_UserNoEmail_chart_div'));
+        chart.draw(data, {width: 'auto', height: 'auto', legend:'top',
+            chartArea: {left:'5.1%',top:30,width:'94%',height:'80%'},vAxis: {minValue: 'auto'}
+                         });
+      }
+      </script>
+
+      <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Date');
+        data.addColumn('number', 'BodyInfo');
+        data.addRows({{stats|length}});
+            {% for i in stats %}
+                data.setValue({{ forloop.counter0 }}, 0, '{{i.date_time|date:"d-M"}}')
+                data.setValue({{ forloop.counter0 }}, 1, {{i.num_BodyInfo}})
+            {% endfor %}
+        var chart = new google.visualization.ColumnChart(document.getElementById('num_BodyInfo_chart_div'));
+        chart.draw(data, {width: 'auto', height: 'auto', legend:'top',
+            chartArea: {left:'5.1%',top:30,width:'94%',height:'80%'},vAxis: {minValue: 'auto'}
+                         });
+      }
+      </script>
+
+      <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Date');
+        data.addColumn('number', 'StepTotal');
+        data.addRows({{stats|length}});
+            {% for i in stats %}
+                data.setValue({{ forloop.counter0 }}, 0, '{{i.date_time|date:"d-M"}}')
+                data.setValue({{ forloop.counter0 }}, 1, {{i.num_StepTotal}})
+            {% endfor %}
+        var chart = new google.visualization.ColumnChart(document.getElementById('num_StepTotal_chart_div'));
+        chart.draw(data, {width: 'auto', height: 'auto', legend:'top',
+            chartArea: {left:'5.1%',top:30,width:'94%',height:'80%'},vAxis: {minValue: 'auto'}
+                         });
+      }
+      </script>
+
+      <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Date');
+        data.addColumn('number', 'StepObject');
+        data.addRows({{stats|length}});
+            {% for i in stats %}
+                data.setValue({{ forloop.counter0 }}, 0, '{{i.date_time|date:"d-M"}}')
+                data.setValue({{ forloop.counter0 }}, 1, {{i.num_Step}})
+            {% endfor %}
+        var chart = new google.visualization.ColumnChart(document.getElementById('num_Step_chart_div'));
+        chart.draw(data, {width: 'auto', height: 'auto', legend:'top',
+            chartArea: {left:'5.1%',top:30,width:'94%',height:'80%'},vAxis: {minValue: 'auto'}
+                         });
+      }
+      </script>
+
+      <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Date');
+        data.addColumn('number', 'StepAvg');
+        data.addRows({{stats|length}});
+            {% for i in stats %}
+                data.setValue({{ forloop.counter0 }}, 0, '{{i.date_time|date:"d-M"}}')
+                data.setValue({{ forloop.counter0 }}, 1, {{i.num_StepAvg}})
+            {% endfor %}
+        var chart = new google.visualization.ColumnChart(document.getElementById('num_StepAvg_chart_div'));
+        chart.draw(data, {width: 'auto', height: 'auto', legend:'top',
+            chartArea: {left:'5.1%',top:30,width:'94%',height:'80%'},vAxis: {minValue: 'auto'}
+                         });
+      }
+      </script>
+
+      <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Date');
+        data.addColumn('number', 'BadgeToUser');
+        data.addRows({{stats|length}});
+            {% for i in stats %}
+                data.setValue({{ forloop.counter0 }}, 0, '{{i.date_time|date:"d-M"}}')
+                data.setValue({{ forloop.counter0 }}, 1, {{i.num_BadgeToUser}})
+            {% endfor %}
+        var chart = new google.visualization.ColumnChart(document.getElementById('num_BadgeToUser_chart_div'));
+        chart.draw(data, {width: 'auto', height: 'auto', legend:'top',
+            chartArea: {left:'5.1%',top:30,width:'94%',height:'80%'},vAxis: {minValue: 'auto'}
+                         });
+      }
+      </script>
+
+      <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Date');
+        data.addColumn('number', 'Point');
+        data.addRows({{stats|length}});
+            {% for i in stats %}
+                data.setValue({{ forloop.counter0 }}, 0, '{{i.date_time|date:"d-M"}}')
+                data.setValue({{ forloop.counter0 }}, 1, {{i.num_Point}})
+            {% endfor %}
+        var chart = new google.visualization.ColumnChart(document.getElementById('num_Point_chart_div'));
+        chart.draw(data, {width: 'auto', height: 'auto', legend:'top',
+            chartArea: {left:'5.1%',top:30,width:'94%',height:'80%'},vAxis: {minValue: 'auto'}
+                         });
+      }
+      </script>
+
+      <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Date');
+        data.addColumn('number', 'Device2');
+        data.addRows({{stats|length}});
+            {% for i in stats %}
+                data.setValue({{ forloop.counter0 }}, 0, '{{i.date_time|date:"d-M"}}')
+                data.setValue({{ forloop.counter0 }}, 1, {{i.num_Point}})
+            {% endfor %}
+        var chart = new google.visualization.ColumnChart(document.getElementById('num_Device2_chart_div'));
+        chart.draw(data, {width: 'auto', height: 'auto', legend:'top',
+            chartArea: {left:'5.1%',top:30,width:'94%',height:'80%'},vAxis: {minValue: 'auto'}
+                         });
+      }
+      </script>
+
+
+      <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Date');
+        data.addColumn('number', 'UserAnswer');
+        data.addRows({{stats|length}});
+            {% for i in stats %}
+                data.setValue({{ forloop.counter0 }}, 0, '{{i.date_time|date:"d-M"}}')
+                data.setValue({{ forloop.counter0 }}, 1, {{i.num_UserAnswer}})
+            {% endfor %}
+        var chart = new google.visualization.ColumnChart(document.getElementById('num_UserAnswer_chart_div'));
+        chart.draw(data, {width: 'auto', height: 'auto', legend:'top',
+            chartArea: {left:'5.1%',top:30,width:'94%',height:'80%'},vAxis: {minValue: 'auto'}
+                         });
+      }
+      </script>
+
+      <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Date');
+        data.addColumn('number', 'Venue');
+        data.addRows({{stats|length}});
+            {% for i in stats %}
+                data.setValue({{ forloop.counter0 }}, 0, '{{i.date_time|date:"d-M"}}')
+                data.setValue({{ forloop.counter0 }}, 1, {{i.num_Venue}})
+            {% endfor %}
+        var chart = new google.visualization.ColumnChart(document.getElementById('num_Venue_chart_div'));
+        chart.draw(data, {width: 'auto', height: 'auto', legend:'top',
+            chartArea: {left:'5.1%',top:30,width:'94%',height:'80%'},vAxis: {minValue: 'auto'}
+                         });
+      }
+      </script>
+
+      <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Date');
+        data.addColumn('number', 'Checkin');
+        data.addRows({{stats|length}});
+            {% for i in stats %}
+                data.setValue({{ forloop.counter0 }}, 0, '{{i.date_time|date:"d-M"}}')
+                data.setValue({{ forloop.counter0 }}, 1, {{i.num_Checkin}})
+            {% endfor %}
+        var chart = new google.visualization.ColumnChart(document.getElementById('num_Checkin_chart_div'));
+        chart.draw(data, {width: 'auto', height: 'auto', legend:'top',
+            chartArea: {left:'5.1%',top:30,width:'94%',height:'80%'},vAxis: {minValue: 'auto'}
+                         });
+      }
+      </script>
+
+
+</head>
+<body>
+<div>
+<div style="width:100%; border: 1px solid red;">
+
+<form method="post" action="/mailing/">
+<div style="width:50%; border: 1px solid red; margin:0 auto;">
+date:
+<select name="mailing_id" id="select1" style="width:300px;">
+{% for f in fields %}
+    <option value="{{ f }}">{{ f }}</option>
+{% endfor %}
+</select>
+<input type="submit" name="submit" value="Preview"/>
+</div>
+</form>
+
+</div>
+
+<div style="width:100%; border: 1px solid red;">
+</div>
+<div id="num_User_chart_div" style="width:100%; border: 1px solid red;"></div>
+<div id="num_UserDisabled_chart_div" style="width:100%; border: 1px solid red;"></div>
+<div id="num_UserNoEmail_chart_div" style="width:100%; border: 1px solid red;"></div>
+<div id="num_BodyInfo_div" style="width:100%; border: 1px solid red;"></div>
+<div id="num_Step_chart_div" style="width:100%; border: 1px solid red;"></div>
+<div id="num_StepTotal_chart_div" style="width:100%; border: 1px solid red;"></div>
+<div id="num_StepAvg_chart_div" style="width:100%; border: 1px solid red;"></div>
+<div id="num_BadgeToUser_chart_div" style="width:100%; border: 1px solid red;"></div>
+<div id="num_Point_chart_div" style="width:100%; border: 1px solid red;"></div>
+<div id="num_Device2_chart_div" style="width:100%; border: 1px solid red;"></div>
+<div id="num_UserAnswer_chart_div" style="width:100%; border: 1px solid red;"></div>
+<div id="num_Venue_chart_div" style="width:100%; border: 1px solid red;"></div>
+<div id="num_Checkin_chart_div" style="width:100%; border: 1px solid red;"></div>
+
+</div>
+</body>
+</html>

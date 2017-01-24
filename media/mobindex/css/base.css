@@ -1,0 +1,232 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+/* remember to define focus styles! */
+:focus {
+    outline: 0;
+}
+
+/* remember to highlight inserts somehow! */
+ins {
+    text-decoration: none;
+}
+del {
+    text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+table { width:100%; }
+table caption { text-align:left;  }
+table thead th { text-align:left; border-bottom-width:1px; border-top-width:1px; }
+table th, td { text-align:left; padding:6px;}
+caption {text-align: center !important;}
+body {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: -moz-none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.content-top{
+    height: 12.5% !important;
+    min-height: 96px;
+}
+
+.step-container{
+    width: 70% !important;
+    height:100%;
+}
+
+.step-button{
+    width: 25% !important;
+    height:100%;
+    margin-left: 5%
+}
+
+.content-middle {
+    height: 38%;
+    margin-top: 3%;
+}
+
+.smile-box{
+    width: 57% !important;
+    height:100%;
+}
+
+.smile{
+    width: 90%;
+    height: auto;
+    margin: 8% 6% 0 8%;
+}
+
+
+.play-button{
+    width: auto;
+    height: auto;
+    margin: 3px 0 0 0;
+    float:right;
+}
+
+.play-image {
+
+}
+
+.play-image{
+    width:93px;
+    height:85px;
+    display: block;
+    position: relative;
+    background: url("../images/daytime/butons.png") 0 0 no-repeat;
+}
+
+.play-image:active {
+    background: url("../images/daytime/butons.png") 0 -170px no-repeat;
+}
+
+.play-image-active {
+    background: url("../images/daytime/butons.png") 0 -170px no-repeat;
+}
+
+
+.rank-container{
+    width: 15% !important;
+    margin:5% 0 0 0;
+    text-align: center;
+    height:100%;
+}
+
+.progress-container{
+    width: 25% !important;
+    height:100%;
+    margin:10px 0 0 0;
+    position: relative;
+}
+
+.progress-box{
+    width: 20%;
+    height: 80%;
+    margin: 0 12% 0 0;
+    float:right;
+    position: relative;
+}
+.progress-bar{
+    width: 100%;
+    height: 100%;
+    background-color:#141414;
+    border: 5px solid #141414;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    position: relative;
+}
+.progress{
+    width: 100%;
+    height: 100%;
+    background-color:#3B91EA;
+    position: absolute;
+    bottom: 0;
+    background-image: -o-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: -ms-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
+    background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    -webkit-background-size: 40px 40px;
+    -moz-background-size: 40px 40px;
+    -o-background-size: 40px 40px;
+    background-size: 40px 40px;
+}
+
+.progress-text-box{
+    width: 66px;
+    height: 45px;
+    background: url("../images/daytime/progress_text_bg.png") no-repeat;
+    margin:0 0 0 17%;
+    top:-7px;
+    position: absolute;
+
+}
+
+.progress-text{
+    width: 90%;
+    height: 100%;
+    color: white;
+    font: 18px Helvetica;
+    text-align: center;
+    display: inline-block;
+    margin: 10px 0 0 0;
+}
+
+.content-table{
+    width:100%;
+    margin: 0 0 0 0;
+}
+
+.content-table .ui-block-a{
+    width: 50%;
+}
+
+.content-table .ui-block-b{
+    width: 50%;
+}
+
+
+
+
+@media (min-width: 640px) {
+    .smile{
+        margin: 0 6% 0 8%;
+    }
+
+    .progress-text-box{
+        margin: 0 0 0 27%;
+    }
+}
+@media (min-width: 480px) and (min-height: 640px) {
+    .smile {
+        width: 80%;
+        margin: 0 6% 0 8%;
+    }
+
+    .content-middle {
+        height: 36.5%;
+    }
+
+    .suggestion {
+        margin: 3% 0 0 5%;
+    }
+}

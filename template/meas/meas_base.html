@@ -1,0 +1,184 @@
+{%load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="P3P" content='CP="IDC DSP COR CURa ADMa OUR IND PHY ONL COM STA"'>
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" href="/site_media/css/bootstrap.css" type="text/css" />
+        <link rel="stylesheet" href="/site_media/css/bootstrap-responsive.css" type="text/css" />
+		<link rel="stylesheet" href="/site_media/css/bpm-screen.css" type="text/css" />
+        {%block extracss%}{% endblock %}
+        {%block style%}{% endblock %}
+
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+	{%block extrajs%}{% endblock %}
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    {% block javascript %}{% endblock%}
+<div id="fb-root"></div>
+<script src="http://connect.facebook.net/en_US/all.js"></script>
+<script>
+
+
+  window.fbAsyncInit = function() {
+
+    FB.init({
+      appId      : '210050799065722', // App ID
+      channelURL : 'http://{{ DOMAIN_NAME }}/meas/channel/', // Channel File
+      status     : true, // check login status
+      cookie     : true, // enable cookies to allow the server to access the session
+      oauth      : true, // enable OAuth 2.0
+      xfbml      : true  // parse XFBML
+    });
+
+
+			FB.getLoginStatus(function(response) {
+				if (response.authResponse) {
+					FB.Canvas.setSize({ height:100%  });
+				} else {
+					top.location.href = "https://www.facebook.com/dialog/permissions.request?app_id={{ FACEBOOK_APP_ID }}&display=page&next=http%3A%2F%2F{{ DOMAIN_NAME }}%2Fla_facebook%2Fcallback&response_type=code&fbconnect=1&perms=email%2Cread_stream%2Coffline_access%2Cpublish_stream%2Cuser_location"
+				}
+			});
+
+
+
+  }
+</script>
+<script>
+      FB.init({appId: "210050799065722", status: true, cookie: true});
+			
+     function postToFeed() {
+
+			
+        var obj = {
+          method: 'feed',
+          link: 'http://apps.facebook.com/adimsayar/',
+          picture: 'http://{{ DOMAIN_NAME }}/site_media/images/logo_small.png',
+          name: 'Adimsayar Uygulaması',
+          caption: 'Adimsayar',
+          description: '{{fb_share}}Sende adım atarak zayıflamak istiyorsan.Adimsayar uygulamasını veya {{ DOMAIN_NAME }} sitesinden ücretsiz olarak faydalanabilirsin.'
+        };
+
+        function callback(response) {
+          document.getElementById('msg').innerHTML = "Post ID: " + response['post_id'];
+        }
+
+        FB.ui(obj, callback);
+      }
+</script>
+
+<script>
+ if($.browser.opera )
+		{
+  window.fbAsyncInit = function() {
+
+    FB.init({
+      appId      : '{{ FACEBOOK_APP_ID }}', // App ID
+      status     : true, // check login status
+      cookie     : true, // enable cookies to allow the server to access the session
+      oauth      : true, // enable OAuth 2.0
+      xfbml      : true  // parse XFBML
+    });
+
+     if($.browser.opera ) //
+        {
+            FB.XD._transport="postmessage";
+            FB.XD.PostMessage.init();
+			
+        }
+
+	FB.getLoginStatus(function(response) {
+		if (response.authResponse) {
+		      FB.Canvas.setSize({height:100%});
+		} else {
+			top.location.href = "https://www.facebook.com/dialog/permissions.request?app_id={{ FACEBOOK_APP_ID }}&display=page&next=http%3A%2F%2F{{ DOMAIN_NAME }}%2Fla_facebook%2Fcallback&response_type=code&fbconnect=1&perms=email%2Cread_stream%2Coffline_access%2Cpublish_stream%2Cuser_location"
+		}
+	});
+
+  }(function() {
+        var e = document.createElement('script');
+        e.type = 'text/javascript';
+        e.src = document.location.protocol +
+          '//connect.facebook.net/en_GB/all.js';
+        e.async = true;
+        document.getElementById('fb-root').appendChild(e);
+      }());
+
+}
+</script>
+
+<script type="text/javascript">
+    //loading bar
+    $(window).load(function (){
+        $("#meas-main").css('visibility','visible').hide().fadeIn('slow').css("display","");
+        $("#loading").hide();
+        drawChart();
+    });
+
+    //window resize chart update
+    $(window).resize(function () {
+        drawChart();
+    });
+</script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-30059372-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+    <title>{% block title %}{%endblock%}</title>
+</head>
+ <body>
+{% block base-meas-content %}
+
+<div id="loading" class="loading-bar"></div>
+
+<div class="meas-container" id="meas-main" >
+    <div class="subnav">
+        <ul class="nav nav-pills">
+            <li id="sb1" {% ifequal request.path '/meas/points/' %} class="active" {% endifequal %} >
+            <a href="/meas/points/" id="b1" rel="bt">{% trans "Points" %}</a>
+            </li>
+            <li id="sb2" {% ifequal request.path '/meas/steps/' %} class="active" {% endifequal %}>
+            <a href="/meas/steps/" id="b2" rel="bt">{% trans "Steps (Daily)" %}</a>
+            </li>
+            <li id="sb3" {% ifequal request.path '/meas/total/' %} class="active" {% endifequal %}>
+                <a href="/meas/total/" id="b3" rel="bt">{% trans "Steps (Monthly)" %}</a>
+            </li>
+            <li id="sb4" {% ifequal request.path '/meas/calories/' %} class="active" {% endifequal %}>
+                <a href="/meas/calories/" id="b4" rel="bt">{% trans "Calories" %}</a>
+            </li>
+            <li id="sb5" {% ifequal request.path '/meas/bmi/' %} class="active" {% endifequal %}>
+                <a id="b5" href="/meas/bmi/" rel="bt">{% trans "Ağırlık" %}</a>
+            </li>
+            <li id="sb6" {% ifequal request.path '/diet/' %} class="active" {% endifequal %}>
+            <a id="b6" rel="bt">{% trans "Diet Program" %}</a>
+            </li>
+        </ul>
+    </div>
+
+
+{% block meas-content %}
+{% endblock meas-content %}
+
+  <div id="footer">
+
+  </div>
+{%endblock%}
+</div>
+
+</body>
+</html>

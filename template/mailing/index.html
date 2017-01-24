@@ -1,0 +1,28 @@
+<html>
+<head>
+</head>
+<body>
+<div>
+<div style="width:100%; border: 1px solid red;">
+
+<form method="post" action="/mailing/">
+<div style="width:50%; border: 1px solid red; margin:0 auto;">
+mails:
+<select name="mailing_id" id="select1" style="width:300px;">
+{% for m in mailings %}
+    <option value="{{ m.id }}">{{ m }}</option>
+{% endfor %}
+</select>
+<input type="submit" name="submit" value="Preview"/>
+</div>
+</form>
+
+</div>
+
+<div style="width:100%; border: 1px solid red;">
+<iframe src="preview/{{ mailing_id }}" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0">Yükleniyor...</iframe>
+
+</div>
+</div>
+</body>
+</html>

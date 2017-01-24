@@ -1,0 +1,128 @@
+{% extends 'meas/meas_base.html' %}    
+{% load i18n %}
+{% block title %}Aylık Adımlar{%endblock%}
+		{%block javascript%}
+      <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Date');
+        data.addColumn('number', 'Steps');
+				data.addRows({{steps|length}});
+				{% for i in steps reversed%}
+				data.setValue({{ forloop.counter0 }}, 0, '{{i.0|date:"d-M"}}')
+				data.setValue({{ forloop.counter0 }}, 1, {{i.1}})
+					{% endfor %}
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+        chart.draw(data, {width: $('#chart_div').width(), height: 395, legend:'top',chartArea: {left:'5.1%',top:30,width:'94%',height:'80%'},vAxis: {minValue: 10000}
+
+                         });
+      }
+    </script>
+
+<script language="Javascript">
+    $(document).ready( function() {
+			$('a[rel*=tb]').click(function() {
+				var link = $(this).attr('src');
+				window.location	= link;			
+				return false;
+    	}); 
+    }); 
+</script>
+
+		{% endblock %}
+{%block meas-content%}
+<div class="row-fluid meas-row">
+    <div id="chart_div" class="span10 meas-chart"></div>
+    <div class="span2">
+		<div class="step-sidebar" >
+            <div class="meas-widget">
+                    {% if info.3 >= 10000 %}
+                <img src="/site_media/images/smile1.png" />
+                        {% else %}
+                            {% if info.3 >= 7000 %}
+                <img src="/site_media/images/smile2.png" />
+                            {% else %}
+                                {% if info.3 >= 4000 %}
+                <img src="/site_media/images/smile3.png" />
+                                {% else %}
+                                    {% if info.3 >= 1000 %}
+                <img src="/site_media/images/smile4.png" />
+                                    {% else %}
+                <img src="/site_media/images/smile5.png" />
+                                {% endif %}
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+
+            </div><!---meas-widget End --->
+
+            <div class="meas-widget">
+                <p>{% trans "This Month" %}</p>
+                <p>{{total}}<span class="birim" >adım</span></p>
+                </div><!---meas-widget End --->
+
+            <div class="meas-widget">
+                <p>{% trans "Your Goal" %}</p>
+                <p>300,000<span class="birim" >adım</span></p>
+            </div><!---meas-widget End --->
+
+            <div class="meas-widget">
+                <p>{% trans "Your Average" %}</p>
+                {%if info.3 %}
+                <p>{{info.3}}<span class="birim" >adım</span></p>
+                {% else %}
+                <p>0<span class="birim" >adım</span></p>
+                {% endif %}
+            </div><!---meas-widget End --->
+
+        </div><!---step-sidebar End --->
+    </div><!---span2 End --->
+</div><!---row-fluid End --->
+
+
+<div class="row-fluid meas-row">
+    <div class="meas-big-widget span4">
+        <h4>{% trans "This Month" %}</h4>
+        <div class="widget-box">
+            <table class="info-table" >
+                <tr>
+                    <td style="text-align:right;"><span class="values" >{{info.0}} <p>{% trans "steps" %}</p></span></td>
+                    <td><span class="values-text" >{% trans "taken today this month" %}</span></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right;"><span class="values">{{info.1}} <p>{% trans "km" %}</p></span></td>
+                    <td><span class="values-text" >{% trans "traveled today this month" %}</span></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right;"><span class="values">{{info.2}} <p>{% trans "cal" %}</p></span></td>
+                    <td><span class="values-text" >{% trans "burned today this month" %}</span></td>
+                </tr>
+            </table>
+        </div><!---widget-box End --->
+    </div><!---meas-big-widget End --->
+
+
+    <div class="meas-big-widget span4" >
+        <h4>{% trans "Information" %}</h4>
+        <div class="widget-box">
+            <div class="info-text">
+            {% trans "10k steps everyday" %}
+            </div><!---info-text End --->
+        </div><!---widget-box End --->
+    </div><!---meas-big-widget End --->
+
+
+    <div class="meas-big-widget span4" >
+        <h4>Öneriler</h4>
+        <div class="widget-box">
+            <div class="info-text">
+     Neyi düzenli takip ederseniz, o iyiye gider.
+</div>
+
+        </div><!---widget-box End --->
+    </div><!---meas-big-widget  End --->
+</div><!---row-fluid End --->
+
+{% endblock %}

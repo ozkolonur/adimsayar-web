@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>My Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="{{subdomain}}/site_media/jqmobile/jquery.mobile-1.1.1.min.css" />
+	<!-- <link rel="stylesheet" href="{{subdomain}}/site_media/jqmobile/jquery.mobile.1.0.1.transitions.css" /> -->
+	<script src="{{subdomain}}/site_media/jqmobile/jquery-1.7.1.min.js"></script>
+	<!--  <script src="{{subdomain}}/site_media/mobindex/js/utilities.js" type="text/javascript"></script> -->
+	<script src="{{subdomain}}/site_media/jqmobile/jquery.mobile-1.1.1.min.js"></script>
+	<link href="{{subdomain}}/site_media/mobindex/css/style.css" rel="stylesheet" />
+	<script src="{{subdomain}}/site_media/mobindex/js/main.js" type="text/javascript"></script>
+	<script src="{{subdomain}}/site_media/mobindex/js/sim.js" type="text/javascript"></script>
+</head>
+<body>
+<div data-role="page" id="settings-page">
+    <div data-role="header" data-id="header-0" data-position="fixed">
+    <a href="settings-help.html" data-icon="info" class="ui-btn-left" data-rel="dialog" data-transition="slideup" data-iconpos="left">Yardım</a>
+    <h1>Ayarlar</h1>
+    </div><!-- /header -->
+    <div data-role="content">
+		<form action="#" method="GET" id="settings">
+			<input type="hidden" name="device_id" id="input-device_id" value="fffffffe-e0e0-17d4-4349-5aae2fce6653"  />
+			<input type="hidden" name="password" id="input-password" value="123123"  />
+			<ul data-role="listview" class="ui-listview">
+<!--
+			<li data-role="fieldcontain">
+				<label for="nickname" class="ui-input-text">Rumuz:</label></td>
+				<input type="text" name="nickname" id="input-nickname" value="" /></td>
+			</li>-->
+
+			<li data-role="fieldcontain">
+				<label for="email" class="ui-input-text">e-posta:</label>
+				<input type="text" name="email" id="input-email" value="" disabled />
+			</li>
+
+			<li data-role="fieldcontain">
+				<fieldset data-role="controlgroup" data-type="horizontal">
+						<legend>Cinsiyet:</legend>
+						<input type="radio" name="radio-choice-gender" id="gender-choice-female" value="on" config="gender" onchange="inputChanged(this);"/>
+						<label for="gender-choice-female">Kadın</label>
+						<input type="radio" name="radio-choice-gender" id="gender-choice-male" value="off" config="gender" onchange="inputChanged(this);"/>
+						<label for="gender-choice-male">Erkek</label>
+				</fieldset>
+			</li>
+
+			<li data-role="fieldcontain">
+				<label for="age" class="ui-input-text">Yaş:</label>
+			 	<input type="range" name="age" id="input-age" value="30" min="7" max="80" data-highlight="true" config="age" onchange="inputChanged(this);"/>
+			</li>
+
+			<li data-role="fieldcontain">
+				<label for="height" class="ui-input-text">Boy(cm):</label>
+			 	<input type="range" name="height" id="input-height" value="160" min="100" max="230" data-highlight="true" config="height" onchange="inputChanged(this);"/>
+			</li>
+
+			<li data-role="fieldcontain">
+				<label for="weight" class="ui-input-text">Kilo(kg):</label>
+			 	<input type="range" name="weight" id="input-weight" value="70" min="30" max="250" data-highlight="true" config="weight" onchange="inputChanged(this);" />
+			</li>
+
+	  <li data-role="fieldcontain">
+		<label for="lifestyle" class="select ui-input-text">Yaşam Biçimi:</label>
+		<select name="lifestyle" id="input-lifestyle" data-native-menu="false" config="lifestyle" onchange="inputChanged(this);">
+		  <option value="0">Seçiminiz:</option>
+		  <option value="1">Hareketsiz:Tüm gün ofiste</option>
+		  <option value="2">Az hareketli:Öğretmen, Öğrenci</option>
+		  <option value="3">Orta hareketli: Tezgahtar, Berber</option>
+		  <option value="4">Çok hareketli: Ağır işçilik</option>
+		  <option value="5">Aşırı hareketli: Sporcu</lab</option>
+		</select>
+	  </li>
+
+			<li data-role="fieldcontain">
+				<label for="mode" class="ui-input-text">Çalışma Modu:</label>
+				<select name="mode" id="input-mode" data-native-menu="false" config="mode" onchange="inputChanged(this);">
+					<option value="on">Herzaman açık</option>
+					<option value="auto">Akıllı batarya yönetimi (önerilen)</option>
+					<option value="manual">Manuel kullanım</option>
+				</select>
+			</li>
+
+			<li data-role="fieldcontain">
+				<label for="sensivity" class="ui-input-text">Hassasiyet:</label>
+			 	<input type="range" name="sensivity" id="input-sensivity" value="40" min="0" max="50" data-highlight="true"  config="sensivity" onchange="inputChanged(this);"/>
+			</li>
+
+    <div class="ui-grid-a">
+		<li class="fieldcontain ui-block-a">
+				<div><button type="button" data-theme="d" onclick="btnSettingsReset();">Ayarları sıfırla</button></div>
+				<!-- <div class="ui-block-b"><button type="button" data-theme="a" onclick="btnSave()">Save</button></div> -->
+		</li>
+		<li class="fieldcontain ui-block-b">
+				<div><button type="button" data-theme="d" onclick="logout_question();">Oturumu kapat</button></div>
+				<!-- <div class="ui-block-b"><button type="button" data-theme="a" onclick="btnSave()">Save</button></div> -->
+		</li>
+    </div>
+
+		</ul>
+	</form>
+
+    </div><!-- /content -->
+    <div data-role="footer" data-id="footer-0" data-position="fixed">
+        <div data-role="navbar">
+        <ul>
+            <li><a href="index.html" data-icon="star"><span style="font-size:18px;">Anasayfa</span></a></li>
+            <!-- <li><a href="ranking.html" data-icon="grid" >Ranking</a></li> -->
+            <li><a href="settings.html" data-icon="gear" class="ui-btn-active" ><span style="font-size:18px;">Ayarlar</span></a></li>
+        </ul>
+    </div><!-- /navbar -->
+    </div><!-- /footer -->
+		<div data-role="popup" id="popup" data-theme="e" data-overlay-theme="a" class="ui-content" style="max-width:280px">
+			<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+			<p id="popupmsg">none</p>
+		</div>
+
+	<div data-role="popup" id="popupDialog2" data-overlay-theme="a" data-theme="c" style="max-width:400px;" class="ui-corner-all">
+	  <div data-role="header" data-theme="a" class="ui-corner-top">
+		<h1 id="questionheader">Çıkış</h1>
+	  </div>
+	  <div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+		<h3 id="questionmsg" class="ui-title">Uygulamadan çıkış yapmak istediğinize eminmisiniz? Adımsayma işlemini anasayfadaki başlat/durdur butonuyla durdurabilirsiniz.</h3>
+		<!-- <p>This action cannot be undone.</p> -->
+		<a href="#" id="option1" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="app_request('','trackevent', 'logout_question', 'continue_logout');btnLogOut();">Evet</a>    
+		<a href="#" id="option2" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="b" onclick="app_request('','trackevent', 'logout_question', 'cancel_logout');$('#popupDialog2').popup('close');">Hayır</a>  
+	  </div>
+	</div>
+
+</div><!-- /page -->
+</body>
+</html>

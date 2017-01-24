@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block extracss %}
+    <link rel="stylesheet" href="/site_media/css/blueprint/screen.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="/site_media/css/django-profile.css" type="text/css" media="screen, projection" />
+{% endblock %}
+{% block extrajs %}{% endblock %}
+{% block base-content %}
+<div class="row">
+    <div class="span12">{% block nav-main %}{% endblock %}</div>
+    {% block columnwrap %}
+        <div id="content-main" class="span8" style="margin-left:5%">
+            {% block content %}{% endblock %}
+        </div><!-- END content-main -->
+        <div id="content-related" class="span3" style="margin-left:5%">
+            {% block content-related %}{% endblock %}
+        </div><!-- END content-related -->
+    {% endblock %}
+</div>
+{% endblock %}
+
+

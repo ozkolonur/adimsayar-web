@@ -1,0 +1,245 @@
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, form, label,  table, caption, tbody, tfoot, thead, tr, th, td {margin:0;padding:0;border:0;font-weight:inherit;font-style:inherit;font-size:100%;font-family:inherit;vertical-align:baseline;}
+
+table {border-collapse:separate;border-spacing:0;}
+
+table, td, th {vertical-align:middle;}
+
+blockquote:before, blockquote:after, q:before, q:after {content:"";}
+
+blockquote, q {quotes:"" "";}
+
+/* typography.css */
+
+html{height:101%}
+
+body {font-size:75%;color:#222;background:#fff;font-family:"Helvetica Neue", Helvetica, Arial, sans-serif; height:100% margin:0;padding:0;}
+
+h1, h2, h3, h4, h5, h6 {font-weight:normal;color:#111;}
+
+h1 {font-size:3em;line-height:1;margin-bottom:0.5em;}
+
+h2 {font-size:2em;margin-bottom:0.75em;}
+
+h3 {font-size:1.5em;line-height:1;margin-bottom:1em;}
+
+h4 {font-size:1.2em;line-height:1.25;margin-bottom:1.25em;height:1.25em;}
+
+h5 {font-size:1em;font-weight:bold;margin-bottom:1.5em;}
+
+h6 {font-size:1em;font-weight:bold;}
+
+h1 img, h2 img, h3 img, h4 img, h5 img, h6 img {margin:0;}
+
+p {margin:0 0 1.5em;}
+
+p img {float:left;margin:1.5em 1.5em 1.5em 0;padding:0;}
+
+p img.right {float:right;margin:1.5em 0 1.5em 1.5em;}
+
+blockquote {margin:1.5em;color:#666;font-style:italic;}
+
+strong {font-weight:bold;}
+
+a {color:#009}
+
+em, dfn {font-style:italic;}
+
+dfn {font-weight:bold;}
+
+sup, sub {line-height:0;}
+
+abbr, acronym {border-bottom:1px dotted #666;}
+
+address {margin:0 0 1.5em;font-style:italic;}
+
+del {color:#666;}
+
+pre, code {margin:1.5em 0;white-space:pre;}
+
+pre, code, tt {font:1em 'andale mono', 'lucida console', monospace;line-height:1.5;}
+
+li ul, li ol {margin:0 1.5em;}
+
+ul, ol {margin:0 1.5em 1.5em 1.5em;}
+
+ul {list-style-type:disc;}
+
+ol {list-style-type:decimal;}
+
+dl {margin:0 0 1.5em 0;}
+
+dl dt {font-weight:bold;}
+
+dd {margin-left:1.5em;}
+
+caption {background:#eee;}
+
+.small {font-size:.8em;margin-bottom:1.875em;line-height:1.875em;}
+
+.large {font-size:1.2em;line-height:2.5em;margin-bottom:1.25em;}
+
+.hide {display:none;}
+
+.quiet {color:#666;}
+
+.loud {color:#000;}
+
+.highlight {background:#ff0;}
+
+.added {background:#060;color:#fff;}
+
+.removed {background:#900;color:#fff;}
+
+.first {margin-left:0;padding-left:0;}
+
+.last {margin-right:0;padding-right:0;}
+
+.top {margin-top:0;padding-top:0;}
+
+.bottom {margin-bottom:0;padding-bottom:0;}
+
+:focus {
+
+outline: 0;
+
+}
+* {margin: 0;}
+html, body {
+height: 100%;
+}
+/*for FireFox*/
+button::-moz-focus-inner,
+input[type="reset"]::-moz-focus-inner,
+input[type="button"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner,
+input[type="file"] > input[type="button"]::-moz-focus-inner {
+    border: none;
+}
+/*for IE8 */
+input[type="submit"]:focus, input[type="button"]:focus ,button:focus
+{outline : none;}
+/* remember to highlight inserts somehow! */
+ins {text-decoration: none;}
+del {text-decoration: line-through;}
+/* tables still need 'cellspacing="0¨' in the markup */
+table {border-collapse: collapse;border-spacing: 0;}
+
+
+
+
+#bpm-main{height:auto;padding:10px 5px 5px 5px;}
+.bpm-top-button{width:100%;  position:relative; margin-top:10px;}
+.bpm-top-button a {height:30px; background:#D23200; -moz-border-radius:10px;-khtml-border-radius:10px;-webkit-border-radius:10px; border-radius: 10px 10px 10px 10px; text-decoration:none; font:MyriadPro-Regular; font-size:21px; color:#FFFFFF; display:inline; padding:11px; position:relative; z-index:0;}
+.bpm-top-button a:hover,.bpm-button:active,.bpm-btactive a{height:30px; background:url(../images/bpm_title.png); -moz-border-radius:10px;-khtml-border-radius:10px;-webkit-border-radius:10px; text-decoration:none; padding:11px;}
+.bpm-title{width:100%; height:30px; background:url(../images/bpm_title.png);  font:Arial; font-size:24px; color:#FFF; text-align:center; margin-top:3px;  padding-top:7px;padding-bottom:8px; position:relative; z-index:1;}
+.bpm-table-bt{float:right;}
+.bpm-table-bt a{height:30px; background:#227895; -moz-border-radius:5px;-khtml-border-radius:5px;-webkit-border-radius:5px;border-radius: 5px 5px 5px 5px; text-decoration:none; font:Myriad Pro; font-size:21px; color:#FFFFFF; display:inline; padding:5px; position:relative; z-index:0;padding-bottom:7px; cursor:pointer;}
+.bpm-table-bt a:hover,.bpm-table-bt a:active,.bpm-table-bt-active a{height:30px; background:#D23200; -moz-border-radius:5px;-khtml-border-radius:5px;-webkit-border-radius:5px;border-radius: 5px 5px 5px 5px; text-decoration:none; padding:5px;padding-bottom:7px;}
+.meas-main{}
+#bpm-table tbody,#bpm-table  thead{line-height: 2em;}
+#chart_div {width:82.3%; height:350px; float:left;  padding-top:5px; border:#ccc 2px solid; background:#fff; -moz-border-radius:5px;-khtml-border-radius:5px;-webkit-border-radius:5px;border-radius:5px 5px 5px 5px;  -moz-box-shadow: 5px 5px 5px #ccc;-webkit-box-shadow: 5px 5px 5px #ccc; box-shadow: 5px 5px 5px #ccc; }
+.smiles {width:100%; height:auto;  border:3px solid #D8D8D8;positon:relative;text-align:center;background:#F7F7F7; 
+-moz-border-radius:5px;-khtml-border-radius:5px;-webkit-border-radius:5px;border-radius:5px 5px 5px 5px; -moz-box-shadow: 5px 5px 5px #ccc;-webkit-box-shadow: 5px 5px 5px #ccc; box-shadow: 5px 5px 5px #ccc; }
+.smiles img {width:100px; margin:5px;}
+.total-steps{width:100%; height:auto; background:#F7F7F7;margin-left:2px; margin-top:9px;border:2px solid #D8D8D8; 
+-moz-border-radius:5px;-khtml-border-radius:5px;-webkit-border-radius:5px;border-radius:5px 5px 5px 5px;  -moz-box-shadow: 5px 5px 5px #ccc;-webkit-box-shadow: 5px 5px 5px #ccc; box-shadow: 5px 5px 5px #ccc;}
+.total-steps p {font:arial; font-size:20px; color:#2E64FE; text-align:center; margin:5px;}
+.step-sidebar{width:16%;float:right;margin-right:8px;}
+.step-main{margin-top:3px;position:relative;height:auto;}
+#step-info{width:100%;height:auto;clear:both;padding-bottom:20px;}
+.info-table{font-family: Tahoma, Verdana, Arial, sans-serif !important;width:49%;height:250px;border:2px  #000; solid;margin-top:1%;float:left; -moz-box-shadow: 2px 5px 10px #ccc;-webkit-box-shadow: 2px 5px 10px #ccc; box-shadow: 2px 5px 10px #ccc;}
+.widget-right{width:49%;height:250px;border:3px #ccc;; solid; margin-right:3px;margin-top:1%;float:right;-moz-box-shadow:2px 5px 10px 5px #ccc;-webkit-box-shadow: 2px 5px 10px #ccc; box-shadow: 2px 5px 10px #ccc;}
+.widget-right li {list-style-type:none}
+.widget-box{width:70%;height:auto;margin:0 auto;margin-top:10px;}
+.facebook-paylas {float:right;margin:10px;position:relative;}
+.facebook-paylas a{cursor:pointer;z-index:11;left:-160px; position:absolute;  }
+.info-table{width:auto;margin:0 auto;}
+.info-table tr {line-height:50px;}
+.info-table tr p {font-size:16px;display:inline;margin:0}
+.values {font-size:36px;color:red;padding:10px 5px 0 0;}
+.values-text{font-size:26px;padding:4px;}
+.widget-right span{margin-left:20px;line-height:24px;}
+.widget-title{width:100%; height:30px; background:url(../images/bpm_title.png);  font:Arial; font-size:24px; color:#FFF; text-align:center; padding-top:2px;padding-bottom:2px; position:relative; z-index:1;}
+#diet-suggestion,#calori-suggestion{text-align:center;}
+#diet-suggestion{height:200px;}
+#diet-suggestion ul li div,#calori-suggestion ul li div{font-family: Tahoma, Verdana, Arial, sans-serif !important; height:150px;font-size:26px; margin:35px; list-style-type:none;}
+.info-text{font-family: Tahoma, Verdana, Arial, sans-serif !important;font-size:21px;line-height:27px;margin-top:10px;margin-left:15px;margin-right:5px;}
+#chartbox{ width:82%; height:80%; float:left;  padding-top:5px; border:#ccc 2px solid; background:#fff; -moz-border-radius:5px;-khtml-border-radius:5px;-webkit-border-radius:5px;border-radius:5px 5px 5px 5px;  -moz-box-shadow: 5px 5px 5px #ccc;-webkit-box-shadow: 5px 5px 5px #ccc; box-shadow: 5px 5px 5px #ccc;}
+#chart_img{margin:0 0 5px 2%;}
+.button {
+   border-top: 1px solid #96d1f8;
+   background: #65a9d7;
+   background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#65a9d7));
+   background: -webkit-linear-gradient(top, #3e779d, #65a9d7);
+   background: -moz-linear-gradient(top, #3e779d, #65a9d7);
+   background: -ms-linear-gradient(top, #3e779d, #65a9d7);
+   background: -o-linear-gradient(top, #3e779d, #65a9d7);
+   padding: 8px 16px;
+   -webkit-border-radius: 10px;
+   -moz-border-radius: 10px;
+   border-radius: 10px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: white;
+   font-size: 19px;
+   font-family: Helvetica, Arial, Sans-Serif;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+.button:hover {
+   border-top-color: #689fc4;
+   background: #689fc4;
+   color: #fcfcfc;
+   }
+.button:active {
+   border-top-color: #3c6682;
+   background: #3c6682;
+   }
+
+.bmi-form{width:100%;margin:0 auto;margin-top:10px;text-align:center;}
+.bmi-form div{width:100%;height:40px;}
+.bmi-form p{width:50%;float:left;}
+.bmi-form input{width:22%;float:left;font-size:16px;margin-top:5px;	}
+.bmi-form button{width:120px;height:40px;margin:10px 0 10px 0;}
+.bmi-advice .bmi-text{color:#36963b;}
+.birim {color:#D23200;font-size:12px;padding:3px;}
+.birim-2 {color:#D23200;font-size:12px;padding:3px;float:left;margin-top:14px}
+#up-text p{color:#D23200;font-size:22px;display:none;}
+.alt-bar{
+	height:50px;
+	width:100%;
+	background-color: #CC3300;
+	position:fixed;
+	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0); 
+	opacity: 0;
+	-moz-opacity: 0;
+	text-align:center;
+	left:0px;
+	z-index:9999999;
+	margin:0px;
+	padding:0px;
+	bottom:0px;
+	border-bottom:2px solid #fff;
+	border-top: 1px solid #ebebeb;
+	line-height:46px;
+	font-size: 18px;
+	font-family:'Lucida Grande',sans-serif;
+
+}
+.text{
+margin-top:10px;
+margin-left:100px;
+font-size:16px;
+color:#73C778;
+font-weight:bold;
+}
+.number{
+margin:5px;
+color:#DA470C;
+}
+.box{
+display:inline;
+}
+

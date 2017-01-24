@@ -1,0 +1,229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Adimsayar</title>
+	<meta name="viewport" content="width=device-width, target-densitydpi=high-dpi">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="{{subdomain}}/site_media/jqmobile/jquery.mobile.custom.min.css" />
+	<!-- <link rel="stylesheet" href="{{subdomain}}/site_media/jqmobile/jquery.mobile.1.0.1.transitions.css" /> -->
+	<script src="{{subdomain}}/site_media/jqmobile/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript">
+	$(document).bind("mobileinit", function()
+	{
+	    //logit("mobile-initx");
+	    if (navigator.userAgent.indexOf("Android") != -1)
+   		{
+      	    //logit("disabling transitions");
+        	$.mobile.defaultPageTransition = 'none';
+        	$.mobile.defaultDialogTransition = 'none';
+    	}
+	});
+	</script>
+	<!--  <script src="{{subdomain}}/site_media/mobindex/js/utilities.js" type="text/javascript"></script> -->
+	<script src="{{subdomain}}/site_media/jqmobile/jquery.mobile.custom.min.js"></script>
+	<link href="{{subdomain}}/site_media/mobindex/css/style.css" rel="stylesheet" />
+	<link href="{{subdomain}}/site_media/mobindex/css/base.css" rel="stylesheet" />
+	<link href="{{subdomain}}/site_media/mobindex/css/daytime.css" rel="stylesheet" title="daytime"/>
+	<link href="{{subdomain}}/site_media/mobindex/css/night.css" rel="stylesheet" title="night"/>
+	<script src="{{subdomain}}/site_media/mobindex/js/main.js" type="text/javascript"></script>
+	<script src="{{subdomain}}/site_media/mobindex/js/sim.js" type="text/javascript"></script>
+	<script src="{{subdomain}}/site_media/mobindex/js/utilities.js" type="text/javascript"></script>
+	<script src="{{subdomain}}/site_media/mobindex/js/styleswitcher.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    $(function (){
+        $("#play-button").click(function (){
+            $("span",this).toggleClass('play-image-active');
+        });
+    });
+
+        $(document).ready(function (){
+            $("#play-button").click(function (){
+                var img_element = $("img",this);
+                if (img_element.hasClass('start')){
+                    var img_name = "pause-icon.png";
+                    img_element.attr('src',"{{subdomain}}/site_media/mobindex/images/"+img_name).removeClass('start').addClass('pause');
+                    status_change(false);
+                    //progress_change(45);
+                    //smile_change(4)
+                }else{
+                    var img_name = "play-icon.png";
+                    img_element.attr('src',"{{subdomain}}/site_media/mobindex/images/"+img_name).removeClass('pause').addClass('start');
+                    status_change(true);
+                    //progress_change(75);
+                    //smile_change(2)
+                }
+            });
+        });
+
+
+        function status_change(status){
+            if (status){
+				btnStartStopOnClick();
+                //console.log("True")
+            }else{
+				btnStartStopOnClick();
+                //console.log("False")
+            }
+        }
+
+    function progress_change(progress){
+        var progress_element = $("#progress");
+        var progress_text_box = $("#progress-text-box");
+        var progress_text = $("#progress-text");
+        var progress_value = parseInt(progress);
+        var element_style = progress_element.attr("style");
+        if (element_style){
+            var ex_progress = element_style.match("\\d+")[0];
+            if (ex_progress == progress){
+                return false;
+            }
+            var progress_100 = $("#progress-bar").height();
+            var progress_text_new_position = progress_100 - parseInt((progress_100*progress_value)/100);
+            progress_text_box.animate({
+                'margin-top':progress_text_new_position
+            },500);
+            progress_element.animate({'height':progress_value+'%'},500);
+            progress_text.text('%'+progress_value)
+        }else{
+            var progress_height = progress_element.height();
+            var progress_text_position = progress_height - parseInt((progress_height*progress_value)/100);
+            progress_text_box.animate({
+                'margin-top':progress_text_position
+            },500);
+            progress_element.animate({'height':progress_value+'%'},500);
+            progress_text.text('%'+progress_value)
+        }
+    }
+
+        function smile_change(smile){
+            var smile_image_url = $("#smile").attr('src').slice(0,-5);
+            var new_image_url = smile_image_url + smile + '.png';
+            $("#smile").attr("src",new_image_url);
+        }
+        $(document).ready(function (){
+           var width = $(window).width();
+           $("#resulotion").text(width);
+        });
+
+
+    </script>
+
+
+
+</head>
+<body>
+	<div data-role="page" id="index-page">
+    <div class="container">
+    <div class="ui-grid-a content-top">
+        <div class="ui-block-a step-container">
+            <div class="steps-main">
+                <span class="step-text">Adım : <span id="step-text">0</span></span>
+                <a href="#" class="reset" id="reset" onclick="btnResetOnClick();">
+                    <img src="{{subdomain}}/site_media/mobindex/images/daytime/reset.png" id="reset-image"/>
+                </a>
+                <div class="steps-main-bg"></div>
+            </div><!--steps-main end -->
+        </div>
+        <div class="ui-block-b step-button">
+            <div class="play-pause">
+                <a href="#" class="play-button" id="play-button" onclick="">
+                    <span class="play-image"></span>
+                </a>
+            </div><!--play-pause end -->
+        </div>
+    </div><!-- /grid-a -->
+
+    <div class="ui-grid-b content-middle" >
+        <div class="ui-block-a smile-box">
+            <img src="{{subdomain}}/site_media/mobindex/images/smile_1.png" class="smile" id="smile">
+        </div>
+        <div class="ui-block-b rank-container" >
+            <div style="display:none;">
+                <img src="{{subdomain}}/site_media/mobindex/images/daytime/rank.png" class="rank-image">
+            </div>
+        </div>
+        <div class="ui-block-c progress-container">
+            <div class="progress-box">
+                <div class="progress-bar" id="progress-bar">
+                    <div class="progress" id="progress"></div>
+                </div>
+            </div>
+            <div class="progress-text-box" id="progress-text-box">
+                <span class="progress-text" id="progress-text">%100</span>
+            </div>
+        </div>
+    </div><!-- /grid-b -->
+
+    <div class="main-table">
+        <div class="ui-grid-a content-table" >
+            <div class="ui-block-a main-table-col main-puan">
+                <div class="main-table-text-container">
+                    <span style="font-size:18px;">Bugün:</span> <b id="step-today" style="font-size:24px;">-</b>
+                </div>
+            </div>
+            <div class="ui-block-b main-table-col main-siralama">
+                <div class="main-table-text-container">
+                    <span style="font-size:18px;">Ortalama:</span><b id="step-this-week" style="font-size:24px;">-</b>
+                </div>
+            </div>
+            <!--<div class="ui-block-a main-table-col main-siralama">-->
+                <!--<div class="main-table-text-container">-->
+                    <!--Sıralama: <b id="siralama">178322</b>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="ui-block-b main-table-col main-haftalik">-->
+                <!--<div class="main-table-text-container">-->
+                    <!--Haftalık: <b id="haftalik">178323</b>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div><!-- /grid-c -->
+    </div>
+
+    <div class="suggestion">
+        <span class="suggestion-text" id="suggestion-text" style="font-size:22px;line-height:120%;">
+            Lorem Ipsum
+        </span>
+    </div>
+
+	<div data-role="footer" data-id="footer-0" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><a href="index.html" data-icon="star" class="ui-state-persist ui-btn-active"><span style="font-size:18px;">Anasayfa</span></a></li>
+				<!-- <li><a href="ranking.html" data-icon="grid">Ranking</a></li> -->
+				<li><a href="settings.html" data-icon="gear"><span style="font-size:18px;">Ayarlar</span></a></li>
+			</ul>
+		</div><!-- /navbar -->
+	</div><!-- /footer -->
+
+    <div data-role="popup" id="popup" data-theme="e" data-overlay-theme="a" class="ui-content" style="max-width:280px">
+			<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+			<p id="popupmsg">none</p>
+		</div>
+	</div><!-- /page -->
+
+	<div data-role="page" id="help">
+	<div data-role="header" data-theme="d" data-position="inline">
+		<h1>Dialog</h1>
+	</div>
+	<div data-role="content" data-theme="c">
+		<h1>Delete page</h1>
+		<p>This is a regular page, styled as a dialog. To create a dialog, just link to a normal page and include a transition and <code>data-rel="dialog"</code> attribute.</p>
+		<a href="docs-dialogs.html" data-role="button" data-rel="back" data-theme="b">OK, Close</a>
+		<a href="docs-dialogs.html" data-role="button" data-rel="back" data-theme="c">There is problem here</a>
+	</div>
+	<div data-role="popup" id="popupDialog" data-overlay-theme="a" data-theme="c" style="max-width:400px;" class="ui-corner-all">
+	  <div data-role="header" data-theme="a" class="ui-corner-top">
+		<h1 id="questionheader">Güncelleme</h1>
+	  </div>
+	  <div data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+		<h3 id="questionmsg" class="ui-title">Uygulamanın bu sürümü artık desteklenmiyor. Yeni sürümü şimdi yüklemek istermisiniz?</h3>
+		<!-- <p>This action cannot be undone.</p> -->
+		<a href="#" id="option1" data-role="button" data-inline="true" data-rel="back" data-theme="c" onclick="app_request('','trackevent', 'update_question', 'declined');btnLogOut();">Uygulamayı Kapat</a>    
+		<a href="#" id="option2" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="b" onclick="app_request('','trackevent', 'update_question', 'accepted');updateSoftware();">Evet, güncelle</a>  
+	  </div>
+	</div>
+
+
+</div>
+</body>
+</html>

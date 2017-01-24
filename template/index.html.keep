@@ -1,0 +1,261 @@
+{% extends "base.html" %}
+{% load i18n %}
+{%block extracss%} 
+<meta property="og:title" content="Adımsayar" />
+<meta property="og:type" content="company" />
+<meta property="og:image" content="" />
+<meta property="og:site_name" content="Adımsayar" />
+{% endblock %}
+
+{% block extrajs %}
+
+{% endblock %}
+{% block script %}
+<script type="text/javascript" src="/site_media/js/jcarousellite_1.0.1.min.js"></script>
+		<script type="text/javascript">
+		$(function() {
+			$("#diet-suggestion").jCarouselLite({
+				vertical: true,
+				visible: 6,
+				auto:5000,
+				speed:1000
+			});
+		});
+</script>
+
+<script type="text/javascript" >
+function load() {
+$.ajax({
+        url: '/meas/grandtotal/',
+        type: 'POST',
+				dataType : 'json',
+        success: function(result) {
+        $.each(result, function(i,result){
+						if (result){
+						$('#grand-total').html(result);
+						}
+
+						});
+
+        }
+      });
+}
+
+
+
+setInterval(function(){load();},10000)
+
+</script>
+
+<!-- Place this render call where appropriate -->
+<script type="text/javascript">
+  window.___gcfg = {lang: 'tr'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId={{ FACEBOOK_APP_ID }}";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".answer span").each(function(){
+            var span_height = $(this).height();
+            var answer_height = $(this).parents(".answer").height();
+            var margin_top = (parseInt(answer_height)-parseInt(span_height))/2;
+            $("input", $(this).parent()).css("margin-top",margin_top);
+        });
+
+
+    });
+
+    $(document).ready(function(){
+        $(".answer input").click(function(){
+            var data = {}
+            data['answer'] = $(this).attr("value")
+
+            $.ajax({
+                url: "/poll/answer/",
+                type: "POST",
+                data: data,
+                success: function(data){
+                    question_animate();
+                },
+                error: function(){
+                    alert("İşlem yaparken bir hata oluştu, lütfen daha sonra tekrar deneyiniz.")
+                },
+            });
+        });
+    });
+
+    function question_animate(){
+        $(".widget-main").slideUp(200);
+        $(".widget-thankyou").slideDown(500);
+    }
+
+
+</script>
+
+
+{% endblock %}
+{% block banner %}
+<div id="banner">
+<img src="/site_media/images/banner_{{ OVERLOAD_SITE }}.png" class="active">
+
+</div><!---banner End --->
+
+{% endblock %}
+
+{% block nav-main %}
+<div id="step-info" >
+
+<div class="widget-left" style="height:180px">
+<div class="miniwidget-header">
+<span style="font-size:18px;">Cinsiyete Göre Günlük Ortalama Adımlar</span>
+</div>
+<div class="miniwidget-left" style="margin-top:0">
+<img src="/site_media/images/venus.png" class="venus"/>
+<span class="adim-count">2,391</span>
+<p class="adim-birim">adım</p>
+</div><!--widget-left bitis -->
+<div class="miniwidget-right" style="margin-top:0">
+<img src="/site_media/images/mars.png"  class="mars" />
+<span class="adim-count" >3,316</span>
+<p class="adim-birim">adım</p>
+</div><!--widget-right bitis -->
+<div style="clear:both"></div>
+
+<div class="miniwidget-footer">
+<span>Son Güncelleme:00:00 15/04/2012</span>
+</div>
+</div>
+
+<div class="widget-right" >
+
+<script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
+<script>
+new TWTR.Widget({
+  version: 2,
+  type: 'search',
+  search: 'from:adimsayar OR #adimsayar',
+  interval: 30000,
+  title: '',
+  subject: 'Sesini duyur',
+  width: 476,
+  height: 315,
+  theme: {
+    shell: {
+      background: '#575757',
+      color: '#ffffff'
+    },
+    tweets: {
+      background: '#ffffff',
+      color: '#444444',
+      links: '#1985b5'
+    }
+  },
+  features: {
+    scrollbar: false,
+    loop: true,
+    live: true,
+    behavior: 'default'
+  }
+}).render().start();
+</script>
+
+
+
+
+
+</div><!---widget-right End --->
+<div class="widget-left" style="height:30px;text-align:center;padding-top:8px;" >
+<!-- Place this tag where you want the +1 button to render -->
+<div class="fb-like" style="top:-5px; margin-right:15px;" data-send="true" data-layout="button_count" data-width="10" data-href="http://www.facebook.com/adimsayar" data-show-faces="false" ></div>
+<g:plusone size="medium"></g:plusone>
+
+<!-- twitter-follow button -->
+<a href="https://twitter.com/adimsayar" class="twitter-follow-button" data-show-count="false">Follow @adimsayar</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>
+<div class="widget-left" style="height:150px;">
+    <div class="widget-thankyou"><span>Geri bildiriminiz için teşekkürler.</span></div>
+    <div class="widget-main">
+        <span class="question">{{question}}</span>
+        <div class="answers">
+
+
+            <form>
+                {% for answer in answers%}
+                <div class="answer"><label id="answer-button" ><input type="radio"  name="answer-radio" value="{{answer.id}}"><span>{{answer}}</span></label></div>
+                {%endfor%}
+            </form>
+
+
+            <div style="clear:left"></div>
+        </div><!--answers bitis -->
+    </div><!--widget-main bitis -->
+</div><!--widget-left bitis -->
+<div style="clear:both"></div>
+{% if 1 < 2 %}
+<div style="margin-top:28px;">
+
+<span style="font-family: Tahoma, Verdana, Arial, sans-serif !important;font-size:22px; color:#3C3C3C; text-align:left; ">Adımölçer kullanmak fiziksel aktiviteyi artırıyor</span>
+<br>
+<span style="font-size:15px; color:#3C3C3C;">
+2246 kişinin katılımıyla yapılan ve yüzde 85’inin kadın olduğu bir çalışmaya göre başlangıca göre pedometre kullanıcıları fiziksel aktivitelerini yüzde 26.9 oranında artırmışlardır. Önemli olan ve hedeflenen fiziksel aktivitedeki artışı günlük 10 bin adım seviyesine ulaştırmak olmalıdır. Ayrıca bu katılımcıların sistolik kan basınçlarında da 1.7- 5.9 mmHg seviyesinde azalma olduğu gözlenmiştir.
+
+Bu çalışmanın sonucunda pedometrenin fiziksel aktiviteyi önemli derecede arttırdığı, beden kitle indeksini ve kan basıncını düşürmede yardımcı olduğu ortaya çıkmıştır.
+<span>(Milliyet, 12/03/2009, Dilara Koçak)
+</div>
+{% else %}
+<div style="margin-top:28px;">
+
+<span style="font-family: Tahoma, Verdana, Arial, sans-serif !important;font-size:22px; color:#3C3C3C; text-align:left; ">Adımölçer kullanmak fiziksel aktiviteyi artırıyor</span>
+<br>
+<span style="font-size:15px; color:#3C3C3C;">
+2246 kişinin katılımıyla yapılan ve yüzde 85’inin kadın olduğu bir çalışmaya göre başlangıca göre pedometre kullanıcıları fiziksel aktivitelerini yüzde 26.9 oranında artırmışlardır. Önemli olan ve hedeflenen fiziksel aktivitedeki artışı günlük 10 bin adım seviyesine ulaştırmak olmalıdır. Ayrıca bu katılımcıların sistolik kan basınçlarında da 1.7- 5.9 mmHg seviyesinde azalma olduğu gözlenmiştir.
+
+Bu çalışmanın sonucunda pedometrenin fiziksel aktiviteyi önemli derecede arttırdığı, beden kitle indeksini ve kan basıncını düşürmede yardımcı olduğu ortaya çıkmıştır.
+<span>(Milliyet, 12/03/2009, Dilara Koçak)
+</div>
+<!-- it is alldaypedometer 
+<div style="margin-top:28px;">
+
+<span style="font-family: Tahoma, Verdana, Arial, sans-serif !important;font-size:22px; color:#3C3C3C; text-align:left; ">According to World Health Organization</span>
+<br>
+<span style="font-size:15px; color:#3C3C3C;">
+A walker loses weight, lowers cholesterol, reduces conditions associated with hypertension, slows aging and the decline of aerobic capacity, increases strength, flexibility and balance, strengthens bones and increases stamina.
+<span>
+</div>-->
+{% endif %}
+<div class="logo-bar">
+<div>
+{% if 1 < 2 %}
+<a href="http://www.etohum.com" target="_blank"><img src="/site_media/images/etohum-logo.gif"/></a>
+<a href="http://www.doktorsensin.com" target="_blank"><img src="/site_media/images/drsensin.png"/></a>
+{% else %}
+<!-- it is alldaypedometer -->
+<a href="http://www.etohum.com" target="_blank"><img src="/site_media/images/etohum-logo.gif"/></a>
+{% endif %}
+<!---<a href="http://www.qualcomm.com" target="_blank"><img src="/site_media/images/qualcomm.jpg"/></a> --->
+<div style="clear:left"></div>
+</div>
+</div>
+<!--- logo-bar End --->
+
+</div><!---step-info End --->
+
+{% endblock %}
+
+

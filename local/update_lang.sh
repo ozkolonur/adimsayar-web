@@ -1,0 +1,1 @@
+/home/ubuntu/adimsayar/update_lang.sh

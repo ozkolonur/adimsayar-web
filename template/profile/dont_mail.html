@@ -1,0 +1,36 @@
+{% extends "base_1col.html" %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+{% block title %}Adımsayar{%endblock%}
+{% block content %}
+<div id="text-ct" >
+
+{{ content.text|safe}}
+{% if mail_type == "weekly" %}
+<p style="color:red;">Haftalik Rapor e-posta listesinden ciktiniz</p>
+{% endif %}
+{% if mail_type == "weight_update" %}
+<p style="color:red;">Hedef hatirlatma e-posta listesinden ciktiniz</p>
+{% endif %}
+{% if mail_type == "won_badge" %}
+<p style="color:red;">Rozet kazanma e-posta listesinden ciktiniz</p>
+{% endif %}
+<br/>
+<br/>
+<br/>
+</div>
+<div>
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-3160155742064565";
+/* adimsayar-leaderboard-homepage */
+google_ad_slot = "8770604046";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+<div style="clear:both"></div>
+{% endblock %}

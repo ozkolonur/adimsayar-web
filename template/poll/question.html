@@ -1,0 +1,60 @@
+<html>
+<head>
+</head>
+<body>
+<div style="width:50%; height:50%; border: 1px red solid;">
+
+<div id="question_widget_left" style="width:19%; float:left; height:100%;">
+<div id="question_widget_left_img" style="width:100%; height:70%;">
+<img src="/site_media/images/mail_question_mark.png" style="margin:15%; auto;">
+</div>
+<div id="question_widget_left_txt" style="width:100%; height:29%;">
+Sonuçları görmek için <a href="#">buraya tıklayın.</a>
+</div>
+
+</div>
+<div id="question_widget_right" style="width:80%; float:right; height:100%;">
+
+<div id="question_widget_question" style="width:100%; height:40%;">
+{{question}}
+</div> <!-- question_widget_answers -->
+
+<div id="question_widget_answers" style="width:100%; height:60%;">
+
+
+<div style="width:100%; height:49%;">
+<div style="width:49%; height:100%; float:left;">
+<div class="answer_button" style="background:orange; width:80%; height:70%; margin:2% 2% 2% 2%; auto;">
+<a href="{{answer_links.0}}" target="_blank">{{answers.0}}</a>
+</div>
+</div>
+<div style="width:49%; height:100%; float:right;">
+<div class="answer_button" style="background:orange; width:80%; height:70%; margin:2% 2% 2% 2%; auto;">
+<a href="{{answer_links.1}}" target="_blank">{{answers.1}}</a>
+</div>
+</div>
+</div> <!-- question_widget_answers_1 -->
+
+
+{% if answers.2%}
+<div style="width:100%; height:49%;">
+<div style="width:49%; height:100%; float:left;">
+<div class="answer_button" style="background:orange; width:80%; height:70%; margin:2% 2% 2% 2%; auto;">
+<a href="{{answer_links.2}}" target="_blank">{{answers.2}}</a>
+</div>
+
+</div>
+<div style="width:49%; height:100%; float:right;">
+<div class="answer_button" style="background:orange; width:80%; height:70%; margin:2% 2% 2% 2%; auto;">
+<a href="{{answer_links.3}}" target="_blank">{{answers.3}}</a>
+</div>
+</div>
+</div> <!-- question_widget_answers_2 -->
+{% endif %}
+</div> <!-- question_widget_answers -->
+
+</div> <!-- question_widget_right -->
+
+</div>
+</body>
+</html>

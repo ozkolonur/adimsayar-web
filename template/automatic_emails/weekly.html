@@ -1,0 +1,74 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Haftalık Rapor</title>
+</head>
+
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="center" valign="top" bgcolor="#f6f3e4" style="background-color:#f6f3e4;"><br>
+    <br>
+    <table width="600" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td align="center" valign="top" style="padding-left:13px; padding-right:13px; background-color:#ffffff;"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><table width="84" border="0" cellspacing="0" cellpadding="0">
+
+              <tr>
+                <td height="80" align="center" valign="middle" bgcolor="#d80000" style="font-family:Arial, Helvetica, sans-serif; color:#ffffff;"><div style="font-size:15px;"><img src="http://www.adimsayar.com/site_media/images/logo72_adimsayar.png" width="84" style="display:block;"></div><!--<b>Issue</b>--></td>
+              </tr>
+
+            </table></td>
+          </tr>
+          <tr>
+            <td align="center" valign="middle" style="font-family:Georgia, 'Times New Roman', Times, serif; font-size:48px;"><i>Haftalık Rapor</i></td>
+          </tr>
+          <tr>
+            <td align="center" valign="middle" style="padding-top:7px;"><table width="240" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td height="31" align="center" valign="middle" bgcolor="#e23300" style="font-family:Georgia, 'Times New Roman', Times, serif; font-size:19px; color:#ffffff;">{{email}}</td>
+              </tr>
+            </table></td>
+          </tr>
+
+          <tr>
+            <td align="center" valign="middle" style="padding-bottom:15px; padding-top:15px;"><img src="http://www.adimsayar.com/site_media/images/divider.gif" width="573" height="28" style="display:block;"></td>
+          </tr>
+{% for ct in content%}
+<!-- ctstart -->
+{{ ct.text|safe }}
+</tr>
+          <tr>
+            <td align="center" valign="middle" style="padding-bottom:15px; padding-top:15px;"><img src="http://www.adimsayar.com/site_media/images/divider.gif" width="573" height="28" style="display:block;"></td>
+          </tr>
+<!-- ctend -->
+{% endfor %}
+          <tr>
+            <td align="left" valign="middle" style="font-family:Georgia, 'Times New Roman', Times, serif; font-size:12px; color:#000000;">
+            <div style="color:#b30467; font-size:15px;"><b>Bize Ulaşın</b></div>
+             <div><br>
+Bu e-posta Adımsayar uygulaması tarafından otomatik olarak oluşturulmuştur. Haftada bir gönderilir.<br>
+Bu e-postayı almak istemiyorsanız <a href="http://www.adimsayar.com/profile/send_mail/?email={{email}}&key=29345434">buraya tıklayın</a><br>
+Eğer uygulamayı kullanmayı bıraktıysanız, bilgilerinizi silmek ve hesabınızı kapatmak için <a href="http://www.adimsayar.com/profile/user_delete/?email={{email}}&key=29345434">buraya tıklayın.</a><br>
+Herzaman daha iyisini yapmaya çalışıyoruz, istek ve önerileriniz için <a href="http://www.adimsayar.com/contact/">iletişim formunu</a> kullanabilirsiniz<br>
+<b>Şifrenizi unuttuysanız</b> yeni bir şifre için <a href="http://www.adimsayar.com/mining_platform/reset_password_email/?email={{email}}&key=5565233909">buraya tıklayın.</a><br>
+               <br>
+             </div>
+              <div>
+                <table width="80" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td width="40" align="left" valign="middle"><a href="http://www.facebook.com/adimsayar" target="_blank"><img src="http://www.adimsayar.com/site_media/images/facebook.png" width="24" height="24"></a></td>
+                    <td width="40" align="left" valign="middle"><a href="http://www.twitter.com/adimsayar/" target="_blank"><img src="http://www.adimsayar.com/site_media/images/tweet.png" width="24" height="24"></a></td>
+                  </tr>
+                </table>
+              </div>
+</td>
+  </tr>
+  <tr>
+    <td align="center" valign="top">&nbsp;</td>
+  </tr>
+</table>
+</div>
+</body>
+</html>

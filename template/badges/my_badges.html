@@ -1,0 +1,11 @@
+<!-- 
+{% for b in badge_to_user %}
+{{b.bade.id}}:{{b.badge.level}}:{{b.badge.icon}}:{{b.created}}
+{% endfor %}
+-->
+
+{% for b in badge_to_user %}
+<div style="border:1px red solid; float:left;">
+<img src="/site_media/{{b.badge.icon}}" alt="{{b.badge.title}}" height="100" width="100" />
+</div>
+{% endfor %}

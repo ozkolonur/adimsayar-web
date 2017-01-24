@@ -1,0 +1,17 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Adimsayar</title>
+</head>
+<body >
+<div style="height:200px;">
+{% if not hata %}
+<span style="font-family: Tahoma, Verdana, Arial, sans-serif !important;font-size:22px;display:block;margin:10px">Gelen e-postayı cep telefonunuz ile açarak, uygulamayı yükleyebilirsiniz.</span>
+<span style="font-family: Tahoma, Verdana, Arial, sans-serif !important;font-size:16px;display:block;margin:10px">Teşekkürler.</span>
+<span style="font-family: Tahoma, Verdana, Arial, sans-serif !important;font-size:16px;display:block;margin:10px">Adımsayar Ekibi</span>
+{%else%}
+<span style="font-family: Tahoma, Verdana, Arial, sans-serif !important;font-size:22px;display:block;margin:10px">Bir hata oluştu lütfen tekrar deneyin.</span>
+{%endif%}
+</div>
+</body>
+</html>

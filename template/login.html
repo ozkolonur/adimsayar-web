@@ -1,0 +1,66 @@
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+{% if user.is_authenticated %}
+<div class="user">
+<span >{% trans "Hi" %}:</span> <span><b>{{ user.username }} </b></span>
+(<a href="{%url profile_overview%}" >{% trans "Profile" %}</a>|
+<a href="{%url logout%}" >{% trans "Log out" %}</a>)
+</div>
+
+{% else %}
+<style>
+    .login-bar{
+        width:400px;
+        height:25px;
+        float:right;
+        display: inline;
+		text-align:left;
+		position:absolute;
+		left:350px;
+
+    }
+
+    .social-icon{
+		width:150px;
+		height:25px;
+        display: inline;
+        margin:0 5px 0 5px;
+
+    }
+    .login-bt{
+       display: inline;
+       position: absolute;
+       top:10px;
+       margin-left:70px;
+    }
+    .register-bt{
+        display: inline;
+        position: absolute;
+        top:10px;
+    }
+
+    .login-bt a,.register-bt a{
+    font-size: 14px;
+    padding:2px ;
+	margin-top:-8px;
+	display:inline-block;
+	float:left;
+
+    }
+
+    .login-bt a:hover, .register-bt a:hover{
+        text-decoration: none;
+        text-shadow: 0 0 0.2em #fff;
+    }
+
+</style>
+<div class="login-bar">
+    <a href="{% url socialauth_begin social_auth.backends.oauth2.1 %}"><img src="/site_media/images/facebook_giris.gif" class="sign-facebook social-icon" /></a>
+    <a href="{% url socialauth_begin social_auth.backends.oauth2.0 %}"><img src="/site_media/images/google-login-small.png" class="sign-gmail social-icon" style="height:26px;"/></a>
+
+    <div class="register-bt"><a href="{% url signup %}" >{% trans "Register" %}</a></div>
+    <div class="login-bt"><a href="{%url login%}" >{% trans "Login" %}</a></div>
+</div>
+
+{% endif %}

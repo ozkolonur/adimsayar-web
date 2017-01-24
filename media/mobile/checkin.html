@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link href="/site_media/mobile/css/style.css" rel="stylesheet" />
+<script type="text/javascript" src="/site_media/mobile/js/foursquare-js-api.js"></script>
+
+<script src="/site_media/mobile/js/jquery_1.7.2.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+clientId = 'UKSUC1PGOQ014EKAORXA0XSXYKYWECNW3BAFADTCXLZNEVHW';
+clientSecret = 'G0MFUR0LAJDUD3GULQ0I3JZK0G5VUNDYWTNIC5CRHQPDWBZ0';
+redirectUri = location.href;
+
+function venues()
+{
+    var parameters = {
+        query: null,
+        ll: '41.0000000000,29.0000000000',
+        llAcc: null,
+        alt: null,
+        altAcc: null,
+        limit: null,
+        intent: null,
+        categoryId: null,
+        url: null,
+        providerId: null,
+        linkedId: null,
+        radius: null,
+};
+
+var fsclient = new FourSquareClient(clientId, clientSecret, redirectUri, true);
+    fsclient.venuesClient.search(parameters, { 
+        onSuccess: function(data)
+        { 
+            console.log(data);
+            venues = data.response.venues;
+            for(var i=0; i<venues.length; i++){
+                var venue_name = venues[i].name;
+                if(venues[i].categories.length > 0){
+                    //TODO:get size according to browser-screen
+                    var size = venues[i].categories[0].icon.sizes[2]
+                    var name = venues[i].categories[0].icon.name
+                    var venue_icon_src = venues[i].categories[0].icon.prefix+size+name
+                }else{
+                    //TODO:find a default
+                    var venue_icon_src = 'https://foursquare.com/img/categories/parks_outdoors/default_64.png';
+                }
+                venue_address = venues[i].location.address;
+                venue_distance = venues[i].location.distance;
+                $(".places-image").eq(i).attr("src",venue_icon_src);
+//                $(".places-text").eq(i).text(venue_name);
+//                $(".places-location").eq(i).text(venue_name);
+                console.log(venue_name);
+                console.log(venue_icon_src);
+                console.log(venue_address);
+                console.log(venue_distance);
+            }
+        },
+        onFailure: function(data)
+        {
+            alert("Unable to perform search.\nAre you sure you are authenticated and input values are correct?");
+        }
+    });
+}
+window.onload = venues();
+
+
+</script>
+<link href='http://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Concert+One' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Asap' rel='stylesheet' type='text/css'>
+
+<style>
+.places-container{
+    width:960px;
+    height:100%;
+    background:#efeded;
+    position:absolute;
+    overflow: auto;
+}
+.places-box{
+    width: 90%;
+    height:64px;
+    margin: 5px auto;
+    background: #dddbdb;
+    position:relative;
+    border: 1px #ccc solid;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+}
+.places-image{
+    float: left;
+}
+
+.places-text{
+    width: 70%;
+    margin:18px 10px 0 20px;
+    display: inline-block;
+    font-family: 'Comfortaa', sans-serif;
+}
+
+.places-name{
+    margin-top:2px;
+    font-size: 22px;
+    display: inline-block;
+
+}
+.places-location{
+    float:right;
+    font-size: 24px;
+    font-family: 'Comfortaa', sans-serif;
+}
+
+.places-distance{
+    min-width: 56px;
+    min-height: 56px;
+    width: auto;
+    height: auto;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    background: #fff;
+    border: 4px #58595b solid;
+    display: inline;
+    float:right;
+}
+.places-distance p {
+    width: 35px;
+    margin: 10px auto 0 auto;
+    font-size: 24px;
+    font-family: 'Concert One', cursive;
+    color: #58595b;
+}
+
+</style>
+</head>
+<body>
+<div class="places-container">
+<div class="places-box">
+<img class="places-image"/>
+<div class="places-text">
+
+<span class="places-name">İstanbul Üniversitesi İşletme Fakültesi</span>
+
+<span class="places-location">Avcılar</span>
+
+</div> <!--places-text end-->
+<div class="places-distance"><p>200</p></div>
+
+</div><!--places-box end-->
+<div class="places-box"></div>
+</div><!--#places-box end -->
+<div id="places">
+
+</div><!--#places end -->
+</body>
+</html>

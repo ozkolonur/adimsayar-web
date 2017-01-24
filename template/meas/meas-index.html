@@ -1,0 +1,78 @@
+{% extends "base_1col.html" %}
+{% load i18n %}
+    {%block extracss%}
+    {% endblock %}
+{%block javascript%}
+<script language="Javascript">
+$(document).ready(function() {        
+				$('#iframe-1').load( function() {
+                var $ifbody = $(this).contents().find( 'body' );
+                $ifbody.css( 'height','auto' );
+                $(this).height( $ifbody.height() );
+	      });
+
+});
+
+
+</script>
+
+<script type="text/javascript">
+
+$(window).load(function () {
+
+setInterval(function() {  height_up();  }, 0);
+
+});
+
+function height_up(){
+ var iframe_height= $('#iframe-1').contents().find('body').height();
+    $('#iframe-1').height(iframe_height);
+}
+</script>
+
+<script language="Javascript">
+    $(document).ready( function() {
+				var window_url= window.location.href;
+				if (window_url.indexOf("?")!=-1){
+					var charturl = window_url.substring(0,window_url.indexOf("?")) + "{{target}}"
+				}else{
+					var charturl= window.location + '{{target}}';
+				}
+				$('#iframe-1').attr('src', charturl);
+    });
+
+</script>
+<script language="Javascript">
+$(document).ready(function() {
+  $('a[rel*=bt]').each(function() {
+	  $(this).click(function() {
+	  var id = $(this).attr('id');
+	      $('span[id*=s]').each(function() {
+	      var spid = $(this).attr('id');
+	      var check = 's'+id;
+		
+		  if (spid == check) {
+		  $(this).addClass('bpm-btactive');
+		  }
+		  else {
+		  $(this).removeClass('bpm-btactive');
+		  }
+							});
+						var title =$(this).html();
+						$('.bpm-title').html(title);
+						var url = window.location;
+						var charturl= url + $(this).attr('name') + '/';
+						$('#iframe-1').attr('src', charturl);
+         		return false
+	 				});//click end
+				});
+			});
+</script>
+{% endblock %}
+{%block title%}{% trans "Measurements" %}{%endblock%}
+{%block content%}
+<div class="meas-main" id="meas-content">
+<iframe name="meas-main" width="100%"  id="iframe-1" scrolling="no" frameborder="0" style="min-height: 70%"></iframe>
+</div>
+{% endblock content%}
+
